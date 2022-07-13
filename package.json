@@ -1,0 +1,23 @@
+{
+  "name": "vuepress-theme-vsf-docs",
+  "version": "1.0.9",
+  "description": "Vuepress theme for VSF Documentation",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "npx tailwindcss -o ./styles/index.css --watch"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.7",
+    "postcss": "^8.4.14",
+    "postcss-import": "^12.0.1",
+    "postcss-loader": "^3.0.0",
+    "tailwindcss": "^3.1.4"
+  },
+  "dependencies": {
+    "@vuepress/plugin-active-header-links": "1.9.7",
+    "@vuepress/plugin-nprogress": "1.9.7",
+    "@vuepress/plugin-search": "1.9.7",
+    "vuepress-plugin-container": "^2.0.2"
+  }
+}

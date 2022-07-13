@@ -1,0 +1,59 @@
+.custom-block
+  .custom-block-title
+    font-weight 600
+    margin-bottom -0.4rem
+    color #1D1F22
+  &.tip, &.warning, &.danger
+    padding 1.5rem
+    border-radius 0.25rem
+    margin 1rem 0
+    border 1px solid
+    background-color #f3f5f7
+
+  &.tip
+    border-color #42b983
+  &.warning
+    border-color #FFC417
+    
+  &.danger
+    border-color #42b983
+    border-color darken(red, 20%)
+
+  &.details
+    display block
+    position relative
+    border-radius 2px
+    margin 1.6em 0
+    padding 1.6em
+    background-color #eee
+    h4
+      margin-top 0
+    figure, p
+      &:last-child
+        margin-bottom 0
+        padding-bottom 0
+    summary
+      outline none
+      cursor pointer
+
+html.dark
+  .custom-block
+    .custom-block-title
+      font-weight 600
+      margin-bottom -0.4rem
+      color white
+    &.tip, &.warning, &.danger
+      padding 1.5rem
+      border-radius 0.25rem
+      margin 1rem 0
+      border 1px solid
+      background-color #393D43
+    &.tip
+      border-color #42b983
+    &.warning
+      border-color #FFC417
+
+.icon.outbound
+  display none !important
+  width -15px
+  margin-left -15px

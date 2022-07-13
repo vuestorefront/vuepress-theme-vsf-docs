@@ -1,0 +1,215 @@
+<template>
+  <main class="relative break-words whitespace-pre-wrap md:px-8 doc page">
+    <slot name="top" />
+
+    <Content class="pb-8 mb-8 theme-default-content" :key="$route.fullPath" />
+
+    <slot name="bottom" />
+  </main>
+</template>
+
+<script>
+let observer
+
+export default {
+  props: ['sidebarItems'],
+  mounted() {
+    this.observeHeadings()
+  },
+  updated() {
+    this.observeHeadings()
+  },
+  methods: {
+    observeHeadings() {
+      if (observer) {
+        observer.disconnect()
+      }
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            let id = entry.target.getAttribute('id')
+            if (!!id) {
+              if (entry.isIntersecting) {
+                this.$emit('update-heading', id)
+              }
+            }
+          })
+        },
+        { threshold: 0.1, rootMargin: '-10% 0% -70% 0%' }
+      )
+      document.querySelectorAll('.doc h2, .doc h3').forEach((section) => {
+        observer.observe(section)
+      })
+    }
+  }
+}
+</script>
+
+<style>
+main .header-anchor {
+  font-size: 0.85em;
+  float: left;
+  margin-left: -1.25em;
+  margin-top: 0.125em;
+  opacity: 0;
+}
+
+.doc pre {
+  white-space: pre-wrap;
+  margin-bottom: 2rem;
+}
+
+.doc code:not(pre code) {
+  white-space: nowrap;
+}
+
+main p:not(.custom-block p) {
+  line-height: 32px;
+}
+
+h1:not(.custom-block *),
+h2:not(.custom-block *),
+h3:not(.custom-block *),
+h4:not(.custom-block *),
+h5:not(.custom-block *),
+h6:not(.custom-block *),
+strong:not(.custom-block *) {
+  font-weight: 500;
+  color: #1d1f22;
+  position: relative;
+}
+
+html.dark h1:not(.custom-block *),
+html.dark h2:not(.custom-block *),
+html.dark h3:not(.custom-block *),
+html.dark h4:not(.custom-block *),
+html.dark h5:not(.custom-block *),
+html.dark h6:not(.custom-block *),
+html.dark strong:not(.custom-block *) {
+  font-weight: 500;
+  color: white;
+}
+
+pre {
+  background-color: #393d43;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.doc ul:not(.custom-block ul) {
+  list-style-type: disc;
+  margin: 0 0 0 2rem;
+  line-height: 32px;
+}
+
+.doc ul li:not(:last-child) {
+  margin-bottom: -32px;
+}
+
+.doc a:not(.custom-block a) {
+  color: #00c652;
+  text-decoration: underline;
+}
+
+.doc h1:not(.custom-block h1) {
+  font-size: 2em;
+  font-weight: 700;
+}
+
+.doc h2:not(.custom-block h2) {
+  font-size: 1.75em;
+}
+
+.doc h1:not(.custom-block h1),
+.doc h2:not(.custom-block h2),
+.doc h3:not(.custom-block h3),
+.doc h4:not(.custom-block h4),
+.doc h5:not(.custom-block h5),
+.doc h6:not(.custom-block h6) {
+  margin-left: -0.25em;
+  scroll-margin-top: 4em;
+}
+
+.doc iframe {
+  max-width: 32rem;
+  margin: 0 auto;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
+  border-radius: 0.5rem;
+}
+
+.doc table {
+  border-collapse: collapse;
+  border-radius: 5px;
+  border-style: hidden; /* hide standard table (collapsed) border */
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2); /* this draws the table border  */
+  width: 100%;
+  font-size: 14px;
+}
+
+html.dark .doc table {
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2); /* this draws the table border  */
+}
+
+.doc td,
+.doc th {
+  text-align: left;
+  padding: 1rem;
+}
+
+.doc tbody tr:nth-of-type(2n + 1) {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+html.dark .doc tbody tr:nth-of-type(2n + 1) {
+  background-color: #16171a;
+}
+
+.doc th {
+  color: white;
+  background-color: #393d43;
+}
+
+.doc th:first-of-type {
+  border-top-left-radius: 5px;
+}
+
+.doc th:last-of-type {
+  border-top-right-radius: 5px;
+}
+
+.doc ol {
+  list-style-type: decimal;
+  padding-left: 2rem;
+}
+
+.doc code:not(.custom-block code):not(pre code) {
+  background-color: #eee;
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  color: inherit;
+  border: 1px solid #ccc;
+}
+
+html.dark .doc code:not(.custom-block code):not(pre code) {
+  background-color: #393d43;
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  color: inherit;
+  border: 1px solid #555b64;
+}
+
+.doc blockquote {
+  padding: 2rem;
+  border-radius: 0.5rem;
+  background-color: #eee;
+}
+
+html.dark .doc blockquote {
+  padding: 2rem;
+  border-radius: 0.5rem;
+  background-color: #393d43;
+  color: white;
+}
+</style>
