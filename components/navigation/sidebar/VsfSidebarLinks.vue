@@ -60,11 +60,21 @@ export default {
 
   data() {
     return {
-      openGroups: this.depth < 1 ? this.items.map((item, i) => i) : []
+      openGroups:
+        this.depth < 1
+          ? this.items.map((item, i) => i)
+          : this.items
+              .filter((item) => this.descendantIsActive(this.$route, item))
+              .map((item, i) => i)
     }
   },
   created() {
-    this.openGroups = this.depth < 1 ? this.items.map((item, i) => i) : []
+    this.openGroups =
+      this.depth < 1
+        ? this.items.map((item, i) => i)
+        : this.items
+            .filter((item) => this.descendantIsActive(this.$route, item))
+            .map((item, i) => i)
   },
 
   methods: {
@@ -78,24 +88,23 @@ export default {
 
     isActive(page) {
       return isActive(this.$route, page.regularPath)
+    },
+    descendantIsActive(route, item) {
+      if (item.type === 'group') {
+        const childIsActive = item.path && route.hash === item.path
+        const grandChildIsActive = item.children.some((child) => {
+          if (child.type === 'group') {
+            return this.descendantIsActive(route, child)
+          } else {
+            return child.type === 'page' && route.path === child.path
+          }
+        })
+
+        return childIsActive || grandChildIsActive
+      }
+      return false
     }
   }
-}
-
-function descendantIsActive(route, item) {
-  if (item.type === 'group') {
-    const childIsActive = item.path && isActive(route, item.path)
-    const grandChildIsActive = item.children.some((child) => {
-      if (child.type === 'group') {
-        return descendantIsActive(route, child)
-      } else {
-        return child.type === 'page' && isActive(route, child.path)
-      }
-    })
-
-    return childIsActive || grandChildIsActive
-  }
-  return false
 }
 </script>
 

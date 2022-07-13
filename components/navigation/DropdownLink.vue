@@ -1,12 +1,13 @@
 <template>
   <div class="relative dropdown-wrapper group" :class="{ open }">
     <button class="dropdown-title" type="button">
-      <span>Integrations</span>
+      <span> {{ title }}</span>
       <span class="ml-2 arrow down" />
     </button>
 
     <ul
-      class="absolute left-0 z-10 hidden w-64 p-2 bg-white border rounded nav-dropdown group-focus-within:block group-hover:block top-full dark:bg-charcoal dark:border-charcoal-400"
+      class="absolute z-10 hidden w-64 p-2 bg-white border rounded -left-1/2 nav-dropdown group-focus-within:block group-hover:block top-full dark:bg-charcoal dark:border-charcoal-400"
+      v-if="type === 'integrations'"
     >
       <li
         v-for="(integration, index) in integrations"
@@ -37,13 +38,45 @@
         </a>
       </li>
     </ul>
+    <ul
+      class="absolute z-10 hidden w-48 p-2 bg-white border rounded -left-1/2 nav-dropdown group-focus-within:block group-hover:block top-full dark:bg-charcoal dark:border-charcoal-400"
+      v-else-if="type === 'ecosystem'"
+    >
+      <li class="flex">
+        <a
+          href="https://docs.storefrontui.io/"
+          class="flex items-center w-full h-8 rounded dark:hover:bg-white dark:hover:bg-opacity-5 hover:bg-black hover:bg-opacity-5 hover:text-charcoal dark:hover:text-white"
+        >
+          <span class="ml-2">Storefront UI</span>
+        </a>
+      </li>
+      <li class="flex">
+        <a
+          href="https://docs.vuestorefront.io/cloud/"
+          class="flex items-center w-full h-8 rounded dark:hover:bg-white dark:hover:bg-opacity-5 hover:bg-black hover:bg-opacity-5 hover:text-charcoal dark:hover:text-white"
+        >
+          <span class="ml-2">Vue Storefront Cloud</span>
+        </a>
+      </li>
+      <li class="flex">
+        <a
+          href="https://docs.vuestorefront.io/v1/"
+          class="flex items-center w-full h-8 rounded dark:hover:bg-white dark:hover:bg-opacity-5 hover:bg-black hover:bg-opacity-5 hover:text-charcoal dark:hover:text-white"
+        >
+          <span class="ml-2">Vue Storefront 1</span>
+        </a>
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
 export default {
   name: 'DropdownLink',
-
+  props: {
+    title: String,
+    type: String
+  },
   data() {
     return {
       open: false,
@@ -54,7 +87,7 @@ export default {
         },
         {
           name: 'commercetools',
-          link: 'https://docs.vuestorefront.io/v2/commercetools/'
+          link: 'https://docs.vuestorefront.io/commercetools/'
         },
         {
           name: 'Magento',

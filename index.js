@@ -3,6 +3,7 @@ const path = require('path')
 module.exports = {
   plugins: [
     '@vuepress/search',
+    '@vuepress/medium-zoom',
     '@vuepress/plugin-nprogress',
     [
       'container',

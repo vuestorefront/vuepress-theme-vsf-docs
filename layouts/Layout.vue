@@ -68,12 +68,17 @@
               <li v-for="header in tocHeaders" :key="header.slug" class="pb-1">
                 <a
                   :href="`#${header.slug}`"
-                  class="text-sm toc-link hover:text-charcoal dark:hover:text-white"
+                  class="text-sm toc-link"
                   :class="{
                     'text-green-500':
                       currentSection == header.slug ||
                       (!currentSection &&
+                        $route.hash.substring(1) === header.slug),
+                    'hover:text-charcoal dark:hover:text-white': !(
+                      currentSection == header.slug ||
+                      (!currentSection &&
                         $route.hash.substring(1) === header.slug)
+                    )
                   }"
                   :style="{
                     'padding-left': (header.level - 2) * 1 + 'em'

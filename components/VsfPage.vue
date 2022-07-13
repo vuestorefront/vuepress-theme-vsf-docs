@@ -3,21 +3,41 @@
     <slot name="top" />
 
     <Content class="pb-8 mb-8 theme-default-content" :key="$route.fullPath" />
-
+    <PageNav />
     <slot name="bottom" />
   </main>
 </template>
 
 <script>
+import PageNav from './navigation/PageNav.vue'
 let observer
 
 export default {
   props: ['sidebarItems'],
+  components: {
+    PageNav
+  },
   mounted() {
     this.observeHeadings()
+    const hash = this.$route.hash
+    if (!!hash) {
+      document.getElementById(hash.substring(1)).scrollIntoView()
+    }
   },
   updated() {
     this.observeHeadings()
+  },
+  watch: {
+    $route(to, from) {
+      if (to !== from) {
+        this.$nextTick(() => {
+          const hash = this.$route.hash
+          if (!!hash) {
+            document.getElementById(hash.substring(1)).scrollIntoView()
+          }
+        })
+      }
+    }
   },
   methods: {
     observeHeadings() {
@@ -55,7 +75,7 @@ main .header-anchor {
 }
 
 .doc pre {
-  white-space: pre-wrap;
+  white-space: auto;
   margin-bottom: 2rem;
 }
 
@@ -102,7 +122,7 @@ pre {
   line-height: 32px;
 }
 
-.doc ul li:not(:last-child) {
+.doc > div > ul li:not(:last-child) {
   margin-bottom: -32px;
 }
 
@@ -128,6 +148,7 @@ pre {
 .doc h6:not(.custom-block h6) {
   margin-left: -0.25em;
   scroll-margin-top: 4em;
+  scroll-padding-top: 4em;
 }
 
 .doc iframe {
@@ -145,17 +166,35 @@ pre {
   border-style: hidden; /* hide standard table (collapsed) border */
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2); /* this draws the table border  */
   width: 100%;
+  table-layout: fixed;
   font-size: 14px;
+}
+
+.doc table td code {
+  white-space: pre-wrap;
 }
 
 html.dark .doc table {
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2); /* this draws the table border  */
 }
 
+.doc img {
+  margin-left: auto;
+  margin-right: auto;
+}
+.doc th code {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  border: 1px solid #333 !important;
+}
+
 .doc td,
 .doc th {
   text-align: left;
   padding: 1rem;
+}
+
+.doc tr {
+  width: 100%;
 }
 
 .doc tbody tr:nth-of-type(2n + 1) {
@@ -190,6 +229,7 @@ html.dark .doc tbody tr:nth-of-type(2n + 1) {
   padding: 0.25rem 0.5rem;
   color: inherit;
   border: 1px solid #ccc;
+  white-space: ;
 }
 
 html.dark .doc code:not(.custom-block code):not(pre code) {

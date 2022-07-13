@@ -18,6 +18,22 @@
       <nav class="hidden gap-4 ml-auto text-sm nav-links lg:flex">
         <div class="nav-item">
           <RouterLink
+            to="/"
+            class="hover:text-charcoal dark:hover:text-white"
+            v-if="$site.base === '/v2/'"
+          >
+            Home
+          </RouterLink>
+          <a
+            href="https://docs.vuestorefront.io/v2/"
+            class="hover:text-charcoal dark:hover:text-white"
+            v-else
+          >
+            Home
+          </a>
+        </div>
+        <div class="nav-item">
+          <RouterLink
             to="/getting-started/introduction"
             class="hover:text-charcoal dark:hover:text-white"
             v-if="$site.base === '/v2/'"
@@ -31,9 +47,6 @@
           >
             Getting Started
           </a>
-        </div>
-        <div class="nav-item">
-          <DropdownLink />
         </div>
         <div class="nav-item">
           <RouterLink
@@ -50,6 +63,12 @@
           >
             Concepts
           </a>
+        </div>
+        <div class="nav-item">
+          <DropdownLink title="Integrations" type="integrations" />
+        </div>
+        <div class="nav-item">
+          <DropdownLink title="Ecosystem" type="ecosystem" />
         </div>
       </nav>
       <SearchBox

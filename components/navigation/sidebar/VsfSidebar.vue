@@ -34,12 +34,33 @@ export default {
           type: 'group',
           children: [
             {
+              title: 'Home',
+              path: 'https://docs.vuestorefront.io/v2/'
+            }
+          ]
+        },
+        {
+          title: '',
+          collapsable: false,
+          type: 'group',
+          children: [
+            {
               title: 'Getting Started',
               path: 'https://docs.vuestorefront.io/v2/getting-started/introduction.html'
             }
           ]
         },
-
+        {
+          title: '',
+          collapsable: false,
+          type: 'group',
+          children: [
+            {
+              title: 'Concepts',
+              path: 'https://docs.vuestorefront.io/v2/getting-started/project-structure.html'
+            }
+          ]
+        },
         {
           title: 'Integrations',
           collapsible: true,
@@ -51,7 +72,7 @@ export default {
             },
             {
               title: 'commercetools',
-              path: 'https://docs.vuestorefront.io/v2/commercetools/'
+              path: 'https://docs.vuestorefront.io/commercetools/'
             },
             {
               title: 'Magento',
@@ -89,13 +110,21 @@ export default {
           ]
         },
         {
-          title: '',
-          collapsable: false,
+          title: 'Ecosystem',
+          collapsible: true,
           type: 'group',
           children: [
             {
-              title: 'Concepts',
-              path: 'https://docs.vuestorefront.io/v2/getting-started/project-structure.html'
+              title: 'Storefront UI',
+              path: 'https://docs.storefrontui.io/'
+            },
+            {
+              title: 'Vue Storefront Cloud',
+              path: 'https://docs.vuestorefront.io/cloud/'
+            },
+            {
+              title: 'Vue Storefront 1',
+              path: 'https://docs.vuestorefront.io/v1/'
             }
           ]
         }

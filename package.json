@@ -1,6 +1,6 @@
 {
   "name": "vuepress-theme-vsf-docs",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Vuepress theme for VSF Documentation",
   "main": "index.js",
   "license": "MIT",

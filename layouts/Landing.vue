@@ -1,6 +1,6 @@
 <template>
   <div
-    class="min-h-screen pb-64 bg-white custom-block dark:bg-charcoal-500 text-charcoal-400 dark:text-charcoal-50"
+    class="min-h-screen pb-64 bg-white dark:bg-charcoal-500 text-charcoal-400 dark:text-charcoal-50"
   >
     <VsfNav @toggle="sidebarOpen = !sidebarOpen" :sidebar-open="sidebarOpen" />
     <!-- Google Tag Manager (noscript) -->
@@ -15,7 +15,7 @@
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
     <main
-      class="relative"
+      class="relative custom-block"
       :aria-labelledby="data.heroText !== null ? 'main-title' : null"
     >
       <div
