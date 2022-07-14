@@ -182,6 +182,15 @@ export default {
         text: this.data.actionText
       }
     }
+  },
+  watch: {
+    sidebarOpen(val) {
+      if (val) {
+        document.body.classList.add('overflow-hidden')
+      } else {
+        document.body.classList.remove('overflow-hidden')
+      }
+    }
   }
 }
 </script>
@@ -193,5 +202,15 @@ html.dark {
 
 html.dark {
   color-scheme: dark;
+}
+
+body.overflow-hidden {
+  overflow: auto;
+}
+
+@media (max-width: 640px) {
+  body.overflow-hidden {
+    overflow: hidden;
+  }
 }
 </style>
