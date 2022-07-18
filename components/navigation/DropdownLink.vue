@@ -19,7 +19,7 @@
           class="flex items-center w-full h-8 rounded dark:hover:bg-white dark:hover:bg-opacity-5 hover:bg-black hover:bg-opacity-5 hover:text-charcoal dark:hover:text-white"
         >
           <img
-            :src="`/v2/integrations-logos/thumbnails/${integration.name
+            :src="`https://docs.vuestorefront.io/v2/integrations-logos/thumbnails/${integration.name
               .toLowerCase()
               .replace(/ /g, '-')}.png`"
             :alt="integration.name"
