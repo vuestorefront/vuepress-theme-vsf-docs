@@ -3,9 +3,11 @@
     <div
       class="container grid grid-cols-12 px-4 py-12 mx-auto text-sm gap-y-16"
     >
-      <div class="flex justify-start col-span-6 md:col-span-3">
+      <div
+        class="flex col-span-12 mx-auto w-44 sm:col-span-6 md:col-span-3 md:w-auto"
+      >
         <div>
-          <Logo class="w-48 h-auto mb-4" />
+          <Logo class="h-auto mb-4 w-44" />
           <h2 class="mb-2">Stay connected:</h2>
           <div class="flex">
             <a
@@ -57,7 +59,7 @@
         </div>
       </div>
       <div
-        class="flex justify-start col-span-6 pt-3 md:justify-center md:col-span-3"
+        class="flex col-span-12 pt-3 mx-auto w-44 sm:col-span-6 md:col-span-3 md:w-auto"
       >
         <div>
           <h2 class="mb-4 font-bold">Guides</h2>
@@ -78,7 +80,7 @@
         </div>
       </div>
       <div
-        class="flex justify-start col-span-6 md:justify-center md:col-span-3 md:pt-3"
+        class="flex col-span-12 mx-auto w-44 sm:col-span-6 md:col-span-3 md:pt-3 md:w-auto"
       >
         <div>
           <h2 class="mb-4 font-bold">Documentation</h2>
@@ -99,7 +101,7 @@
         </div>
       </div>
       <div
-        class="flex justify-start col-span-6 md:justify-center md:col-span-3 md:pt-3"
+        class="flex col-span-12 mx-auto w-44 sm:col-span-6 md:col-span-3 md:pt-3 md:w-auto"
       >
         <div>
           <h2 class="mb-4 font-bold">Company</h2>
