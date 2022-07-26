@@ -171,6 +171,10 @@ export default {
   font-size: 0.9em;
 }
 
+.search-box * {
+  word-break: break-word;
+}
+
 html.dark .search-box input {
   background-color: #555b64;
   color: white;

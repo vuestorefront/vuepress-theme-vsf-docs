@@ -68,7 +68,7 @@
               <li v-for="header in tocHeaders" :key="header.slug" class="pb-1">
                 <a
                   :href="`#${header.slug}`"
-                  class="text-sm toc-link"
+                  class="inline-block text-sm toc-link"
                   :class="{
                     'text-green-500':
                       currentSection == header.slug ||
