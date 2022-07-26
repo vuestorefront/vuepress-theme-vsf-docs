@@ -67,11 +67,25 @@ export default {
 
 <style>
 main .header-anchor {
-  font-size: 0.85em;
-  float: left;
-  margin-left: -1.25em;
-  margin-top: 0.125em;
+  position: absolute;
+  left: -16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: 400;
   opacity: 0;
+  text-decoration: none !important;
+}
+
+main .header-anchor:hover {
+  text-decoration: underline !important;
+}
+
+main *:hover > .header-anchor {
+  opacity: 1;
+}
+
+.doc {
+  padding: 0 16px;
 }
 
 .doc pre {
