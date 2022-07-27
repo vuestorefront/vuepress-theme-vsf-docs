@@ -68,9 +68,9 @@ export default {
 <style>
 main .header-anchor {
   position: absolute;
-  left: -16px;
-  top: 50%;
-  transform: translateY(-50%);
+  left: 0;
+  transform: translateX(-100%);
+  padding-right: 4px;
   font-weight: 400;
   opacity: 0;
   text-decoration: none !important;
@@ -111,6 +111,7 @@ strong:not(.custom-block *) {
   font-weight: 500;
   color: #1d1f22;
   position: relative;
+  white-space: normal;
 }
 
 html.dark h1:not(.custom-block *),
@@ -121,6 +122,7 @@ html.dark h5:not(.custom-block *),
 html.dark h6:not(.custom-block *),
 html.dark strong:not(.custom-block *) {
   font-weight: 500;
+  white-space: normal;
   color: white;
 }
 
@@ -143,6 +145,11 @@ pre {
 .doc a:not(.custom-block a) {
   color: #00c652;
   text-decoration: underline;
+  white-space: normal;
+}
+
+.doc a:not(.custom-block a) > span {
+  display: none;
 }
 
 .doc h1:not(.custom-block h1) {
@@ -160,9 +167,9 @@ pre {
 .doc h4:not(.custom-block h4),
 .doc h5:not(.custom-block h5),
 .doc h6:not(.custom-block h6) {
-  margin-left: -0.25em;
   scroll-margin-top: 4em;
   scroll-padding-top: 4em;
+  white-space: normal;
 }
 
 .doc iframe {
