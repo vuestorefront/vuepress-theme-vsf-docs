@@ -244,7 +244,7 @@ html.dark .doc tbody tr:nth-of-type(2n + 1) {
   padding-left: 2rem;
 }
 
-.doc code:not(.custom-block code):not(pre code) {
+.doc code:not(pre code) {
   background-color: #eee;
   border-radius: 0.25rem;
   padding: 0.25rem 0.5rem;
@@ -253,7 +253,7 @@ html.dark .doc tbody tr:nth-of-type(2n + 1) {
   white-space: ;
 }
 
-html.dark .doc code:not(.custom-block code):not(pre code) {
+html.dark .doc code:not(pre code) {
   background-color: #393d43;
   border-radius: 0.25rem;
   padding: 0.25rem 0.5rem;
