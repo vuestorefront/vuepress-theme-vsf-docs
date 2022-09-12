@@ -3,6 +3,17 @@
     <slot name="top" />
 
     <Content class="pb-8 mb-8 theme-default-content" :key="$route.fullPath" />
+    <div class="text-sm" v-if="$themeConfig.docsRepoPath">
+      <a
+        :href="`${$themeConfig.docsRepoPath}${$route.path.replace(
+          '.html',
+          '.md'
+        )}`"
+        target="_blank"
+        class="hover:!underline !no-underline !text-charcoal-200 dark:!text-charcoal-50"
+        >Edit this page</a
+      >
+    </div>
     <PageNav />
     <slot name="bottom" />
   </main>
@@ -227,8 +238,12 @@ html.dark .doc tbody tr:nth-of-type(2n + 1) {
 }
 
 .doc th {
-  color: white;
+  color: white !important;
   background-color: #393d43;
+}
+
+.doc th * {
+  color: white;
 }
 
 .doc th:first-of-type {
