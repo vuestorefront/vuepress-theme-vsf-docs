@@ -176,7 +176,7 @@ export default {
 }
 
 html.dark .search-box input {
-  background-color: #555b64;
+  background-color: #282c34;
   color: white;
 }
 

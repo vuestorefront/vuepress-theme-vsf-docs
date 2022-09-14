@@ -10,9 +10,15 @@ module.exports = {
       {
         type: 'tip',
         defaultTitle: {
-          '/': 'TIP',
-          '/zh/': '提示'
+          '/': 'TIP'
         }
+      }
+    ],
+    [
+      'container',
+      {
+        type: 'subheader',
+        defaultTitle: ''
       }
     ],
     [
@@ -20,8 +26,7 @@ module.exports = {
       {
         type: 'warning',
         defaultTitle: {
-          '/': 'WARNING',
-          '/zh/': '注意'
+          '/': 'WARNING'
         }
       }
     ],
@@ -30,8 +35,7 @@ module.exports = {
       {
         type: 'danger',
         defaultTitle: {
-          '/': 'DANGER',
-          '/zh/': '警告'
+          '/': 'DANGER'
         }
       }
     ]

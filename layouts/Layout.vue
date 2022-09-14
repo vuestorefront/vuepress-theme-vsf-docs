@@ -1,6 +1,6 @@
 <template>
   <div
-    class="min-h-screen bg-white dark:bg-charcoal-500 text-charcoal-200 dark:text-charcoal-50"
+    class="min-h-screen bg-white dark:bg-charcoal-500 text-charcoal-300 dark:text-gray-300"
   >
     <VsfNav
       class="h-12"
@@ -31,7 +31,7 @@
         v-if="sidebarOpen"
       ></div>
       <div
-        class="z-20 w-full bg-white sm:w-64 shrink-0 grow-0 lg:block lg:relative dark:bg-charcoal"
+        class="z-20 w-full bg-white sm:w-64 shrink-0 grow-0 lg:block lg:relative dark:bg-charcoal-500"
         :class="{
           'fixed left-0 pl-4': sidebarOpen,
           hidden: !sidebarOpen

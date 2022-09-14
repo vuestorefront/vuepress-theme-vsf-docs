@@ -51,7 +51,7 @@
       <span v-if="collapsable" class="arrow" :class="open ? 'down' : 'right'" />
       <span
         :class="{
-          'uppercase text-xs font-bold text-charcoal dark:text-white':
+          'uppercase text-xs font-medium text-charcoal dark:text-white':
             depth === 0
         }"
         >{{ item.title }}</span

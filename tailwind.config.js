@@ -5,6 +5,9 @@ module.exports = {
     './layouts/*.{vue,js,ts,jsx,tsx}',
     './components/**/*.{vue,js,ts,jsx,tsx}'
   ],
+  fontFamily: {
+    sans: ['Inter', 'sans-serif']
+  },
   theme: {
     container: {
       padding: {
@@ -18,13 +21,13 @@ module.exports = {
     extend: {
       colors: {
         charcoal: {
-          DEFAULT: '#1D1F22',
+          DEFAULT: '#19181B',
           50: '#A2A8B0',
           100: '#9298A2',
           200: '#727985',
           300: '#555B64',
           400: '#393D43',
-          500: '#1D1F22',
+          500: '#19181B',
           600: '#16171A',
           700: '#0F1011',
           800: '#080809',

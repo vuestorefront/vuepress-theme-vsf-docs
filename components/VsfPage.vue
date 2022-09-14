@@ -195,24 +195,24 @@ pre {
 .doc table {
   border-collapse: collapse;
   border-radius: 5px;
-  border-style: hidden; /* hide standard table (collapsed) border */
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2); /* this draws the table border  */
   width: 100%;
   table-layout: fixed;
-  font-size: 14px;
+  line-height: 1.25rem;
+  font-size: 0.875rem;
 }
 
 .doc table td code {
   white-space: pre-wrap;
 }
 
-html.dark .doc table {
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2); /* this draws the table border  */
-}
-
 .doc img {
   margin-left: auto;
   margin-right: auto;
+}
+
+.doc th {
+  font-weight: 600;
+  color: black;
 }
 .doc th code {
   background-color: rgba(0, 0, 0, 0.5) !important;
@@ -222,28 +222,12 @@ html.dark .doc table {
 .doc td,
 .doc th {
   text-align: left;
-  padding: 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
 }
 
 .doc tr {
   width: 100%;
-}
-
-.doc tbody tr:nth-of-type(2n + 1) {
-  background-color: rgba(0, 0, 0, 0.05);
-}
-
-html.dark .doc tbody tr:nth-of-type(2n + 1) {
-  background-color: #16171a;
-}
-
-.doc th {
-  color: white !important;
-  background-color: #393d43;
-}
-
-.doc th * {
-  color: white;
 }
 
 .doc th:first-of-type {
@@ -262,10 +246,9 @@ html.dark .doc tbody tr:nth-of-type(2n + 1) {
 .doc code:not(pre code) {
   background-color: #eee;
   border-radius: 0.25rem;
-  padding: 0.25rem 0.5rem;
+  margin-top: -0.125rem;
+  padding: 0.2rem 0.5rem;
   color: inherit;
-  border: 1px solid #ccc;
-  white-space: ;
 }
 
 html.dark .doc code:not(pre code) {
