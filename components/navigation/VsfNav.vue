@@ -96,18 +96,10 @@
               {{ text }}
             </RouterLink>
           </li>
-          <li class="ml-auto">
-            <RouterLink
-              to="/getting-started/project-structure"
-              class="hover:text-neutral dark:hover:text-white"
-              v-if="$site.base === '/v2/'"
-            >
-              Core Docs ->
-            </RouterLink>
+          <li class="ml-auto" v-if="$site.base !== '/v2/'">
             <a
-              href="https://docs.vuestorefront.io/v2/getting-started/project-structure.html"
+              href="https://docs.vuestorefront.io/v2/"
               class="hover:text-neutral dark:hover:text-white"
-              v-else
             >
               Core Docs ->
             </a>

@@ -1,8 +1,5 @@
 <template>
-  <ul
-    v-if="items.length"
-    class="text-sm text-gray-500 dark:text-gray-400 sidebar-links"
-  >
+  <ul v-if="items.length" class="text-sm text-inherit sidebar-links">
     <li
       v-for="(item, i) in items"
       :key="depth + ' ' + i + ' ' + item.title"

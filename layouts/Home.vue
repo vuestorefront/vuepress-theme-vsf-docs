@@ -22,7 +22,7 @@
           class="sticky max-w-full overflow-hidden top-14"
         />
       </div>
-      <VsfPage />
+      <VsfPage class="mt-7" />
     </div>
     <VsfFooter />
   </div>

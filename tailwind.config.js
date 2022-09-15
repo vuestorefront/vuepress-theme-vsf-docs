@@ -8,6 +8,7 @@ module.exports = {
   fontFamily: {
     sans: ['Inter', 'sans-serif']
   },
+  safelist: ['md:justify-start', 'md:justify-center', 'md:justify-end'],
   theme: {
     container: {
       padding: {

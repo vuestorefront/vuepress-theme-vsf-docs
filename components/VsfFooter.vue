@@ -8,7 +8,7 @@
       >
         <div>
           <Logo class="h-auto mb-4 w-44" />
-          <h2 class="mb-2">Stay connected:</h2>
+          <h2 class="mb-2 text-sm font-medium">Stay connected:</h2>
           <div class="flex">
             <a
               href="https://github.com/DivanteLtd/vue-storefront"
@@ -41,7 +41,7 @@
             /></a>
           </div>
 
-          <h2 class="mt-4 mb-4">Backed by:</h2>
+          <h2 class="mt-4 mb-4 text-sm font-medium">Backed by:</h2>
           <div class="flex">
             <a
               href="https://www.vuestorefront.io/blog/y-combinator-w21"
@@ -62,7 +62,7 @@
         class="flex col-span-12 pt-3 mx-auto w-44 sm:col-span-6 md:col-span-3 md:w-auto"
       >
         <div>
-          <h2 class="mb-4 font-bold">Guides</h2>
+          <h2 class="mb-4 text-sm font-medium">Guides</h2>
           <ul>
             <li class="mb-2">
               <a
@@ -83,7 +83,7 @@
         class="flex col-span-12 mx-auto w-44 sm:col-span-6 md:col-span-3 md:pt-3 md:w-auto"
       >
         <div>
-          <h2 class="mb-4 font-bold">Documentation</h2>
+          <h2 class="mb-4 text-sm font-medium">Documentation</h2>
           <ul>
             <li class="mb-2">
               <a href="https://docs.vuestorefront.io/v2">Docs Home</a>
@@ -104,7 +104,7 @@
         class="flex col-span-12 mx-auto w-44 sm:col-span-6 md:col-span-3 md:pt-3 md:w-auto"
       >
         <div>
-          <h2 class="mb-4 font-bold">Company</h2>
+          <h2 class="mb-4 text-sm font-medium">Company</h2>
           <ul class="">
             <li class="mb-2">
               <a href="https://www.vuestorefront.io/about-us">About us</a>

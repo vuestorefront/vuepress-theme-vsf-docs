@@ -44,7 +44,7 @@
       </div>
 
       <VsfPage
-        class="flex-1 min-w-0 mt-8 md:px-6"
+        class="flex-1 min-w-0 mt-6 md:px-6"
         @update-heading="currentSection = $event"
         @click="sidebarOpen = false"
       >

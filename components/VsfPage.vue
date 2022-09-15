@@ -1,7 +1,12 @@
 <template>
   <main class="relative text-base prose page">
     <slot name="top" />
-
+    <h2
+      v-if="$page.frontmatter.flag"
+      class="!mt-0 mb-2 text-sm capitalize text-green"
+    >
+      {{ $page.frontmatter.flag }}
+    </h2>
     <Content class="pb-8 mb-8 theme-default-content" :key="$route.fullPath" />
     <div
       class="flex items-center mb-2 text-sm"

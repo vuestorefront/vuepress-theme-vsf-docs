@@ -5,6 +5,13 @@ import IntegrationList from './components/IntegrationList.vue'
 import CodeGroup from './components/CodeGroup.vue'
 import CodeBlock from './components/CodeBlock.vue'
 import NavigationalCard from './components/NavigationalCard.vue'
+import BetaBanner from './components/BetaBanner.vue'
+import ButtonContainer from './components/ButtonContainer.vue'
+import CoreDocsList from './components/landing/CoreDocsList.vue'
+import StorefrontUi from './components/landing/StorefrontUi.vue'
+import VsfCloud from './components/landing/VsfCloud.vue'
+import VsfEcosystem from './components/landing/VsfEcosystem.vue'
+
 import { Icon } from '@iconify/vue2'
 
 export default ({
@@ -17,6 +24,12 @@ export default ({
   Vue.component('IntegrationList', IntegrationList)
   Vue.component('CodeGroup', CodeGroup)
   Vue.component('CodeBlock', CodeBlock)
+  Vue.component('BetaBanner', BetaBanner)
+  Vue.component('ButtonContainer', ButtonContainer)
   Vue.component('NavigationalCard', NavigationalCard)
+  Vue.component('CoreDocsList', CoreDocsList)
+  Vue.component('StorefrontUi', StorefrontUi)
+  Vue.component('VsfCloud', VsfCloud)
+  Vue.component('VsfEcosystem', VsfEcosystem)
   Vue.component('Icon', Icon)
 }
