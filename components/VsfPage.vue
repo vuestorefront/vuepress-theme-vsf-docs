@@ -1,6 +1,7 @@
 <template>
   <main class="relative text-base prose page">
     <slot name="top" />
+    <BetaBanner v-if="$page.frontmatter.betaBanner" />
     <h2
       v-if="$page.frontmatter.flag"
       class="!mt-0 mb-2 text-sm capitalize text-green"
@@ -31,6 +32,7 @@
 <script>
 import PageNav from './navigation/PageNav.vue'
 import Edit from './icons/Edit.vue'
+import BetaBanner from './BetaBanner.vue'
 
 let observer
 
@@ -38,7 +40,8 @@ export default {
   props: ['sidebarItems'],
   components: {
     PageNav,
-    Edit
+    Edit,
+    BetaBanner
   },
   mounted() {
     this.observeHeadings()

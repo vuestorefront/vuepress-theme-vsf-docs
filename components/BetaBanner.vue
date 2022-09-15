@@ -1,7 +1,7 @@
 <template>
-  <div class="w-full mt-4 text-sm lg:p-0">
+  <div class="w-full mt-4 mb-8 text-sm lg:p-0">
     <div
-      class="block w-full max-w-xl p-4 px-8 mx-auto text-left bg-orange-500 bg-opacity-50 rounded text-neutral-900 dark:text-white"
+      class="block p-4 px-6 mx-auto text-left bg-orange-500 bg-opacity-50 rounded text-neutral-900 dark:text-white"
     >
       <div class="flex items-center">
         <Icon icon="ph:warning-circle-fill" class="mr-4" width="24" />
@@ -12,7 +12,7 @@
         </span>
       </div>
     </div>
-    <p class="w-full max-w-xl mx-auto text-left">
+    <p class="w-full text-left">
       You can help us to make the integration production-ready faster by
       reporting bugs and contributing to the code at the
       <a :href="`${$themeConfig.repo}/issues`" target="_blank"
