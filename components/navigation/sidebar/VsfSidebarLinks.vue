@@ -3,7 +3,12 @@
     <li
       v-for="(item, i) in items"
       :key="depth + ' ' + i + ' ' + item.title"
-      :class="{ 'mt-2': depth === 1, 'mb-4': depth === 0 }"
+      :class="{
+        'mb-4': depth < 1,
+        'pl-3   ': depth >= 1,
+        'border-l pl-4 pt-2 border-gray-200 dark:border-neutral-400 ml-1 mr-1':
+          depth > 1
+      }"
       class="py-1 text-base sm:py-0 sm:text-sm"
     >
       <SidebarGroup
@@ -12,15 +17,17 @@
         :open="openGroups.indexOf(i) !== -1"
         :collapsable="item.collapsable || item.collapsible"
         :depth="depth"
+        :class="{
+          '-mx-1': depth >= 1
+        }"
         @toggle="toggleGroup(i)"
       />
       <a
         v-else-if="item.path && item.path.indexOf('http') === 0"
         :href="item.path"
-        class="inline-block overflow-visible transition-colors hover:text-neutral dark:hover:text-white"
+        class="inline-block pl-4 overflow-visible transition-colors"
         :class="{
-          'border-l pl-4 pt-2 border-gray-200 dark:border-neutral-400':
-            depth >= 2
+          'px-1': depth === 0
         }"
       >
         {{ item.title }}
@@ -28,10 +35,9 @@
       <RouterLink
         v-else-if="item.path"
         :to="item.path"
-        class="inline-block transition-colors hover:text-neutral dark:hover:text-white"
+        class="inline-block py-1 transition-colors hover:text-neutral dark:hover:text-white"
         :class="{
-          'border-l pl-4 pt-2 border-gray-200 dark:border-neutral-400':
-            depth >= 2
+          'px-1': depth === 0
         }"
       >
         {{ item.title }}

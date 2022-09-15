@@ -1,8 +1,8 @@
 <template>
-  <div class="grid grid-cols-12 gap-8 mt-16 lg:px-16 custom-block">
+  <div class="grid grid-cols-12 gap-8 mt-16 custom-block">
     <div class="col-span-12 md:col-span-5">
       <p class="text-sm font-semibold text-green">Open-source design system</p>
-      <h3 class="mt-2 text-2xl">Storefront UI</h3>
+      <h3 class="mt-2 text-3xl">Storefront UI</h3>
       <p class="mt-4">
         Create stunning, mobile-first online stores with this 100% customizable
         design system with over 50 ready-to-use Components

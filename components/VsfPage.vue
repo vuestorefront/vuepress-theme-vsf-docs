@@ -10,7 +10,7 @@
     </h2>
     <Content class="pb-8 mb-8 theme-default-content" :key="$route.fullPath" />
     <div
-      class="flex items-center mb-2 text-sm"
+      class="flex items-center justify-end mb-2 text-sm"
       v-if="$themeConfig.docsRepoPath"
     >
       <Edit class="w-3 h-3 mr-1 -rotate-3 fill-slate-700 dark:fill-slate-200" />

@@ -1,24 +1,28 @@
 <template>
-  <div class="w-full mt-4 mb-8 text-sm lg:p-0">
+  <div class="w-full mt-4 mb-8 lg:p-0 custom-block">
     <div
       class="block p-4 px-6 mx-auto text-left bg-orange-500 bg-opacity-50 rounded text-neutral-900 dark:text-white"
     >
       <div class="flex items-center">
-        <Icon icon="ph:warning-circle-fill" class="mr-4" width="24" />
-        <span>
-          This integration is currently in
-          <strong class="text-neutral-900 dark:text-white">Beta</strong> and not
-          ready for production usage.
-        </span>
+        <Icon icon="ph:warning-circle-fill" class="mr-4" width="30" />
+        <div>
+          <p class="text-sm font-medium">
+            This integration is currently in Beta and not ready for production
+            usage.
+          </p>
+          <p class="mt-1 text-sm opacity-80">
+            You can help us to make the integration production-ready faster by
+            reporting bugs and contributing to the code at the
+            <a
+              :href="`${$themeConfig.repo}/issues`"
+              target="_blank"
+              class="underline"
+              >repository issues page</a
+            >.
+          </p>
+        </div>
       </div>
     </div>
-    <p class="w-full text-left">
-      You can help us to make the integration production-ready faster by
-      reporting bugs and contributing to the code at the
-      <a :href="`${$themeConfig.repo}/issues`" target="_blank"
-        >repository issues page</a
-      >.
-    </p>
   </div>
 </template>
 

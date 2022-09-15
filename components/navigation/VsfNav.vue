@@ -83,12 +83,22 @@
       </div>
     </div>
     <div
-      class="flex items-center w-full px-4 py-3 mx-auto text-sm font-medium text-black border-t dark:border-t-neutral-700 bg-inherit 2xl:container flex-nowrap 2xl:px-0 dark:text-white"
+      class="relative flex items-center w-full px-4 mx-auto text-sm font-medium text-black border-t dark:border-t-neutral-700 bg-inherit 2xl:container flex-nowrap 2xl:px-0 dark:text-white"
       v-if="$themeConfig.secondaryNav"
     >
       <nav class="w-full">
         <ul class="flex w-full gap-8">
-          <li v-for="{ text, link } in $themeConfig.secondaryNav">
+          <li
+            v-for="{ text, link } in $themeConfig.secondaryNav"
+            :class="{
+              'text-green ': $route.path.startsWith(link) && link !== '/'
+            }"
+            class="relative py-3"
+          >
+            <div
+              class="absolute bottom-0 left-0 w-full h-[2px] bg-green"
+              v-if="$route.path.startsWith(link) && link !== '/'"
+            />
             <RouterLink
               :to="link"
               class="hover:text-neutral dark:hover:text-white"
@@ -96,7 +106,7 @@
               {{ text }}
             </RouterLink>
           </li>
-          <li class="ml-auto" v-if="$site.base !== '/v2/'">
+          <li class="py-3 ml-auto" v-if="$site.base !== '/v2/'">
             <a
               href="https://docs.vuestorefront.io/v2/"
               class="hover:text-neutral dark:hover:text-white"

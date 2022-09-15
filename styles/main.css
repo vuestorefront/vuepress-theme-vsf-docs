@@ -251,6 +251,9 @@ PROSE STYLES
   @apply mt-8;
 }
 
+.prose div[class^='language-'] + p:not(.custom-block p) {
+  @apply mt-8;
+}
 .prose iframe {
   @apply mt-8 max-w-lg aspect-video rounded-lg w-full h-auto mx-auto;
 }

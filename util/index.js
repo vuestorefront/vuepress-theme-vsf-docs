@@ -240,6 +240,7 @@ function resolveItem(item, pages, base, groupDepth = 1) {
       children: children.map((child) =>
         resolveItem(child, pages, base, groupDepth + 1)
       ),
+      closed: item.closed,
       collapsable: item.collapsable !== false
     }
   }

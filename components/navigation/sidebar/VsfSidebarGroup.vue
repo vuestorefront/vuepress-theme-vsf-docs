@@ -57,20 +57,21 @@
         >{{ item.title }}</span
       >
     </RouterLink>
-    <button
+    <component
       v-else-if="!!item.title.length"
-      class="flex items-center w-full rounded sidebar-heading sidebar-dropdown"
+      :is="collapsable ? 'button' : 'div'"
+      class="flex items-center w-full p-1 rounded sidebar-heading sidebar-dropdown"
       :class="{
         open: true,
-        'cursor-pointer group hover:bg-slate-100 dark:hover:bg-neutral-700 py-1 px-1':
+        'cursor-pointer group hover:bg-slate-100 dark:hover:bg-neutral-700 ':
           collapsable
       }"
-      @click="$emit('toggle')"
+      @click="collapsable && $emit('toggle')"
     >
       <span
+        class="text-sm"
         :class="{
-          'uppercase text-xs font-bold text-neutral-900 dark:text-white ':
-            depth === 0
+          'text-neutral-900 dark:text-white font-medium': depth === 0
         }"
         >{{ item.title }}</span
       >
@@ -80,9 +81,10 @@
         :class="{
           'rotate-90': open
         }"
+        height="16"
         v-if="collapsable"
       />
-    </button>
+    </component>
 
     <Transition
       name="dropdown"
@@ -92,7 +94,7 @@
     >
       <SidebarLinks
         v-if="open || !collapsable"
-        class="ml-2 sidebar-group-items"
+        class="px-1 sidebar-group-items"
         :class="{
           'mb-4': depth == 0
         }"
