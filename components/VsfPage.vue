@@ -1,32 +1,39 @@
 <template>
-  <main class="relative break-words whitespace-pre-wrap md:px-8 doc page">
+  <main class="relative text-base prose page">
     <slot name="top" />
 
     <Content class="pb-8 mb-8 theme-default-content" :key="$route.fullPath" />
-    <div class="text-sm" v-if="$themeConfig.docsRepoPath">
+    <div
+      class="flex items-center mb-2 text-sm"
+      v-if="$themeConfig.docsRepoPath"
+    >
+      <Edit class="w-3 h-3 mr-1 -rotate-3 fill-slate-700 dark:fill-slate-200" />
       <a
         :href="`${$themeConfig.docsRepoPath}${$route.path.replace(
           '.html',
           '.md'
         )}`"
         target="_blank"
-        class="hover:!underline !no-underline !text-charcoal-200 dark:!text-charcoal-50"
+        class="!border-b-0 !text-inherit hover:underline"
         >Edit this page</a
       >
     </div>
-    <PageNav />
+    <PageNav v-if="!$page.frontmatter.hideNav" />
     <slot name="bottom" />
   </main>
 </template>
 
 <script>
 import PageNav from './navigation/PageNav.vue'
+import Edit from './icons/Edit.vue'
+
 let observer
 
 export default {
   props: ['sidebarItems'],
   components: {
-    PageNav
+    PageNav,
+    Edit
   },
   mounted() {
     this.observeHeadings()
@@ -68,7 +75,7 @@ export default {
         },
         { threshold: 0.1, rootMargin: '-10% 0% -70% 0%' }
       )
-      document.querySelectorAll('.doc h2, .doc h3').forEach((section) => {
+      document.querySelectorAll('.prose h2, .prose h3').forEach((section) => {
         observer.observe(section)
       })
     }
@@ -95,180 +102,158 @@ main *:hover > .header-anchor {
   opacity: 1;
 }
 
-.doc {
-  padding: 0 16px;
-}
-
-.doc pre {
-  white-space: auto;
-  margin-bottom: 2rem;
-}
-
-.doc code:not(pre code) {
-  white-space: nowrap;
-}
-
-main p:not(.custom-block p) {
-  line-height: 32px;
-}
-
-h1:not(.custom-block *),
-h2:not(.custom-block *),
-h3:not(.custom-block *),
-h4:not(.custom-block *),
-h5:not(.custom-block *),
-h6:not(.custom-block *),
-strong:not(.custom-block *) {
-  font-weight: 500;
-  color: #1d1f22;
-  position: relative;
-  white-space: normal;
-}
-
-html.dark h1:not(.custom-block *),
-html.dark h2:not(.custom-block *),
-html.dark h3:not(.custom-block *),
-html.dark h4:not(.custom-block *),
-html.dark h5:not(.custom-block *),
-html.dark h6:not(.custom-block *),
-html.dark strong:not(.custom-block *) {
-  font-weight: 500;
-  white-space: normal;
-  color: white;
-}
+/*
 
 pre {
   background-color: #393d43;
-  padding: 1rem;
-  border-radius: 0.5rem;
+  padding: 1em;
+  border-radius: 0.5em;
 }
 
-.doc ul:not(.custom-block ul) {
+.prose ul:not(.custom-block ul) {
   list-style-type: disc;
-  margin: 0 0 0 2rem;
+  margin: 0 0 0 2em;
   line-height: 32px;
 }
 
-.doc > div > ul li:not(:last-child) {
+.prose > div > ul li:not(:last-child) {
   margin-bottom: -32px;
 }
 
-.doc a:not(.custom-block a) {
-  color: #00c652;
-  text-decoration: underline;
+.prose a:not(.custom-block a) {
+  color: black;
   white-space: normal;
+  border-bottom: 1px solid var(--vsf-green);
+  transition: border-bottom 0.1s ease-out;
 }
 
-.doc a:not(.custom-block a) > span {
+html.dark .prose a:not(.custom-block a) {
+  color: white;
+  white-space: normal;
+  border-bottom: 1px solid var(--vsf-green);
+}
+
+.prose a:not(.custom-block a):hover {
+  border-bottom: 2px solid var(--vsf-green);
+}
+
+.prose a:not(.custom-block a) > span {
   display: none;
 }
 
-.doc h1:not(.custom-block h1) {
-  font-size: 2em;
+.prose h1:not(.custom-block h1) {
+  font-size: 2.125em;
   font-weight: 700;
 }
 
-.doc h2:not(.custom-block h2) {
-  font-size: 1.75em;
+.prose h2:not(.custom-block h2) {
+  font-size: 1.5em;
+  font-weight: 600;
 }
 
-.doc h1:not(.custom-block h1),
-.doc h2:not(.custom-block h2),
-.doc h3:not(.custom-block h3),
-.doc h4:not(.custom-block h4),
-.doc h5:not(.custom-block h5),
-.doc h6:not(.custom-block h6) {
+.prose h1:not(.custom-block h1),
+.prose h2:not(.custom-block h2),
+.prose h3:not(.custom-block h3),
+.prose h4:not(.custom-block h4),
+.prose h5:not(.custom-block h5),
+.prose h6:not(.custom-block h6) {
   scroll-margin-top: 4em;
   scroll-padding-top: 4em;
   white-space: normal;
 }
 
-.doc iframe {
-  max-width: 32rem;
+.prose iframe {
+  max-width: 32em;
   margin: 0 auto;
   width: 100%;
   height: auto;
   aspect-ratio: 16/9;
-  border-radius: 0.5rem;
+  border-radius: 0.5em;
 }
 
-.doc table {
+.prose table {
   border-collapse: collapse;
   border-radius: 5px;
   width: 100%;
   table-layout: fixed;
-  line-height: 1.25rem;
-  font-size: 0.875rem;
+  line-height: 1.25em;
+  font-size: 0.875em;
 }
 
-.doc table td code {
+.prose table td code {
   white-space: pre-wrap;
 }
 
-.doc img {
+.prose img {
   margin-left: auto;
   margin-right: auto;
 }
 
-.doc th {
+.prose th {
   font-weight: 600;
   color: black;
 }
-.doc th code {
+
+html.dark th {
+  color: white;
+}
+.prose th code {
   background-color: rgba(0, 0, 0, 0.5) !important;
   border: 1px solid #333 !important;
 }
 
-.doc td,
-.doc th {
+.prose td,
+.prose th {
   text-align: left;
-  padding: 0.5rem 0;
+  padding: 0.5em 0;
   border-bottom: 1px solid #eee;
 }
 
-.doc tr {
+html.dark .prose td,
+html.dark .prose th {
+  border-bottom: 1px solid #3a363e;
+}
+.prose tr {
   width: 100%;
 }
 
-.doc th:first-of-type {
+.prose th:first-of-type {
   border-top-left-radius: 5px;
 }
 
-.doc th:last-of-type {
+.prose th:last-of-type {
   border-top-right-radius: 5px;
 }
 
-.doc ol {
+.prose ol {
   list-style-type: decimal;
-  padding-left: 2rem;
+  padding-left: 2em;
 }
 
-.doc code:not(pre code) {
+.prose code:not(pre code) {
   background-color: #eee;
-  border-radius: 0.25rem;
-  margin-top: -0.125rem;
-  padding: 0.2rem 0.5rem;
+  border-radius: 0.25em;
+  margin-top: -0.125em;
+  padding: 0.2em 0.5em;
   color: inherit;
 }
 
-html.dark .doc code:not(pre code) {
+html.dark .prose code:not(pre code) {
   background-color: #393d43;
-  border-radius: 0.25rem;
-  padding: 0.25rem 0.5rem;
+
   color: inherit;
-  border: 1px solid #555b64;
 }
 
-.doc blockquote {
-  padding: 2rem;
-  border-radius: 0.5rem;
+.prose blockquote {
+  padding: 2em;
+  border-radius: 0.5em;
   background-color: #eee;
 }
 
-html.dark .doc blockquote {
-  padding: 2rem;
-  border-radius: 0.5rem;
+html.dark .prose blockquote {
+  padding: 2em;
+  border-radius: 0.5em;
   background-color: #393d43;
   color: white;
-}
+} */
 </style>

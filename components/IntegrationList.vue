@@ -1,6 +1,6 @@
 <template>
   <div
-    class="py-4 bg-gray-100 rounded dark:bg-charcoal-600 custom-block"
+    class="py-4 bg-gray-100 rounded dark:bg-neutral-800 custom-block"
     :class="{
       'px-4': !fullscreen
     }"

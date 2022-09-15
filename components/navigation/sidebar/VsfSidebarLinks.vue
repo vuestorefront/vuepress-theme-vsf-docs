@@ -1,12 +1,12 @@
 <template>
   <ul
     v-if="items.length"
-    class="text-sm text-gray-600 dark:text-gray-400 sidebar-links"
+    class="text-sm text-gray-500 dark:text-gray-400 sidebar-links"
   >
     <li
       v-for="(item, i) in items"
       :key="depth + ' ' + i + ' ' + item.title"
-      :class="{ 'mt-2': depth === 1 }"
+      :class="{ 'mt-2': depth === 1, 'mb-4': depth === 0 }"
       class="py-1 text-base sm:py-0 sm:text-sm"
     >
       <SidebarGroup
@@ -20,9 +20,9 @@
       <a
         v-else-if="item.path && item.path.indexOf('http') === 0"
         :href="item.path"
-        class="inline-block overflow-visible transition-colors hover:text-charcoal dark:hover:text-white"
+        class="inline-block overflow-visible transition-colors hover:text-neutral dark:hover:text-white"
         :class="{
-          'border-l pl-4 pt-2 border-gray-200 dark:border-charcoal-400':
+          'border-l pl-4 pt-2 border-gray-200 dark:border-neutral-400':
             depth >= 2
         }"
       >
@@ -31,9 +31,9 @@
       <RouterLink
         v-else-if="item.path"
         :to="item.path"
-        class="inline-block transition-colors hover:text-charcoal dark:hover:text-white"
+        class="inline-block transition-colors hover:text-neutral dark:hover:text-white"
         :class="{
-          'border-l pl-4 pt-2 border-gray-200 dark:border-charcoal-400':
+          'border-l pl-4 pt-2 border-gray-200 dark:border-neutral-400':
             depth >= 2
         }"
       >

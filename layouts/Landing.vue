@@ -1,6 +1,6 @@
 <template>
   <div
-    class="min-h-screen pb-64 bg-white dark:bg-charcoal-500 text-charcoal-400 dark:text-charcoal-50"
+    class="w-full min-h-screen text-base antialiased bg-white dark:bg-neutral-900 text-slate-500 dark:text-slate-400"
   >
     <VsfNav @toggle="sidebarOpen = !sidebarOpen" :sidebar-open="sidebarOpen" />
     <!-- Google Tag Manager (noscript) -->
@@ -84,67 +84,68 @@
           ></iframe>
         </div>
       </header>
-      <h2
-        class="container mx-auto mt-32 mb-8 text-xl font-bold text-charcoal dark:text-white"
-      >
-        Learn about Vue Storefront
-      </h2>
-
-      <div
-        v-if="data.features && data.features.length"
-        class="container grid grid-cols-3 gap-8 mx-auto mb-32"
-      >
-        <div
-          v-for="(feature, index) in data.features"
-          :key="index"
-          class="flex flex-col col-span-3 md:col-span-1"
-        >
-          <h2 class="mb-2 font-medium text-black dark:text-white">
-            {{ feature.title }}
-          </h2>
-          <p class="mb-4">{{ feature.details }}</p>
-          <div class="mt-auto">
-            <RouterLink
-              :to="feature.link"
-              class="mt-8 underline hover:text-green-500"
-            >
-              {{ feature.linkText }}
-            </RouterLink>
-          </div>
-        </div>
-      </div>
-      <section
-        class="py-16 bg-gray-100 landing-ecommerce-list dark:bg-charcoal-600"
-      >
+      <section class="container mx-auto">
         <h2
-          class="container mx-auto text-3xl font-bold text-charcoal dark:text-white"
+          class="mx-auto mt-32 mb-8 text-xl font-bold text-neutral dark:text-white"
         >
-          E-commerce Integrations
+          Learn about Vue Storefront
         </h2>
 
-        <p class="container mx-auto mt-2">
-          Vue Storefront's integrations with e-commerce platforms are the
-          backbone of every project.
-        </p>
-
-        <IntegrationList
-          :filterable="false"
-          type="eCommerce"
-          :fullscreen="true"
-          :minimized="true"
-          class="container mx-auto"
+        <div
+          v-if="data.features && data.features.length"
+          class="grid grid-cols-3 gap-8 mx-auto mb-32"
         >
-        </IntegrationList>
-        <p class="container mx-auto mt-8">
-          Don't see your e-commerce platform?
-          <RouterLink
-            to="/integrate/integration-guide.html"
-            class="text-green hover:underline"
+          <div
+            v-for="(feature, index) in data.features"
+            :key="index"
+            class="flex flex-col col-span-3 md:col-span-1"
           >
-            Learn how to build your own integration.
-          </RouterLink>
-        </p>
+            <h2 class="mb-2 font-medium text-black dark:text-white">
+              {{ feature.title }}
+            </h2>
+            <p class="mb-4">{{ feature.details }}</p>
+            <div class="mt-auto">
+              <RouterLink
+                :to="feature.link"
+                class="mt-8 underline hover:text-green-500"
+              >
+                {{ feature.linkText }}
+              </RouterLink>
+            </div>
+          </div>
+        </div>
       </section>
+      <div class="bg-gray-100 dark:bg-neutral-800">
+        <section class="container py-16 mx-auto landing-ecommerce-list">
+          <h2
+            class="mx-auto text-3xl font-bold whitespace-normal text-neutral dark:text-white"
+          >
+            E-commerce Integrations
+          </h2>
+
+          <p class="mx-auto mt-2">
+            Vue Storefront's integrations with e-commerce platforms are the
+            backbone of every project.
+          </p>
+
+          <IntegrationList
+            :filterable="false"
+            type="eCommerce"
+            :fullscreen="true"
+            :minimized="true"
+          >
+          </IntegrationList>
+          <p class="mt-8">
+            Don't see your e-commerce platform?
+            <RouterLink
+              to="/integrate/integration-guide.html"
+              class="text-green hover:underline"
+            >
+              Learn how to build your own integration.
+            </RouterLink>
+          </p>
+        </section>
+      </div>
       <Content class="custom" />
 
       <div v-if="data.footer" class="footer">

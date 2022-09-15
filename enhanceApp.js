@@ -4,6 +4,8 @@ import './styles/highlight.styl'
 import IntegrationList from './components/IntegrationList.vue'
 import CodeGroup from './components/CodeGroup.vue'
 import CodeBlock from './components/CodeBlock.vue'
+import NavigationalCard from './components/NavigationalCard.vue'
+import { Icon } from '@iconify/vue2'
 
 export default ({
   Vue, // the version of Vue being used in the VuePress app
@@ -15,4 +17,6 @@ export default ({
   Vue.component('IntegrationList', IntegrationList)
   Vue.component('CodeGroup', CodeGroup)
   Vue.component('CodeBlock', CodeBlock)
+  Vue.component('NavigationalCard', NavigationalCard)
+  Vue.component('Icon', Icon)
 }

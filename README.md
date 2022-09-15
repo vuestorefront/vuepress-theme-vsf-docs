@@ -19,3 +19,23 @@ To add it to your theme, set the theme in your `.vuepress/config.js` file
   "theme": "vsf-docs"
 }
 ```
+
+## Theme Configuration
+
+To configure the theme, add a `themeConfig` object to your `.vuepress/config.js` file.
+
+```json
+{
+  "theme": "vsf-docs",
+  "themeConfig": {
+    
+  }
+}
+```
+
+This theme comes with the following `themeConfig` properties:
+
+| Syntax      | Type | Description |
+| ----------- | ----------- |  ----------- |
+| secondaryNav      | Boolean       | Adds a secondaryNav element to the header navigation.
+| Paragraph   | Text        |

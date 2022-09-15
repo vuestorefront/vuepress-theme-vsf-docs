@@ -2,6 +2,18 @@
 # yarn lockfile v1
 
 
+"@iconify/types@^2.0.0":
+  version "2.0.0"
+  resolved "https://registrynpm.storefrontcloud.io/@iconify%2ftypes/-/types-2.0.0.tgz#ab0e9ea681d6c8a1214f30cd741fe3a20cc57f57"
+  integrity sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==
+
+"@iconify/vue2@^2.0.0":
+  version "2.0.0"
+  resolved "https://registrynpm.storefrontcloud.io/@iconify%2fvue2/-/vue2-2.0.0.tgz#bf55d29316912c2d0403262c966402b175fcd62d"
+  integrity sha512-6vdNoY2Q9xFXjEQORyzZJED1SbUvGx4Gmg9NKzkY927wvR2u+GqOYBOzgnwi6nW2+pntoMzjnr1M5rcllKcRzg==
+  dependencies:
+    "@iconify/types" "^2.0.0"
+
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@mrmlnc/readdir-enhanced/-/readdir-enhanced-2.2.1.tgz#524af240d1a360527b730475ecfa1344aa540dde"

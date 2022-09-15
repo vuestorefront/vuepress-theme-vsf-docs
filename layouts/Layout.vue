@@ -1,12 +1,8 @@
 <template>
   <div
-    class="min-h-screen bg-white dark:bg-charcoal-500 text-charcoal-300 dark:text-gray-300"
+    class="w-full min-h-screen text-base bg-white dark:bg-neutral-900 text-slate-500 dark:text-slate-400"
   >
-    <VsfNav
-      class="h-12"
-      @toggle="sidebarOpen = !sidebarOpen"
-      :sidebar-open="sidebarOpen"
-    />
+    <VsfNav @toggle="sidebarOpen = !sidebarOpen" :sidebar-open="sidebarOpen" />
 
     <!-- Google Tag Manager (noscript) -->
     <noscript>
@@ -31,7 +27,7 @@
         v-if="sidebarOpen"
       ></div>
       <div
-        class="z-20 w-full bg-white sm:w-64 shrink-0 grow-0 lg:block lg:relative dark:bg-charcoal-500"
+        class="z-20 w-full sm:w-64 shrink-0 grow-0 lg:block lg:relative bg-inherit"
         :class="{
           'fixed left-0 pl-4': sidebarOpen,
           hidden: !sidebarOpen
@@ -39,11 +35,16 @@
       >
         <VsfSidebar
           :items="sidebarItems"
-          class="sticky max-w-full overflow-hidden top-14"
+          class="sticky max-w-full overflow-x-visible"
+          :class="{
+            'top-24': $themeConfig.secondaryNav,
+            'top-14': !$themeConfig.secondaryNav
+          }"
         />
       </div>
+
       <VsfPage
-        class="flex-1 min-w-0"
+        class="flex-1 min-w-0 mt-8 md:px-6"
         @update-heading="currentSection = $event"
         @click="sidebarOpen = false"
       >
@@ -56,9 +57,15 @@
         v-if="!$page.frontmatter.hideToc"
         class="hidden w-64 shrink-0 grow-0 flex-0 lg:block"
       >
-        <div class="sticky pt-8 top-14">
+        <div
+          class="sticky pt-8"
+          :class="{
+            'top-24': $themeConfig.secondaryNav,
+            'top-14': !$themeConfig.secondaryNav
+          }"
+        >
           <p
-            class="mb-2 text-xs font-bold uppercase text-charcoal dark:text-white"
+            class="mb-2 text-xs font-bold uppercase text-neutral dark:text-white"
           >
             On this page
           </p>
@@ -68,13 +75,13 @@
               <li v-for="header in tocHeaders" :key="header.slug" class="pb-1">
                 <a
                   :href="`#${header.slug}`"
-                  class="inline-block text-sm toc-link"
+                  class="inline-block text-sm text-gray-500 toc-link dark:text-gray-400"
                   :class="{
-                    'text-green-500':
+                    '!text-green-500':
                       currentSection == header.slug ||
                       (!currentSection &&
                         $route.hash.substring(1) === header.slug),
-                    'hover:text-charcoal dark:hover:text-white': !(
+                    'hover:text-neutral dark:hover:text-white': !(
                       currentSection == header.slug ||
                       (!currentSection &&
                         $route.hash.substring(1) === header.slug)

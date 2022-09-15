@@ -1,10 +1,13 @@
 <template>
   <ClientOnly>
-    <div class="custom-block">
-      <div class="p-4 -mb-8 theme-code-group__nav">
+    <div class="mt-8 custom-block">
+      <div class="p-4 -mb-2 theme-code-group__nav">
         <div class="relative flex items-center">
           <div
-            class="absolute top-0 left-0 transition-all duration-300 rounded bg-green"
+            class="absolute top-0 left-0 rounded bg-green"
+            :class="{
+              'transition-all duration-300': inputChanged
+            }"
             :style="{
               width: backgroundWidth,
               height: backgroundHeight,
@@ -47,25 +50,18 @@ export default {
       backgroundWidth: 0,
       backgroundHeight: 0,
       backgroundLeft: 0,
-      tabEls: []
-    }
-  },
-  watch: {
-    activeCodeTabIndex(index) {
-      this.activateCodeTab(index)
+      tabEls: [],
+      inputChanged: false
     }
   },
   mounted() {
     this.loadTabs()
-    Vue.nextTick(() => {
-      this.backgroundWidth = this.$refs.tabEls[0]?.clientWidth + 'px'
-      this.backgroundHeight = this.$refs.tabEls[0]?.clientHeight + 'px'
-      this.backgroundLeft = this.$refs.tabEls[0]?.clientLeft + 'px'
-    })
   },
   methods: {
     changeCodeTab(index) {
+      this.inputChanged = true
       this.activeCodeTabIndex = index
+      this.activateCodeTab(index)
     },
     loadTabs() {
       this.codeTabs = (this.$slots.default || [])
@@ -84,8 +80,9 @@ export default {
       if (this.activeCodeTabIndex === -1 && this.codeTabs.length > 0) {
         this.activeCodeTabIndex = 0
       }
-
-      this.activateCodeTab(0)
+      Vue.nextTick(() => {
+        this.activateCodeTab(0)
+      })
     },
     activateCodeTab(index) {
       this.codeTabs.forEach((tab) => {

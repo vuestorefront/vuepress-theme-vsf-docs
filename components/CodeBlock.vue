@@ -33,7 +33,6 @@ export default {
   display: block;
 }
 .theme-code-block pre {
-  background-color: orange;
   margin-top: 0 !important;
 }
 </style>

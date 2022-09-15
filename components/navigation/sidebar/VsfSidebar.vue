@@ -1,12 +1,12 @@
 <template>
   <aside
-    class="h-[calc(100vh-3.5rem)] pt-7 pr-4 overflow-y-auto sidebar w-full border-r dark:border-r-charcoal-400"
+    class="h-[calc(100vh-3.5em)] pt-7 pr-4 overflow-y-auto sidebar w-full border-r dark:border-r-neutral-400"
   >
     <!-- <div class="integration-selector">Integration</div> -->
     <SidebarLinks
       :depth="0"
       :items="navLinks"
-      class="block mb-8 border-b lg:hidden dark:border-charcoal-400"
+      class="block mb-8 border-b lg:hidden dark:border-neutral-400"
     />
     <slot name="top" />
 

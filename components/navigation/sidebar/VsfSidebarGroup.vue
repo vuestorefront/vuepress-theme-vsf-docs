@@ -3,7 +3,7 @@
     :class="{
       collapsable: true
     }"
-    class="mb-2"
+    class="mb-6 overflow-x-visible"
   >
     <div v-if="item.title === 'TOP TILE'">
       <RouterLink
@@ -16,7 +16,7 @@
       </RouterLink>
       <a
         href="https://docs.vuestorefront.io/v2/getting-started/introduction.html"
-        class="hover:text-charcoal dark:hover:text-white"
+        class="hover:text-neutral dark:hover:text-white"
         v-else
       >
         Getting Started
@@ -31,7 +31,7 @@
       </RouterLink>
       <a
         href="https://docs.vuestorefront.io/v2/general/enterprise.html"
-        class="hover:text-charcoal dark:hover:text-white"
+        class="hover:text-neutral dark:hover:text-white"
         v-else
       >
         Getting Started
@@ -51,31 +51,38 @@
       <span v-if="collapsable" class="arrow" :class="open ? 'down' : 'right'" />
       <span
         :class="{
-          'uppercase text-xs font-medium text-charcoal dark:text-white':
+          'uppercase text-xs font-medium text-neutral dark:text-white':
             depth === 0
         }"
         >{{ item.title }}</span
       >
     </RouterLink>
-    <p
+    <button
       v-else-if="!!item.title.length"
-      class="flex items-center p-1 rounded sidebar-heading sidebar-dropdown"
+      class="flex items-center w-full rounded sidebar-heading sidebar-dropdown"
       :class="{
         open: true,
-        'hover:bg-black dark:hover:bg-white hover:bg-opacity-5 dark:hover:bg-opacity-10 cursor-pointer':
+        'cursor-pointer group hover:bg-slate-100 dark:hover:bg-neutral-700 py-1 px-1':
           collapsable
       }"
       @click="$emit('toggle')"
     >
       <span
         :class="{
-          'uppercase text-xs font-bold text-charcoal dark:text-white':
+          'uppercase text-xs font-bold text-neutral-900 dark:text-white ':
             depth === 0
         }"
         >{{ item.title }}</span
       >
-      <span v-if="collapsable" class="arrow" :class="open ? 'down' : 'right'" />
-    </p>
+      <Icon
+        icon="ic:outline-keyboard-arrow-right"
+        class="ml-auto transition-transform duration-150"
+        :class="{
+          'rotate-90': open
+        }"
+        v-if="collapsable"
+      />
+    </button>
 
     <Transition
       name="dropdown"
@@ -85,7 +92,7 @@
     >
       <SidebarLinks
         v-if="open || !collapsable"
-        class="px-1 sidebar-group-items"
+        class="ml-2 sidebar-group-items"
         :class="{
           'mb-4': depth == 0
         }"
@@ -136,36 +143,7 @@ export default {
 .sidebar-heading:hover {
   color: inherit;
 }
-.sidebar-heading .arrow {
-  position: relative;
-  top: -0.1em;
-  margin-left: auto;
-  width: 0;
-  height: 0;
-  transition: transform 0.2s ease-out;
-}
 
-.arrow.right {
-  display: inline-block;
-  width: 0;
-  height: 0;
-  border-top: 4px solid transparent;
-  border-bottom: 4px solid transparent;
-
-  border-left: 4px solid #ccc;
-}
-
-.arrow.down {
-  display: inline-block;
-  left: 0.1em;
-  width: 0;
-  height: 0;
-  border-top: 4px solid transparent;
-  border-bottom: 4px solid transparent;
-
-  border-left: 4px solid #ccc;
-  transform: rotate(90deg) translateY(2px);
-}
 .sidebar-heading.clickable.active {
   font-weight: 600;
   color: var(--c-brand);
@@ -177,12 +155,12 @@ export default {
 
 .dropdown-enter,
 .dropdown-leave-to {
-  height: 0 !important;
+  height: 3px !important;
 }
 
 .dropdown-enter-active,
 .dropdown-leave-active {
   overflow: hidden;
-  transition: height 0.2s ease;
+  transition: height 0.1s linear;
 }
 </style>
