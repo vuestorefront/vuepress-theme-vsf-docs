@@ -15,7 +15,7 @@ module.exports = {
       {
         type: 'tip',
         defaultTitle: {
-          '/': 'TIP'
+          '/': 'Tip'
         }
       }
     ],
@@ -31,7 +31,7 @@ module.exports = {
       {
         type: 'warning',
         defaultTitle: {
-          '/': 'WARNING'
+          '/': 'Warning'
         }
       }
     ],
@@ -40,7 +40,7 @@ module.exports = {
       {
         type: 'danger',
         defaultTitle: {
-          '/': 'DANGER'
+          '/': 'Danger'
         }
       }
     ],

@@ -11,7 +11,13 @@
   .custom-block.tip,
   .custom-block.warning,
   .custom-block.danger {
-    @apply bg-slate-200 dark:bg-neutral-400 p-6 rounded mt-6;
+    @apply bg-slate-200 dark:bg-neutral-800 p-6 rounded mt-6 dark:text-slate-200;
+  }
+
+  .custom-block.tip code,
+  .custom-block.warning code,
+  .custom-block.danger code {
+    @apply bg-slate-300 text-slate-900 dark:text-white dark:bg-neutral-900;
   }
 
   .custom-block.tip p,
@@ -49,8 +55,13 @@
   .custom-block.danger + h1 {
     @apply mt-4;
   }
+
   .custom-block.subheader {
-    @apply text-slate-500 dark:text-slate-400 mt-2 text-lg;
+    @apply text-slate-400 dark:text-slate-500 mt-2  leading-normal;
+  }
+
+  h1 + .custom-block.subheader {
+    @apply text-xl;
   }
 
   .custom-block.col-wrapper,

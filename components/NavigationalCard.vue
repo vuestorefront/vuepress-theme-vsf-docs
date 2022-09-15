@@ -16,6 +16,12 @@
       <p class="mt-2 whitespace-normal indent-0 opacity-80">
         Lorem ipsum dolor sit amet consectetur adipisicing elit.
       </p>
+      <RouterLink
+        :to="to"
+        class="flex-col block w-full my-8 text-sm text-left no-underline rounded indent-0 group"
+      >
+        Read More
+      </RouterLink>
     </div>
   </RouterLink>
 </template>
@@ -24,7 +30,11 @@
 export default {
   props: {
     to: String,
-    title: String
+    title: String,
+    readMore: {
+      type: Boolean,
+      default: false
+    }
   }
 }
 </script>

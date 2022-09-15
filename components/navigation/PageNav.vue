@@ -1,5 +1,5 @@
 <template>
-  <div class="flex p-0 pt-8 m-0 border-t custom-block" :key="$route.path">
+  <div class="flex p-0 py-8 m-0 border-t custom-block" :key="$route.path">
     <div v-if="prev" class="flex items-center text-sm">
       <RouterLink :to="prev.path" class="hover:text-green !no-underline"
         >← {{ prev.title }}</RouterLink

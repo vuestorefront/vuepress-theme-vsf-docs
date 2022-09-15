@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full min-h-screen text-base antialiased bg-white dark:bg-neutral-900 text-slate-500 dark:text-slate-400"
+    class="w-full min-h-screen text-base bg-white dark:bg-neutral-900 text-slate-500 dark:text-slate-400"
   >
     <VsfNav @toggle="sidebarOpen = !sidebarOpen" :sidebar-open="sidebarOpen" />
     <!-- Google Tag Manager (noscript) -->

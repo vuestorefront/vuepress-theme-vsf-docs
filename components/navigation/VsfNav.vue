@@ -1,6 +1,6 @@
 <template>
   <header
-    class="sticky top-0 z-50 w-full border-b bg-gray-50 dark:bg-neutral-900 dark:border-b-neutral-500"
+    class="sticky top-0 z-50 w-full border-b bg-gray-50 dark:bg-neutral-900 dark:border-b-neutral-700"
   >
     <div
       class="flex items-center w-full px-4 py-3 mx-auto 2xl:container flex-nowrap 2xl:px-0"
@@ -83,7 +83,7 @@
       </div>
     </div>
     <div
-      class="flex items-center w-full px-4 py-3 mx-auto text-sm font-medium text-black border-t dark:border-t-neutral-300 bg-inherit 2xl:container flex-nowrap 2xl:px-0 dark:text-white"
+      class="flex items-center w-full px-4 py-3 mx-auto text-sm font-medium text-black border-t dark:border-t-neutral-700 bg-inherit 2xl:container flex-nowrap 2xl:px-0 dark:text-white"
       v-if="$themeConfig.secondaryNav"
     >
       <nav class="w-full">
