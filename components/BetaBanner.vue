@@ -1,7 +1,7 @@
 <template>
   <div class="w-full mt-4 mb-8 lg:p-0 custom-block">
     <div
-      class="block p-4 px-6 mx-auto text-left bg-orange-500 bg-opacity-50 rounded text-neutral-900 dark:text-white"
+      class="block p-4 px-6 mx-auto text-left bg-opacity-50 rounded bg-rose-500 text-neutral-900 dark:text-white"
     >
       <div class="flex items-center">
         <Icon icon="ph:warning-circle-fill" class="mr-4" width="30" />

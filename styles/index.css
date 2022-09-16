@@ -779,7 +779,7 @@ video {
   .custom-block.tip code:not(pre code), 
   .custom-block.warning code:not(pre code), 
   .custom-block.danger code:not(pre code){
-  background-color: rgb(30 41 59 / var(--tw-bg-opacity));
+  background-color: rgb(71 85 105 / var(--tw-bg-opacity));
   --tw-bg-opacity: 0.2;
   --tw-text-opacity: 1;
   color: rgb(15 23 42 / var(--tw-text-opacity));
@@ -1616,6 +1616,11 @@ h1 + .custom-block.subheader{
 .bg-gray-50{
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+}
+
+.bg-rose-500{
+  --tw-bg-opacity: 1;
+  background-color: rgb(244 63 94 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-5{

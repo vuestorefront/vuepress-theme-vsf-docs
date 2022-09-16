@@ -99,7 +99,7 @@ export default {
     },
     descendantIsActive(route, item) {
       if (item.type === 'group') {
-        const childIsActive = item.path === item.path
+        const childIsActive = route.path === item.path
         const grandChildIsActive = item.children.some((child) => {
           if (child.type === 'group') {
             return this.descendantIsActive(route, child)
