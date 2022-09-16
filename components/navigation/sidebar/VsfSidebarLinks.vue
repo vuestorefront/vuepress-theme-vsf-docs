@@ -4,7 +4,7 @@
       v-for="(item, i) in items"
       :key="depth + ' ' + i + ' ' + item.title"
       :class="{
-        'mb-4': depth < 1,
+        'mb-2': depth < 1,
         'pl-3   ': depth >= 1,
         'border-l pl-4 pt-2 border-gray-200 dark:border-neutral-400 ml-1 mr-1':
           depth > 1
@@ -37,7 +37,8 @@
         :to="item.path"
         class="inline-block py-1 transition-colors hover:text-neutral dark:hover:text-white"
         :class="{
-          'px-1': depth === 0
+          'px-1': depth === 0,
+          active: isActive(item.path)
         }"
       >
         {{ item.title }}
@@ -47,10 +48,9 @@
 </template>
 
 <script>
+import { isActive } from '../../../util'
 import SidebarGroup from './VsfSidebarGroup.vue'
 import SidebarLink from './VsfSidebarLink.vue'
-
-const isActive = () => {}
 
 export default {
   name: 'SidebarLinks',
@@ -95,11 +95,11 @@ export default {
     },
 
     isActive(page) {
-      return isActive(this.$route, page.regularPath)
+      return this.$route.path === page
     },
     descendantIsActive(route, item) {
       if (item.type === 'group') {
-        const childIsActive = item.path && route.hash === item.path
+        const childIsActive = item.path === item.path
         const grandChildIsActive = item.children.some((child) => {
           if (child.type === 'group') {
             return this.descendantIsActive(route, child)
@@ -117,7 +117,7 @@ export default {
 </script>
 
 <style>
-.sidebar-links .router-link-exact-active {
+.sidebar-links .active {
   color: #03bb4e !important;
 }
 </style>

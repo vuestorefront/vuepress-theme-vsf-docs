@@ -14,9 +14,7 @@ module.exports = {
       'container',
       {
         type: 'tip',
-        defaultTitle: {
-          '/': 'Tip'
-        }
+        defaultTitle: ''
       }
     ],
     [
@@ -29,19 +27,29 @@ module.exports = {
     [
       'container',
       {
+        type: 'callout',
+        defaultTitle: ''
+      }
+    ],
+    [
+      'container',
+      {
+        type: 'read-more',
+        defaultTitle: ''
+      }
+    ],
+    [
+      'container',
+      {
         type: 'warning',
-        defaultTitle: {
-          '/': 'Warning'
-        }
+        defaultTitle: ''
       }
     ],
     [
       'container',
       {
         type: 'danger',
-        defaultTitle: {
-          '/': 'Danger'
-        }
+        defaultTitle: ''
       }
     ],
     [

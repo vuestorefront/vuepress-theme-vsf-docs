@@ -3,7 +3,7 @@
     :class="{
       collapsable: true
     }"
-    class="mb-6 overflow-x-visible"
+    class="overflow-x-visible"
   >
     <div v-if="item.title === 'TOP TILE'">
       <RouterLink
@@ -43,7 +43,7 @@
       class="sidebar-heading clickable"
       :class="{
         open,
-        active: isActive($route, item.path)
+        active: isActive($route, item)
       }"
       :to="item.path"
       @click.native="$emit('toggle')"
@@ -81,7 +81,7 @@
         :class="{
           'rotate-90': open
         }"
-        height="16"
+        :height="16"
         v-if="collapsable"
       />
     </component>
@@ -111,8 +111,6 @@
 import Integration from '../../icons/Integration.vue'
 import Enterprise from '../../icons/Enterprise.vue'
 
-const isActive = () => {}
-
 export default {
   name: 'SidebarGroup',
   components: {
@@ -128,7 +126,9 @@ export default {
   },
 
   methods: {
-    isActive,
+    isActive(path, route) {
+      return path === route.path
+    },
     setHeight(items) {
       // explicitly set height so that it can be transitioned
       items.style.height = items.scrollHeight + 'px'

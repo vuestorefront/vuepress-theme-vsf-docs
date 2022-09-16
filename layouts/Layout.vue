@@ -75,7 +75,7 @@
               <li v-for="header in tocHeaders" :key="header.slug" class="pb-1">
                 <a
                   :href="`#${header.slug}`"
-                  class="inline-block text-sm text-gray-500 toc-link dark:text-gray-400"
+                  class="inline-flex items-center text-sm text-gray-500 toc-link dark:text-gray-400"
                   :class="{
                     '!text-green-500':
                       currentSection == header.slug ||
@@ -90,8 +90,31 @@
                   :style="{
                     'padding-left': (header.level - 2) * 1 + 'em'
                   }"
-                  >{{ header.title }}</a
                 >
+                  <template
+                    v-if="
+                      $page.frontmatter.fileDirToc &&
+                      /The(.*)(Directory|File)/.test(header.title)
+                    "
+                  >
+                    <Icon
+                      icon="ion:document-sharp"
+                      v-if="header.title.includes('File')"
+                      width="18"
+                      class="mr-1"
+                    />
+                    <Icon
+                      icon="material-symbols:folder"
+                      v-if="header.title.includes('Directory')"
+                      width="18"
+                      class="mr-1"
+                    />
+                    {{ /The(.*)(Directory|File)/.exec(header.title)[1] }}
+                  </template>
+                  <template v-else>
+                    {{ header.title }}
+                  </template>
+                </a>
               </li>
             </ul>
           </nav>

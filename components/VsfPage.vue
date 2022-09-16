@@ -4,7 +4,7 @@
     <BetaBanner v-if="$page.frontmatter.betaBanner" />
     <h2
       v-if="$page.frontmatter.flag"
-      class="!mt-0 mb-2 text-sm capitalize text-green"
+      class="!mt-0 mb-2 text-sm capitalize text-green dark:text-green"
     >
       {{ $page.frontmatter.flag }}
     </h2>

@@ -1,4 +1,4 @@
-@import url('https://fonts.bunny.net/css?family=inter:200,300,400,500,600,700,800,900|fira-code:400');
+@import url('https://fonts.bunny.net/css?family=inter:200,300,400,500,600,700,800,900|inconsolata:400');
 
 @tailwind base;
 @tailwind components;
@@ -8,16 +8,85 @@
   .custom-block .custom-block-title {
     @apply font-semibold mb-2 text-neutral-800 dark:text-white text-lg;
   }
+  .custom-block.read-more,
   .custom-block.tip,
   .custom-block.warning,
   .custom-block.danger {
-    @apply bg-slate-200 dark:bg-neutral-800 p-6 rounded mt-6 dark:text-slate-200;
+    @apply bg-slate-200 dark:bg-neutral-800 p-6 rounded mt-6 dark:text-slate-200 text-sm;
   }
 
-  .custom-block.tip code,
-  .custom-block.warning code,
-  .custom-block.danger code {
-    @apply bg-slate-300 text-slate-900 dark:text-white dark:bg-neutral-900;
+  .custom-block .custom-block-title {
+    @apply text-base;
+  }
+
+  .custom-block.danger {
+    @apply bg-rose-500 bg-opacity-10 text-rose-800 dark:bg-rose-500 dark:bg-opacity-20 dark:text-rose-50 flex-col;
+  }
+
+  .custom-block.warning {
+    @apply bg-yellow-500 bg-opacity-20 text-yellow-800 dark:bg-yellow-500 dark:bg-opacity-20 dark:text-yellow-50 flex-col;
+  }
+
+  .custom-block.read-more {
+    @apply bg-slate-500 bg-opacity-10 dark:bg-slate-500 dark:bg-opacity-10;
+  }
+
+  .custom-block.tip {
+    @apply bg-purple-500 bg-opacity-10 text-purple-700 dark:bg-purple-300 dark:bg-opacity-20  dark:text-purple-50;
+  }
+
+  .custom-block.tip .custom-block-title::before {
+    content: '💡';
+    @apply mr-2 inline-block;
+  }
+
+  .custom-block.read-more p::before {
+    content: '➡️';
+    @apply mr-2 inline-block;
+  }
+
+  .custom-block.warning .custom-block-title {
+    @apply text-yellow-700 dark:text-yellow-200;
+  }
+
+  .custom-block.tip .custom-block-title {
+    @apply text-purple-700 dark:text-purple-100;
+  }
+
+  .custom-block.warning .custom-block-title::before {
+    content: '⚠️';
+    @apply mr-2 inline-block;
+  }
+
+  .custom-block.danger .custom-block-title {
+    @apply text-rose-700 dark:text-rose-200;
+  }
+
+  .custom-block.danger .custom-block-title::before {
+    content: '❗️';
+    @apply mr-2 inline-block;
+  }
+
+  .custom-block.read-more {
+    @apply text-sm py-3 flex gap-2 items-center text-slate-800 dark:text-slate-100;
+  }
+
+  .custom-block.read-more a {
+    @apply dark:text-white font-semibold text-neutral-900;
+  }
+
+  .custom-block.read-more code:not(pre code),
+  .custom-block.tip code:not(pre code),
+  .custom-block.warning code:not(pre code),
+  .custom-block.danger code:not(pre code) {
+    @apply bg-slate-800 bg-opacity-20 text-slate-900 dark:text-white dark:bg-slate-200 dark:bg-opacity-20;
+  }
+
+  .custom-block.read-more pre,
+  .custom-block.tip pre,
+  .custom-block.warning pre,
+  .custom-block.danger pre {
+    @apply text-base;
   }
 
   .custom-block.tip p,
@@ -29,7 +98,7 @@
   .custom-block.tip ul,
   .custom-block.warning ul,
   .custom-block.danger ul {
-    @apply leading-7;
+    @apply leading-6;
   }
 
   .custom-block.tip ol,
@@ -38,18 +107,21 @@
     @apply list-decimal pl-8;
   }
 
+  .custom-block.read-more ul,
   .custom-block.tip ul,
   .custom-block.warning ul,
   .custom-block.danger ul {
     @apply list-disc pl-8;
   }
 
+  .custom-block.read-more a,
   .custom-block.tip a,
   .custom-block.warning a,
   .custom-block.danger a {
     @apply underline;
   }
 
+  .custom-block.tip + h1,
   .custom-block.tip + h1,
   .custom-block.warning + h1,
   .custom-block.danger + h1 {
@@ -133,16 +205,6 @@
     @apply inline-block no-underline mt-8 bg-green rounded text-white font-medium px-4 py-2 text-sm  hover:brightness-110 transition-all;
   }
 
-  .custom-block.tip {
-    border-color: #42b983;
-  }
-  .custom-block.warning {
-    border-color: #ffc417;
-  }
-  .custom-block.danger {
-    border-color: #42b983;
-    border-color: #c00;
-  }
   .custom-block.details {
     display: block;
     position: relative;
@@ -281,7 +343,7 @@ html {
 
 code,
 pre {
-  font-family: 'Fira Code', ui-monospace, monospace;
+  font-family: 'Inconsolata', ui-monospace, monospace;
   overflow-wrap: break-word;
 }
 
