@@ -89,6 +89,20 @@
       <nav class="w-full">
         <ul class="flex w-full gap-8">
           <li
+            :class="{
+              'text-green ': $route.path == '/'
+            }"
+            class="relative py-3"
+          >
+            <div
+              class="absolute bottom-0 left-0 w-full h-[2px] bg-green"
+              v-if="$route.path == '/'"
+            />
+            <RouterLink to="/" class="hover:text-neutral dark:hover:text-white">
+              {{ $themeConfig.title }} Integration
+            </RouterLink>
+          </li>
+          <li
             v-for="{ text, link } in $themeConfig.secondaryNav"
             :class="{
               'text-green ': $route.path.startsWith(link) && link !== '/'
