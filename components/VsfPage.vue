@@ -10,19 +10,20 @@
     </h2>
     <Content class="pb-8 mb-8 theme-default-content" :key="$route.fullPath" />
     <div
-      class="flex items-center justify-end mb-2 text-sm"
+      class="flex items-center justify-end mb-4 text-sm"
       v-if="$themeConfig.docsRepoPath"
     >
-      <Edit class="w-3 h-3 mr-1 -rotate-3 fill-slate-700 dark:fill-slate-200" />
       <a
         :href="`${$themeConfig.docsRepoPath}${$route.path.replace(
           '.html',
           '.md'
         )}`"
         target="_blank"
-        class="!border-b-0 !text-inherit hover:underline"
-        >Edit this page</a
+        class="!border-b-0 !text-inherit hover:!text-neutral-900 dark:hover:!text-white flex items-center"
       >
+        <Icon class="mr-1 -rotate-3" icon="mdi:pencil" />
+        Edit this page
+      </a>
     </div>
     <PageNav v-if="!$page.frontmatter.hideNav" />
     <slot name="bottom" />
