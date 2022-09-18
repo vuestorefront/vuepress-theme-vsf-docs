@@ -12,7 +12,7 @@
   .custom-block.tip,
   .custom-block.warning,
   .custom-block.danger {
-    @apply bg-slate-200 dark:bg-neutral-800 p-6 rounded mt-6 dark:text-slate-200 text-sm;
+    @apply bg-slate-200 dark:bg-neutral-800 p-4 rounded mt-6 dark:text-slate-200 text-sm;
   }
 
   .custom-block .custom-block-title {
@@ -35,7 +35,7 @@
     @apply bg-purple-500 bg-opacity-10 text-purple-700 dark:bg-purple-300 dark:bg-opacity-20  dark:text-purple-50;
   }
 
-  .custom-block.tip .custom-block-title::before {
+  .custom-block.tip > *:first-child::before {
     content: '💡';
     @apply mr-2 inline-block;
   }
@@ -53,16 +53,16 @@
     @apply text-purple-700 dark:text-purple-100;
   }
 
-  .custom-block.warning .custom-block-title::before {
+  .custom-block.warning > *:first-child::before {
     content: '⚠️';
-    @apply mr-2 inline-block;
+    @apply mr-2 inline-block text-lg;
   }
 
   .custom-block.danger .custom-block-title {
     @apply text-rose-700 dark:text-rose-200;
   }
 
-  .custom-block.danger .custom-block-title::before {
+  .custom-block.danger > *:first-child::before {
     content: '❗️';
     @apply mr-2 inline-block;
   }
@@ -201,8 +201,12 @@
   }
 
   /** Call to action button */
-  .custom-block.col-wrapper-hero a:not(.header-anchor) {
+  .custom-block.col-wrapper-hero a:not(.header-anchor):first-of-type {
     @apply inline-block no-underline mt-8 bg-green rounded text-white font-medium px-4 py-2 text-sm  hover:brightness-110 transition-all;
+  }
+
+  .custom-block.col-wrapper-hero a:not(.header-anchor):nth-of-type(2) {
+    @apply inline-block no-underline mt-8 bg-slate-200 rounded text-slate-900 dark:bg-neutral-700 dark:text-slate-200 font-medium px-4 py-2 text-sm  hover:brightness-105 transition-all;
   }
 
   .custom-block.details {
@@ -224,6 +228,33 @@
   .custom-block.details summary {
     outline: none;
     cursor: pointer;
+  }
+
+  main *:hover > .header-anchor {
+    @apply opacity-100;
+  }
+  main .header-anchor {
+    @apply ml-1 text-sm inline-flex items-end opacity-0 transition-opacity !border-b-0 h-full;
+  }
+
+  main h1 > .header-anchor svg {
+    @apply w-6 h-6;
+  }
+
+  main h2 .header-anchor svg {
+    @apply w-5 h-5 inline-block;
+  }
+
+  main .header-anchor svg {
+    @apply w-4 h-4;
+  }
+
+  main .header-anchor svg * {
+    @apply stroke-neutral-400;
+  }
+
+  main .header-anchor:hover svg * {
+    @apply stroke-neutral-900 dark:stroke-white;
   }
 }
 
@@ -274,8 +305,8 @@ PROSE STYLES
   @apply list-decimal pl-8;
 }
 
-.prose ul:not(p + ul),
-.prose ol:not(p + ol) {
+.prose ul,
+.prose ol {
   @apply mt-4;
 }
 
@@ -303,6 +334,32 @@ PROSE STYLES
 }
 .prose table td {
   @apply border-t dark:border-neutral-300;
+}
+
+.prose h1:not(.custom-block h1),
+.prose h2:not(.custom-block h2),
+.prose h3:not(.custom-block h3),
+.prose h4:not(.custom-block h4),
+.prose h5:not(.custom-block h5),
+.prose h6:not(.custom-block h6) {
+  @apply scroll-mt-28 scroll-pt-28;
+}
+
+.prose h1:not(.custom-block h1):hover,
+.prose h2:not(.custom-block h2):hover,
+.prose h3:not(.custom-block h3):hover,
+.prose h4:not(.custom-block h4):hover,
+.prose h5:not(.custom-block h5):hover,
+.prose h6:not(.custom-block h6):hover {
+  @apply underline decoration-neutral-600 dark:decoration-slate-500 decoration-dashed underline-offset-4;
+}
+
+.prose h1:not(.custom-block h1):hover {
+  @apply underline-offset-8;
+}
+
+.prose h2:not(.custom-block h2):hover {
+  @apply underline-offset-[6px];
 }
 
 .prose h2:not(.custom-block h2),

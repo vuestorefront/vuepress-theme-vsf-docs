@@ -99,7 +99,7 @@
               v-if="$route.path == '/'"
             />
             <RouterLink to="/" class="hover:text-neutral dark:hover:text-white">
-              {{ $themeConfig.title }} Integration
+              {{ $themeConfig.title }}
             </RouterLink>
           </li>
           <li
@@ -215,6 +215,7 @@ html.dark .search-box input {
 
 .search-box .suggestions {
   right: 0;
+  z-index: 50 !important;
 }
 
 .suggestions * {

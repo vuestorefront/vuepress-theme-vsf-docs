@@ -1,9 +1,11 @@
 <template>
   <div
     class="w-full min-h-screen text-base bg-white dark:bg-neutral-900 text-slate-500 dark:text-slate-400 home"
+    :class="{
+      enterprise: $themeConfig.enterprise
+    }"
   >
     <VsfNav @toggle="sidebarOpen = !sidebarOpen" :sidebar-open="sidebarOpen" />
-
     <div class="container relative mx-auto max-w-7xl gap-y-16">
       <div
         class="fixed top-0 left-0 z-10 block w-screen h-screen lg:hidden"
@@ -60,5 +62,12 @@ html.dark {
 
 .home .header-anchor {
   display: none;
+}
+
+.home h1:hover,
+.home h2:hover,
+.home h3:hover,
+.home h4:hover {
+  text-decoration: none !important;
 }
 </style>

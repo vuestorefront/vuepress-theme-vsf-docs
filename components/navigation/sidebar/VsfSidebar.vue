@@ -1,6 +1,6 @@
 <template>
   <aside
-    class="h-[calc(100vh-3.5em)] pt-7 pr-4 overflow-y-auto sidebar w-full border-r dark:border-r-neutral-700"
+    class="h-[calc(100vh-3.5em)] pt-7 pr-4 overflow-y-auto sidebar w-full border-r dark:border-r-neutral-700 pb-32"
   >
     <!-- <div class="integration-selector">Integration</div> -->
     <SidebarLinks

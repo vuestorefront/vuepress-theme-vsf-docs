@@ -58,11 +58,12 @@
         class="hidden w-64 shrink-0 grow-0 flex-0 lg:block"
       >
         <div
-          class="sticky pt-8"
+          class="sticky pt-8 h-[calc(100vh-5.5em)] overflow-y-scroll pb-32"
           :class="{
             'top-24': $themeConfig.secondaryNav,
             'top-14': !$themeConfig.secondaryNav
           }"
+          v-if="tocHeaders && tocHeaders.length > 0"
         >
           <p
             class="mb-2 text-xs font-bold uppercase text-neutral dark:text-white"

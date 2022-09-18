@@ -1,12 +1,26 @@
 <template>
   <main class="relative text-base prose page">
     <slot name="top" />
-    <BetaBanner v-if="$page.frontmatter.betaBanner" />
+    <BetaBanner v-if="$page.frontmatter.betaBanner" class="mt-4" />
+    <Breadcrumbs
+      v-if="
+        !$page.frontmatter.hideBreadcrumbs &&
+        $page.frontmatter.layout !== 'home'
+      "
+    />
+    <div class="flex flex-wrap mb-2" v-if="$page.frontmatter.enterpriseTag">
+      <p
+        class="flex items-center gap-1 px-2 text-xs font-medium text-yellow-800 bg-yellow-500 rounded bg-opacity-20 dark:bg-yellow-500 dark:bg-opacity-20 dark:text-yellow-50"
+      >
+        <Icon icon="material-symbols:star" height="16" class="mb-[2px]" />
+        <span> Enterprise </span>
+      </p>
+    </div>
     <h2
-      v-if="$page.frontmatter.flag"
+      v-if="$page.frontmatter.pretitle"
       class="!mt-0 mb-2 text-sm capitalize text-green dark:text-green"
     >
-      {{ $page.frontmatter.flag }}
+      {{ $page.frontmatter.pretitle }}
     </h2>
     <Content class="pb-8 mb-8 theme-default-content" :key="$route.fullPath" />
     <div
@@ -21,8 +35,11 @@
         target="_blank"
         class="!border-b-0 !text-inherit hover:!text-neutral-900 dark:hover:!text-white flex items-center"
       >
-        <Icon class="mr-1 -rotate-3" icon="mdi:pencil" />
-        Edit this page
+        <Icon
+          class="mb-[3px] mr-1"
+          icon="material-symbols:edit-square-outline-rounded"
+        />
+        <span> Edit this page </span>
       </a>
     </div>
     <PageNav v-if="!$page.frontmatter.hideNav" />
@@ -34,6 +51,7 @@
 import PageNav from './navigation/PageNav.vue'
 import Edit from './icons/Edit.vue'
 import BetaBanner from './BetaBanner.vue'
+import Breadcrumbs from './navigation/Breadcrumbs.vue'
 
 let observer
 
@@ -42,7 +60,8 @@ export default {
   components: {
     PageNav,
     Edit,
-    BetaBanner
+    BetaBanner,
+    Breadcrumbs
   },
   mounted() {
     this.observeHeadings()
@@ -93,24 +112,6 @@ export default {
 </script>
 
 <style>
-main .header-anchor {
-  position: absolute;
-  left: 0;
-  transform: translateX(-100%);
-  padding-right: 4px;
-  font-weight: 400;
-  opacity: 0;
-  text-decoration: none !important;
-}
-
-main .header-anchor:hover {
-  text-decoration: underline !important;
-}
-
-main *:hover > .header-anchor {
-  opacity: 1;
-}
-
 /*
 
 pre {
