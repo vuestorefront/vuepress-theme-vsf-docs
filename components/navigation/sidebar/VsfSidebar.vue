@@ -13,30 +13,14 @@
     />
     <SidebarLinks :depth="0" :items="allLinks" class="block lg:hidden" />
 
-    <div
-      class="flex items-center col-span-1 p-4 mt-2 border rounded text-green"
+    <a
+      v-for="link in navLinks"
+      :href="link.path"
+      class="flex items-center col-span-1 p-4 mt-2 border rounded lg:hidden text-green"
     >
-      <Icon icon="ic:round-home" width="24" />
-      <span class="ml-1 font-medium">Docs Home</span>
-    </div>
-    <div
-      class="flex items-center col-span-1 p-4 mt-2 border rounded text-green"
-    >
-      <Icon icon="ic:round-home" width="24" />
-      <span class="ml-1 font-medium">Docs Home</span>
-    </div>
-    <div
-      class="flex items-center col-span-1 p-4 mt-2 border rounded text-green"
-    >
-      <Icon icon="ic:round-home" width="24" />
-      <span class="ml-1 font-medium">Docs Home</span>
-    </div>
-    <div
-      class="flex items-center col-span-1 p-4 mt-2 border rounded text-green"
-    >
-      <Icon icon="ic:round-home" width="24" />
-      <span class="ml-1 font-medium">Docs Home</span>
-    </div>
+      <Icon :icon="link.icon" width="24" />
+      <span class="ml-2 font-medium sm:text-sm">{{ link.title }}</span>
+    </a>
 
     <slot name="bottom" />
   </aside>
@@ -96,31 +80,34 @@ export default {
     return {
       navLinks: [
         {
-          title: 'Home',
-          path: 'https://docs.vuestorefront.io/v2/'
+          title: 'Docs Home',
+          path: 'https://docs.vuestorefront.io/v2/',
+          icon: 'ic:round-home'
         },
-        {
-          title: 'Getting Started',
-          path: 'https://docs.vuestorefront.io/v2/getting-started/introduction.html'
-        },
-
         {
           title: 'Concepts',
-          path: 'https://docs.vuestorefront.io/v2/getting-started/project-structure.html'
+          path: 'https://docs.vuestorefront.io/v2/getting-started/project-structure.html',
+          icon: 'ic:sharp-menu-book'
         },
         {
-          title: 'See All Integrations',
-          path: 'https://docs.vuestorefront.io/v2/getting-started/project-structure.html'
+          title: 'All Integrations',
+          path: 'https://docs.vuestorefront.io/v2/getting-started/project-structure.html',
+          icon: 'material-symbols:format-list-bulleted-rounded'
         },
         {
-          title: 'Ecosystem',
-          collapsible: true,
-          type: 'group',
-          children: [
-            ['https://docs.storefrontui.io/', 'Storefront UI'],
-            ['https://docs.vuestorefront.io/cloud/', 'Vue Storefront Cloud'],
-            ['https://docs.vuestorefront.io/v1/', 'Vue Storefront 1']
-          ]
+          title: 'Storefront UI',
+          path: 'ph:paint-brush-fill',
+          icon: 'ic:round-home'
+        },
+        {
+          title: 'Vue Storefront Cloud',
+          path: 'https://docs.vuestorefront.io/cloud/',
+          icon: 'material-symbols:cloud'
+        },
+        {
+          title: 'Vue Storefront 1',
+          path: 'https://docs.vuestorefront.io/v1/',
+          icon: 'ic:sharp-history-toggle-off'
         }
       ]
     }
