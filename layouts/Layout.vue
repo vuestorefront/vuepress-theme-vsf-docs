@@ -19,7 +19,7 @@
 
     <div
       v-else
-      class="flex gap-4 px-4 mx-auto 2xl:container flex-nowrap 2xl:px-0"
+      class="flex gap-4 px-4 mx-auto 2xl:container flex-nowrap 2xl:px-0 bg-inherit"
     >
       <div
         class="fixed top-0 left-0 z-10 block w-screen h-screen lg:hidden"
@@ -58,7 +58,7 @@
         class="hidden w-64 shrink-0 grow-0 flex-0 lg:block"
       >
         <div
-          class="sticky pt-8 h-[calc(100vh-5.5em)] overflow-y-scroll pb-32"
+          class="sticky pt-8 h-[calc(100vh-5.5em)] overflow-y-auto pb-32"
           :class="{
             'top-24': $themeConfig.secondaryNav,
             'top-14': !$themeConfig.secondaryNav

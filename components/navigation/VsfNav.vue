@@ -83,53 +83,60 @@
       </div>
     </div>
     <div
-      class="relative flex items-center w-full px-4 mx-auto text-sm font-medium text-black border-t dark:border-t-neutral-700 bg-inherit 2xl:container flex-nowrap 2xl:px-0 dark:text-white"
+      class="hidden w-full border-t dark:border-t-neutral-700 md:block"
       v-if="$themeConfig.secondaryNav"
     >
-      <nav class="w-full">
-        <ul class="flex w-full gap-8">
-          <li
-            :class="{
-              'text-green ': $route.path == '/'
-            }"
-            class="relative py-3"
-          >
-            <div
-              class="absolute bottom-0 left-0 w-full h-[2px] bg-green"
-              v-if="$route.path == '/'"
-            />
-            <RouterLink to="/" class="hover:text-neutral dark:hover:text-white">
-              {{ $themeConfig.title }}
-            </RouterLink>
-          </li>
-          <li
-            v-for="{ text, link } in $themeConfig.secondaryNav"
-            :class="{
-              'text-green ': $route.path.startsWith(link) && link !== '/'
-            }"
-            class="relative py-3"
-          >
-            <div
-              class="absolute bottom-0 left-0 w-full h-[2px] bg-green"
-              v-if="$route.path.startsWith(link) && link !== '/'"
-            />
-            <RouterLink
-              :to="link"
-              class="hover:text-neutral dark:hover:text-white"
+      <div
+        class="relative flex items-center w-full px-4 mx-auto text-sm font-medium text-black bg-inherit 2xl:container flex-nowrap 2xl:px-0 dark:text-white"
+      >
+        <nav class="w-full">
+          <ul class="flex w-full gap-8">
+            <li
+              :class="{
+                'text-green ': $route.path == '/'
+              }"
+              class="relative py-3"
             >
-              {{ text }}
-            </RouterLink>
-          </li>
-          <li class="py-3 ml-auto" v-if="$site.base !== '/v2/'">
-            <a
-              href="https://docs.vuestorefront.io/v2/"
-              class="hover:text-neutral dark:hover:text-white"
+              <div
+                class="absolute bottom-0 left-0 w-full h-[2px] bg-green"
+                v-if="$route.path == '/'"
+              />
+              <RouterLink
+                to="/"
+                class="hover:text-neutral dark:hover:text-white"
+              >
+                {{ $themeConfig.title }}
+              </RouterLink>
+            </li>
+            <li
+              v-for="{ text, link } in $themeConfig.secondaryNav"
+              :class="{
+                'text-green ': $route.path.startsWith(link) && link !== '/'
+              }"
+              class="relative py-3"
             >
-              Core Docs ->
-            </a>
-          </li>
-        </ul>
-      </nav>
+              <div
+                class="absolute bottom-0 left-0 w-full h-[2px] bg-green"
+                v-if="$route.path.startsWith(link) && link !== '/'"
+              />
+              <RouterLink
+                :to="link"
+                class="hover:text-neutral dark:hover:text-white"
+              >
+                {{ text }}
+              </RouterLink>
+            </li>
+            <li class="py-3 ml-auto" v-if="$site.base !== '/v2/'">
+              <a
+                href="https://docs.vuestorefront.io/v2/"
+                class="hover:text-neutral dark:hover:text-white"
+              >
+                Core Docs ->
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </div>
   </header>
 </template>

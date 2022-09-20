@@ -69,7 +69,7 @@
       @click="collapsable && $emit('toggle')"
     >
       <span
-        class="text-sm"
+        class="text-base sm:text-sm"
         :class="{
           'text-neutral-900 dark:text-white font-medium': depth === 0
         }"

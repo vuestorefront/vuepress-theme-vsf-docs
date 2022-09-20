@@ -1196,6 +1196,10 @@ main .header-anchor:hover svg *{
   grid-column: span 12 / span 12;
 }
 
+.col-span-1{
+  grid-column: span 1 / span 1;
+}
+
 .m-0{
   margin: 0px;
 }
@@ -1366,8 +1370,16 @@ main .header-anchor:hover svg *{
   aspect-ratio: 16 / 9;
 }
 
+.aspect-square{
+  aspect-ratio: 1 / 1;
+}
+
 .h-screen{
   height: 100vh;
+}
+
+.h-\[calc\(100vh-5\.5em\)\]{
+  height: calc(100vh - 5.5em);
 }
 
 .h-12{
@@ -1404,18 +1416,6 @@ main .header-anchor:hover svg *{
 
 .h-\[calc\(100vh-3\.5em\)\]{
   height: calc(100vh - 3.5em);
-}
-
-.h-\[calc\(100vh-8\.5em\)\]{
-  height: calc(100vh - 8.5em);
-}
-
-.h-\[calc\(100vh-15\.5em\)\]{
-  height: calc(100vh - 15.5em);
-}
-
-.h-\[calc\(100vh-5\.5em\)\]{
-  height: calc(100vh - 5.5em);
 }
 
 .min-h-screen{
@@ -1815,6 +1815,10 @@ main .header-anchor:hover svg *{
   padding-top: 2rem;
 }
 
+.pb-32{
+  padding-bottom: 8rem;
+}
+
 .pb-1{
   padding-bottom: 0.25rem;
 }
@@ -1841,10 +1845,6 @@ main .header-anchor:hover svg *{
 
 .pr-4{
   padding-right: 1rem;
-}
-
-.pb-32{
-  padding-bottom: 8rem;
 }
 
 .pl-3{
@@ -2603,8 +2603,16 @@ pre {
     grid-column: span 7 / span 7;
   }
 
+  .md\:block{
+    display: block;
+  }
+
   .md\:flex{
     display: flex;
+  }
+
+  .md\:hidden{
+    display: none;
   }
 
   .md\:w-auto{

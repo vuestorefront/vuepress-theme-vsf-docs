@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-wrap items-center hidden gap-2 mb-4 text-sm md:flex">
+  <div class="flex flex-wrap items-center gap-2 mb-4 text-sm">
     <template v-for="(section, index) in sections">
       <span v-if="index > 0"> &gt; </span>
 
