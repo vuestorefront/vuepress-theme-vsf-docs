@@ -4,7 +4,11 @@
       class="block p-4 px-6 mx-auto text-left bg-purple-500 rounded bg-opacity-20 dark:bg-purple-300 dark:bg-opacity-30 text-neutral-900 dark:text-white"
     >
       <div class="flex items-center">
-        <Icon icon="ph:warning-circle-fill" class="mr-4" width="30" />
+        <Icon
+          icon="ph:warning-circle-fill"
+          class="mr-4 shrink-0"
+          width="30px"
+        />
         <div>
           <p class="text-sm font-medium">
             This integration is currently in Beta and not ready for production

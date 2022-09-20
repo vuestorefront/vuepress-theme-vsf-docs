@@ -2619,6 +2619,10 @@ pre {
     width: auto;
   }
 
+  .md\:flex-row{
+    flex-direction: row;
+  }
+
   .md\:justify-start{
     justify-content: flex-start;
   }
