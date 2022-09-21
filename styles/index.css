@@ -1370,10 +1370,6 @@ main .header-anchor:hover svg *{
   aspect-ratio: 16 / 9;
 }
 
-.aspect-square{
-  aspect-ratio: 1 / 1;
-}
-
 .h-screen{
   height: 100vh;
 }
@@ -1587,10 +1583,6 @@ main .header-anchor:hover svg *{
   overflow-x: visible;
 }
 
-.overflow-y-scroll{
-  overflow-y: scroll;
-}
-
 .whitespace-normal{
   white-space: normal;
 }
@@ -1729,6 +1721,10 @@ main .header-anchor:hover svg *{
 
 .bg-opacity-20{
   --tw-bg-opacity: 0.2;
+}
+
+.fill-green-500{
+  fill: #00C652;
 }
 
 .object-contain{
@@ -2004,6 +2000,11 @@ main .header-anchor:hover svg *{
 
 .text-inherit{
   color: inherit;
+}
+
+.text-pink-500{
+  --tw-text-opacity: 1;
+  color: rgb(236 72 153 / var(--tw-text-opacity));
 }
 
 .underline{
@@ -2557,6 +2558,11 @@ pre {
   color: rgb(255 255 255 / var(--tw-text-opacity)) !important;
 }
 
+.dark .hover\:dark\:text-white:hover{
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
 .dark .dark\:hover\:brightness-110:hover{
   --tw-brightness: brightness(1.1);
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
@@ -2603,16 +2609,12 @@ pre {
     grid-column: span 7 / span 7;
   }
 
+  .md\:mt-0{
+    margin-top: 0px;
+  }
+
   .md\:block{
     display: block;
-  }
-
-  .md\:flex{
-    display: flex;
-  }
-
-  .md\:hidden{
-    display: none;
   }
 
   .md\:w-auto{
@@ -2621,6 +2623,10 @@ pre {
 
   .md\:flex-row{
     flex-direction: row;
+  }
+
+  .md\:items-center{
+    align-items: center;
   }
 
   .md\:justify-start{

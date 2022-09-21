@@ -4,7 +4,7 @@ import './styles/highlight.styl'
 import IntegrationList from './components/IntegrationList.vue'
 import CodeGroup from './components/CodeGroup.vue'
 import CodeBlock from './components/CodeBlock.vue'
-import NavigationalCard from './components/NavigationalCard.vue'
+import NavCard from './components/NavCard.vue'
 import BetaBanner from './components/BetaBanner.vue'
 import ButtonContainer from './components/ButtonContainer.vue'
 import CoreDocsList from './components/landing/CoreDocsList.vue'
@@ -26,7 +26,7 @@ export default ({
   Vue.component('CodeBlock', CodeBlock)
   Vue.component('BetaBanner', BetaBanner)
   Vue.component('ButtonContainer', ButtonContainer)
-  Vue.component('NavigationalCard', NavigationalCard)
+  Vue.component('NavCard', NavCard)
   Vue.component('CoreDocsList', CoreDocsList)
   Vue.component('StorefrontUi', StorefrontUi)
   Vue.component('VsfCloud', VsfCloud)
