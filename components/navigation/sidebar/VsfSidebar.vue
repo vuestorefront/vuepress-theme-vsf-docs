@@ -41,21 +41,15 @@ export default {
 
       const b = Object.keys(this.$themeConfig.sidebar)
         .map((sidebarKey) => {
-          const { base, config } = resolveMatchingConfig(
-            this.$page.regularPath,
-            this.$themeConfig.sidebar[b]
-          )
-
           return this.$themeConfig.sidebar[sidebarKey].map((item) =>
             resolveItem(item, pages, sidebarKey)
           )
         })
         .map((group) => {
-          console.log(group)
           return group
         })
       const allSidebarLinks = b.flat()
-      console.log(allSidebarLinks)
+
       if (this.$themeConfig.secondaryNav) {
         const groupedLinksByNav = this.$themeConfig.secondaryNav.map((item) => {
           return {

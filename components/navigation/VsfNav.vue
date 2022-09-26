@@ -15,39 +15,25 @@
         <Logo class="w-auto h-6" :show-docs="true" />
       </a>
 
-      <nav class="hidden gap-4 ml-auto text-sm font-medium nav-links lg:flex">
+      <nav
+        class="hidden gap-4 ml-auto text-sm font-medium nav-links lg:flex text-neutral-900 dark:text-white"
+      >
         <div class="nav-item">
           <RouterLink
             to="/getting-started/introduction"
-            class="hover:text-neutral dark:hover:text-white"
+            class="hover:underline"
             v-if="$site.base === '/v2/'"
           >
             Getting Started
           </RouterLink>
           <a
             href="https://docs.vuestorefront.io/v2/getting-started/introduction.html"
-            class="hover:text-neutral dark:hover:text-white"
+            class="hover:underline"
             v-else
           >
             Getting Started
           </a>
         </div>
-        <!-- <div class="nav-item">
-          <RouterLink
-            to="/getting-started/project-structure"
-            class="hover:text-neutral dark:hover:text-white"
-            v-if="$site.base === '/v2/'"
-          >
-            Concepts
-          </RouterLink>
-          <a
-            href="https://docs.vuestorefront.io/v2/getting-started/project-structure.html"
-            class="hover:text-neutral dark:hover:text-white"
-            v-else
-          >
-            Concepts
-          </a>
-        </div> -->
         <div class="nav-item">
           <DropdownLink title="Integrations" type="integrations" />
         </div>
@@ -101,35 +87,35 @@
                 class="absolute bottom-0 left-0 w-full h-[2px] bg-green"
                 v-if="$route.path == '/'"
               />
-              <RouterLink
-                to="/"
-                class="hover:text-neutral dark:hover:text-white"
-              >
+              <RouterLink to="/" class="hover:underline">
                 {{ $themeConfig.title }}
               </RouterLink>
             </li>
             <li
-              v-for="{ text, link } in $themeConfig.secondaryNav"
+              v-for="{ text, link, match } in $themeConfig.secondaryNav"
               :class="{
-                'text-green ': $route.path.startsWith(link) && link !== '/'
+                'text-green ': match
+                  ? new RegExp(match).test($route.path)
+                  : $route.path.startsWith(link) && link !== '/'
               }"
               class="relative py-3"
             >
               <div
                 class="absolute bottom-0 left-0 w-full h-[2px] bg-green"
-                v-if="$route.path.startsWith(link) && link !== '/'"
+                v-if="
+                  match
+                    ? new RegExp(match).test($route.path)
+                    : $route.path.startsWith(link) && link !== '/'
+                "
               />
-              <RouterLink
-                :to="link"
-                class="hover:text-neutral dark:hover:text-white"
-              >
+              <RouterLink :to="link" class="hover:bg-slate-400">
                 {{ text }}
               </RouterLink>
             </li>
             <li class="py-3 ml-auto" v-if="$site.base !== '/v2/'">
               <a
                 href="https://docs.vuestorefront.io/v2/"
-                class="hover:text-neutral dark:hover:text-white"
+                class="hover:underline"
               >
                 Core Docs ->
               </a>
