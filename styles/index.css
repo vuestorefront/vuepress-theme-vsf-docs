@@ -1214,6 +1214,11 @@ main .header-anchor:hover svg *{
   margin-right: -0.25rem;
 }
 
+.-mx-2{
+  margin-left: -0.5rem;
+  margin-right: -0.5rem;
+}
+
 .mt-16{
   margin-top: 4rem;
 }
@@ -1705,6 +1710,11 @@ main .header-anchor:hover svg *{
 .bg-gray-50{
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+}
+
+.bg-neutral-700{
+  --tw-bg-opacity: 1;
+  background-color: rgb(64 64 64 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-5{
@@ -2437,6 +2447,11 @@ pre {
   border-right-color: rgb(64 64 64 / var(--tw-border-opacity));
 }
 
+.dark .dark\:border-t-neutral-400{
+  --tw-border-opacity: 1;
+  border-top-color: rgb(163 163 163 / var(--tw-border-opacity));
+}
+
 .dark .dark\:bg-neutral-900{
   --tw-bg-opacity: 1;
   background-color: rgb(23 23 23 / var(--tw-bg-opacity));
@@ -2520,6 +2535,11 @@ pre {
 .dark .dark\:text-green{
   --tw-text-opacity: 1;
   color: rgb(0 198 82 / var(--tw-text-opacity));
+}
+
+.dark .dark\:text-slate-300{
+  --tw-text-opacity: 1;
+  color: rgb(203 213 225 / var(--tw-text-opacity));
 }
 
 .dark .dark\:hover\:bg-white:hover{

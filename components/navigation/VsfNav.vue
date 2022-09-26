@@ -1,6 +1,6 @@
 <template>
   <header
-    class="sticky top-0 z-50 w-full border-b bg-gray-50 dark:bg-neutral-900 dark:border-b-neutral-700"
+    class="sticky top-0 z-50 w-full border-b dark:bg-neutral-900 dark:border-b-neutral-700 bg-inherit"
   >
     <div
       class="flex items-center w-full px-4 py-3 mx-auto 2xl:container flex-nowrap 2xl:px-0"
@@ -69,50 +69,42 @@
       </div>
     </div>
     <div
-      class="hidden w-full border-t dark:border-t-neutral-700 md:block"
+      class="relative hidden w-full border-t dark:border-t-neutral-700 md:block bg-inherit"
       v-if="$themeConfig.secondaryNav"
     >
       <div
         class="relative flex items-center w-full px-4 mx-auto text-sm font-medium text-black bg-inherit 2xl:container flex-nowrap 2xl:px-0 dark:text-white"
       >
         <nav class="w-full">
-          <ul class="flex w-full gap-8">
+          <ul class="flex w-full gap-4 py-2">
             <li
               :class="{
-                'text-green ': $route.path == '/'
+                'text-green bg-green bg-opacity-10 ': $route.path == '/',
+                'hover:bg-slate-100 dark:hover:bg-neutral-700':
+                  $route.path !== '/'
               }"
-              class="relative py-3"
+              class="relative px-2 py-1 -mx-2 rounded"
             >
-              <div
-                class="absolute bottom-0 left-0 w-full h-[2px] bg-green"
-                v-if="$route.path == '/'"
-              />
-              <RouterLink to="/" class="hover:underline">
+              <RouterLink to="/">
                 {{ $themeConfig.title }}
               </RouterLink>
             </li>
             <li
               v-for="{ text, link, match } in $themeConfig.secondaryNav"
               :class="{
-                'text-green ': match
+                'text-green bg-green bg-opacity-10 ': match
                   ? new RegExp(match).test($route.path)
-                  : $route.path.startsWith(link) && link !== '/'
+                  : $route.path.startsWith(link) && link !== '/',
+                'hover:bg-slate-100 dark:hover:bg-neutral-700':
+                  !match && !$route.path.startsWith(link) && link !== '/'
               }"
-              class="relative py-3"
+              class="relative px-2 py-1 rounded"
             >
-              <div
-                class="absolute bottom-0 left-0 w-full h-[2px] bg-green"
-                v-if="
-                  match
-                    ? new RegExp(match).test($route.path)
-                    : $route.path.startsWith(link) && link !== '/'
-                "
-              />
-              <RouterLink :to="link" class="hover:bg-slate-400">
+              <RouterLink :to="link">
                 {{ text }}
               </RouterLink>
             </li>
-            <li class="py-3 ml-auto" v-if="$site.base !== '/v2/'">
+            <li class="py-1 ml-auto" v-if="$site.base !== '/v2/'">
               <a
                 href="https://docs.vuestorefront.io/v2/"
                 class="hover:underline"
