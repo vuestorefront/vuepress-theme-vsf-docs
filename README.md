@@ -66,17 +66,28 @@ If you don't specify a layout, it will default to `default`.
 
 ### CodeGroup  
 
+Allows for a multiple code examples to be grouped together. This is useful for showing multiple ways to do the same thing (e.g. `yarn` vs `npm` installs) 
+
 ### NavCard
 
-### CoreDocsList
-
-### StorefrontUI
-
-### VsfCloud
-
-### VsfEcosystem
-
 ### Icon
+
+With the Icon component, you can quickly add any Iconify icon to your docs site. You can find a list of all available icons [here](https://icones.js.org/).
+
+### Misc Components
+
+This theme also exposes a few global components that add content to your site. This is allows the community team to use the theme to control the content for all the integrations at once. 
+
+These components are:
+
+- `CoreDocsList` - links to essential Core Docs pages
+- `StorefrontUI` - landing page section for SFUI
+- `VsfCloud` - landing page section for VsfCloud
+- `VsfEcosystem` - landing page section that contains both `StorefrontUI` and `VsfCloud`
+
+## Custom Containers
+
+This theme uses the [vuepress-plugin-container](https://vuepress-community.netlify.app/en/plugins/container/#vuepress-plugin-container) plugin to register custom containers. This allows you to quickly add custom styling to your markdown content.
 
 ## Page Frontmatter Options
 
