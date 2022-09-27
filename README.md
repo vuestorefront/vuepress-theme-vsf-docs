@@ -15,6 +15,7 @@ The intention of this theme is to bring cohesion across the multiple VSF integra
 - adds several custom layouts for your docs site to use
 - built in [Iconify](https://icones.js.org/) support via the `<Icon>` component.
 - breadcrumb support by default
+- adds plugins for overriding the active link style and image fixes
 
 ## Installation
 
@@ -37,7 +38,7 @@ To configure the theme, add a `themeConfig` object to your `.vuepress/config.js`
 {
   "theme": "vsf-docs",
   "themeConfig": {
-    // ...
+    
   }
 }
 ```
@@ -125,6 +126,41 @@ These components are:
 ## Custom Containers
 
 This theme uses the [vuepress-plugin-container](https://vuepress-community.netlify.app/en/plugins/container/#vuepress-plugin-container) plugin to register custom containers. This allows you to quickly add custom styling to your markdown content.
+
+They are used by adding surrounding markdown content of the container with `:::`.
+
+```markdown
+::: tip
+This is a tip. It can have [links](#) and **formatting**.
+:::
+```
+
+The following containers are available:
+`tip`
+
+`subheader`
+
+`callout`
+
+`read-more`
+
+`warning`
+
+`danger`
+
+`col-wrapper`
+
+`col-wrapper-gap`
+
+`col-wrapper-hero`
+
+`col-full`
+
+`col-1/2`
+
+`col-1/3`
+
+`col-1/4`
 
 ## Page Frontmatter Options
 
