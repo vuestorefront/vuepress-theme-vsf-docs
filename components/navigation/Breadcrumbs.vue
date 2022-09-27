@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import { match } from 'assert'
 import { isActive } from '../../util'
 import { resolveSidebarItems } from '../../util'
 
@@ -56,7 +57,10 @@ export default {
       )
       const flattenedSidebar = this.flattenSidebar(sidebar)
       let navItem = this.$themeConfig.secondaryNav.find((item) =>
-        this.$route.path.includes(item.link)
+        item.link === '/'
+          ? this.$route.path === '/'
+          : this.$route.path.includes(item.link) ||
+            (item.match && new RegExp(item.match).test(this.$route.path))
       )
       const list = [
         {

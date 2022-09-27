@@ -8,7 +8,7 @@
     <div v-if="item.title === 'TOP TILE'">
       <RouterLink
         to="/integrations/"
-        class="flex items-center p-2 bg-black rounded dark:bg-white dark:bg-opacity-5 bg-opacity-5 hover:underline"
+        class="flex items-center p-2 -mx-2 bg-black rounded dark:bg-white dark:bg-opacity-5 bg-opacity-5 hover:underline"
         v-if="$site.base === '/v2/'"
       >
         <Integration class="w-auto h-4 mr-2" />
@@ -23,7 +23,7 @@
       </a>
       <RouterLink
         to="/general/enterprise"
-        class="flex items-center p-2 mt-2 bg-black rounded dark:bg-white dark:bg-opacity-5 bg-opacity-5 hover:underline"
+        class="flex items-center p-2 mt-2 -mx-2 bg-black rounded dark:bg-white dark:bg-opacity-5 bg-opacity-5 hover:underline"
         v-if="$site.base === '/v2/'"
       >
         <Enterprise class="w-auto h-4 mr-2" />

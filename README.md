@@ -64,6 +64,20 @@ If you don't specify a layout, it will default to `default`.
 
 ## Global Components
 
+### CodeGroup  
+
+### NavCard
+
+### CoreDocsList
+
+### StorefrontUI
+
+### VsfCloud
+
+### VsfEcosystem
+
+### Icon
+
 ## Page Frontmatter Options
 
 | Property        | Type    | Description                                               |
@@ -74,6 +88,4 @@ If you don't specify a layout, it will default to `default`.
 | pretitle        | String  | show text before first h1 (useful for categorizing pages) |
 | hideNav         | Boolean | hides the Previous and Next Navigation                    |
 | hideToc         | Boolean | hides the table of contents for `default` layout          |
-|                 |         |                                                           |
-
-## Writing Guide
+| fileDirToc       | Boolean | converts the page table of contents into a directory structure         |

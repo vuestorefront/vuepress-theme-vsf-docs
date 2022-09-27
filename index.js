@@ -1,8 +1,7 @@
-const activeLinks = require('./plugins/markdown-active-links')
-
 module.exports = {
   plugins: [
-    activeLinks,
+    require('./plugins/enhance-webpack'),
+    require('./plugins/markdown-active-links'),
     '@vuepress/search',
     [
       '@vuepress/medium-zoom',
