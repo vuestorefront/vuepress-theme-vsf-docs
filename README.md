@@ -57,7 +57,13 @@ This theme comes with the following `themeConfig` properties:
 There are 2 different types of layouts you can specify in your Frontmatter
 
 1. `layout: default` - This is the default layout for your pages. By default, it will render the page with the sidebar navigation and a table of contents. But you can change this using the `hideToc` properties in your Frontmatter.
+
+![image](https://user-images.githubusercontent.com/18535681/192529218-af13bf0b-feb8-43a5-a74c-46cea0ca2feb.png)
+
+
 2. `layout: home` - This is useful for generating landing pages. It will only render your page content with no sidebar and table of contents.
+
+![image](https://user-images.githubusercontent.com/18535681/192529100-d6ccd453-5c04-4a58-b8c0-8d4104077c46.png)
 
 If you don't specify a layout, it will default to `default`.
 
@@ -68,7 +74,38 @@ If you don't specify a layout, it will default to `default`.
 
 Allows for a multiple code examples to be grouped together. This is useful for showing multiple ways to do the same thing (e.g. `yarn` vs `npm` installs) 
 
+![image](https://user-images.githubusercontent.com/18535681/192529439-88bee6c6-ef1d-4d92-86df-9fd1a324eb4a.png)
+
 ### NavCard
+
+Useful for providing a nice visual link. 
+
+![image](https://user-images.githubusercontent.com/18535681/192529536-6225a43f-8d9c-4d60-8621-73ac95a0986f.png)
+
+Accepts the following props:
+```
+  {
+    to: String,
+    title: String,
+    description: String,
+    isCard: {
+      type: Boolean,
+      default: true
+    },
+    readMore: {
+      type: Boolean,
+      default: false
+    },
+    border: {
+      type: Boolean,
+      default: false
+    },
+    green: {
+      type: Boolean,
+      default: false
+    }
+  },
+```
 
 ### Icon
 
@@ -97,6 +134,8 @@ This theme uses the [vuepress-plugin-container](https://vuepress-community.netli
 | hideBreadcrumbs | Boolean | hides breadcrumbs when true                               |
 | enterpriseTag   | Boolean | show enterpriseTag before first h1 (useful for home page) |
 | pretitle        | String  | show text before first h1 (useful for categorizing pages) |
-| hideNav         | Boolean | hides the Previous and Next Navigation                    |
+| hideNav         | Boolean | hides the Previous and Next Navigation at the bottom of the page                    |
 | hideToc         | Boolean | hides the table of contents for `default` layout          |
-| fileDirToc       | Boolean | converts the page table of contents into a directory structure         |
+| fileDirToc       | Boolean | converts the page table of contents into a directory structure  (see project structure boilerplate)      |
+
+
