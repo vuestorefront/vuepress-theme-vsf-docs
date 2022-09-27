@@ -75,28 +75,24 @@
       <div
         class="relative flex items-center w-full px-4 mx-auto text-sm font-medium text-black bg-inherit 2xl:container flex-nowrap 2xl:px-0 dark:text-white"
       >
-        <nav class="w-full">
-          <ul class="flex w-full gap-4 py-2">
-            <li
-              :class="{
-                'text-green bg-green bg-opacity-10 ': $route.path == '/',
-                'hover:bg-slate-100 dark:hover:bg-neutral-700':
-                  $route.path !== '/'
-              }"
-              class="relative px-2 py-1 -mx-2 rounded"
-            >
-              <RouterLink to="/">
-                {{ $themeConfig.title }}
-              </RouterLink>
-            </li>
+        <nav class="flex items-center w-full">
+          <div class="pr-4 mr-2 border-r-2">
+            <RouterLink to="/">
+              {{ $themeConfig.title }}
+            </RouterLink>
+          </div>
+          <ul class="flex flex-1 gap-2 py-2">
             <li
               v-for="{ text, link, match } in $themeConfig.secondaryNav"
               :class="{
                 'text-green bg-green bg-opacity-10 ': match
                   ? new RegExp(match).test($route.path)
-                  : $route.path.startsWith(link) && link !== '/',
-                'hover:bg-slate-100 dark:hover:bg-neutral-700':
-                  !match && !$route.path.startsWith(link) && link !== '/'
+                  : ($route.path.startsWith(link) && link !== '/') ||
+                    ($route.path === '/' && link === '/'),
+                'hover:bg-slate-100 dark:hover:bg-neutral-700': !(match
+                  ? new RegExp(match).test($route.path)
+                  : ($route.path.startsWith(link) && link !== '/') ||
+                    ($route.path === '/' && link === '/'))
               }"
               class="relative px-2 py-1 rounded"
             >

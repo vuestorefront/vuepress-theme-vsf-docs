@@ -54,6 +54,14 @@ This theme comes with the following `themeConfig` properties:
 
 ## Page Layouts
 
+There are 2 different types of layouts you can specify in your Frontmatter
+
+1. `layout: default` - This is the default layout for your pages. By default, it will render the page with the sidebar navigation and a table of contents. But you can change this using the `hideToc` properties in your Frontmatter.
+2. `layout: home` - This is useful for generating landing pages. It will only render your page content with no sidebar and table of contents.
+
+If you don't specify a layout, it will default to `default`.
+
+
 ## Global Components
 
 ## Page Frontmatter Options
@@ -65,5 +73,7 @@ This theme comes with the following `themeConfig` properties:
 | enterpriseTag   | Boolean | show enterpriseTag before first h1 (useful for home page) |
 | pretitle        | String  | show text before first h1 (useful for categorizing pages) |
 | hideNav         | Boolean | hides the Previous and Next Navigation                    |
+| hideToc         | Boolean | hides the table of contents for `default` layout          |
+|                 |         |                                                           |
 
 ## Writing Guide

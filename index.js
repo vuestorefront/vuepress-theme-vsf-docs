@@ -1,7 +1,8 @@
-const path = require('path')
+const activeLinks = require('./plugins/markdown-active-links')
 
 module.exports = {
   plugins: [
+    activeLinks,
     '@vuepress/search',
     [
       '@vuepress/medium-zoom',

@@ -1624,6 +1624,10 @@ main .header-anchor:hover svg *{
   border-left-width: 1px;
 }
 
+.border-r-2{
+  border-right-width: 2px;
+}
+
 .border-transparent{
   border-color: transparent;
 }
@@ -1851,6 +1855,10 @@ main .header-anchor:hover svg *{
 
 .pt-2{
   padding-top: 0.5rem;
+}
+
+.pr-8{
+  padding-right: 2rem;
 }
 
 .text-left{

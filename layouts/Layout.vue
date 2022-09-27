@@ -14,11 +14,8 @@
       >
       </iframe>
     </noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    <Landing v-if="$page.frontmatter.layout === 'Landing'" />
 
     <div
-      v-else
       class="flex gap-4 px-4 mx-auto 2xl:container flex-nowrap 2xl:px-0 bg-inherit"
     >
       <div
