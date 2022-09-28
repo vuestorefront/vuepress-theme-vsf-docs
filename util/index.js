@@ -217,7 +217,7 @@ function ensureEndingSlash(path) {
   return /(\.html|\/)$/.test(path) ? path : path + '/'
 }
 
-function resolveItem(item, pages, base, groupDepth = 1) {
+export function resolveItem(item, pages, base, groupDepth = 1) {
   if (typeof item === 'string') {
     return resolvePage(pages, item, base)
   } else if (Array.isArray(item)) {
@@ -240,6 +240,7 @@ function resolveItem(item, pages, base, groupDepth = 1) {
       children: children.map((child) =>
         resolveItem(child, pages, base, groupDepth + 1)
       ),
+      closed: item.closed,
       collapsable: item.collapsable !== false
     }
   }

@@ -3,7 +3,7 @@
     :class="{
       'opacity-50': status === $site.themeConfig.STATUS.WIP
     }"
-    class="flex flex-col pb-0 whitespace-normal transition-colors bg-white border-2 border-transparent rounded dark:bg-charcoal-500"
+    class="flex flex-col pb-0 whitespace-normal transition-colors bg-white border-2 border-transparent rounded dark:bg-neutral-700"
   >
     <div class="flex items-center p-4">
       <div
@@ -19,9 +19,7 @@
         />
       </div>
       <div>
-        <span class="font-medium text-charcoal dark:text-white">{{
-          name
-        }}</span>
+        <span class="font-medium text-neutral dark:text-white">{{ name }}</span>
       </div>
     </div>
     <div class="px-4 mb-16 tile-data">
@@ -56,7 +54,7 @@
       </div>
     </div>
 
-    <div class="px-2 py-2 mt-auto border-t dark:border-charcoal-400">
+    <div class="px-2 py-2 mt-auto border-t dark:border-neutral-400">
       <p v-if="!link" class="inline-flex items-center py-1 text-sm">
         <Doc class="w-6 h-6 mr-1" />In Development
       </p>

@@ -5,31 +5,22 @@ module.exports = {
     './layouts/*.{vue,js,ts,jsx,tsx}',
     './components/**/*.{vue,js,ts,jsx,tsx}'
   ],
+  fontFamily: {
+    sans: ['Inter', 'sans-serif']
+  },
+  safelist: ['md:justify-start', 'md:justify-center', 'md:justify-end'],
   theme: {
     container: {
       padding: {
-        DEFAULT: '1rem',
-        sm: '2rem',
-        lg: '4rem',
-        xl: '5rem',
-        '2xl': '6rem'
+        DEFAULT: '1em',
+        sm: '2em',
+        lg: '4em',
+        xl: '5em',
+        '2xl': '6em'
       }
     },
     extend: {
       colors: {
-        charcoal: {
-          DEFAULT: '#1D1F22',
-          50: '#A2A8B0',
-          100: '#9298A2',
-          200: '#727985',
-          300: '#555B64',
-          400: '#393D43',
-          500: '#1D1F22',
-          600: '#16171A',
-          700: '#0F1011',
-          800: '#080809',
-          900: '#010101'
-        },
         green: {
           DEFAULT: '#00C652',
           50: '#7FFFB4',
@@ -58,6 +49,5 @@ module.exports = {
         }
       }
     }
-  },
-  plugins: []
+  }
 }

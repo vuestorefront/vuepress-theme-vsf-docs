@@ -1,132 +1,107 @@
 <template>
   <aside
-    class="h-[calc(100vh-3.5rem)] pt-8 pr-4 overflow-y-auto sidebar w-full"
+    class="h-[calc(100vh-3.5em)] pt-7 pr-4 overflow-y-auto sidebar w-full border-r dark:border-r-neutral-700 pb-32"
   >
     <!-- <div class="integration-selector">Integration</div> -->
-    <SidebarLinks
-      :depth="0"
-      :items="navLinks"
-      class="block mb-8 border-b lg:hidden dark:border-charcoal-400"
-    />
     <slot name="top" />
 
-    <SidebarLinks :depth="0" :items="items" :key="$route.fullPath" />
+    <SidebarLinks
+      :depth="0"
+      :items="items"
+      :key="$route.fullPath"
+      class="hidden lg:block"
+    />
+    <SidebarLinks :depth="0" :items="allLinks" class="block lg:hidden" />
+
+    <a
+      v-for="link in navLinks"
+      :href="link.path"
+      class="flex items-center col-span-1 p-4 mt-2 border rounded lg:hidden text-green"
+    >
+      <Icon :icon="link.icon" width="24" />
+      <span class="ml-2 font-medium sm:text-sm">{{ link.title }}</span>
+    </a>
+
     <slot name="bottom" />
   </aside>
 </template>
 
 <script>
 import SidebarLinks from './VsfSidebarLinks.vue'
-
+import { resolveItem, resolveMatchingConfig } from '../../../util/'
 export default {
   name: 'Sidebar',
 
   components: { SidebarLinks },
 
   props: ['items'],
+  computed: {
+    allLinks() {
+      const { pages, themeConfig } = this.$site
 
+      const b = Object.keys(this.$themeConfig.sidebar)
+        .map((sidebarKey) => {
+          return this.$themeConfig.sidebar[sidebarKey].map((item) =>
+            resolveItem(item, pages, sidebarKey)
+          )
+        })
+        .map((group) => {
+          return group
+        })
+      const allSidebarLinks = b.flat()
+
+      if (this.$themeConfig.secondaryNav) {
+        const groupedLinksByNav = this.$themeConfig.secondaryNav.map((item) => {
+          return {
+            title: item.text,
+            collapsible: true,
+            children: allSidebarLinks.filter(
+              (sidebarItem) =>
+                (sidebarItem.path && sidebarItem.path.startsWith(item.link)) ||
+                (sidebarItem.children[0].path &&
+                  sidebarItem.children[0]?.path.startsWith(item.link))
+            ),
+            type: 'group'
+          }
+        })
+        return groupedLinksByNav
+      } else {
+        return allSidebarLinks
+      }
+    }
+  },
   data() {
     return {
       navLinks: [
         {
-          title: '',
-          collapsable: false,
-          type: 'group',
-          children: [
-            {
-              title: 'Home',
-              path: 'https://docs.vuestorefront.io/v2/'
-            }
-          ]
+          title: 'Docs Home',
+          path: 'https://docs.vuestorefront.io/v2/',
+          icon: 'ic:round-home'
         },
         {
-          title: '',
-          collapsable: false,
-          type: 'group',
-          children: [
-            {
-              title: 'Getting Started',
-              path: 'https://docs.vuestorefront.io/v2/getting-started/introduction.html'
-            }
-          ]
+          title: 'Concepts',
+          path: 'https://docs.vuestorefront.io/v2/getting-started/project-structure.html',
+          icon: 'ic:sharp-menu-book'
         },
         {
-          title: '',
-          collapsable: false,
-          type: 'group',
-          children: [
-            {
-              title: 'Concepts',
-              path: 'https://docs.vuestorefront.io/v2/getting-started/project-structure.html'
-            }
-          ]
+          title: 'All Integrations',
+          path: 'https://docs.vuestorefront.io/v2/getting-started/project-structure.html',
+          icon: 'material-symbols:format-list-bulleted-rounded'
         },
         {
-          title: 'Integrations',
-          collapsible: true,
-          type: 'group',
-          children: [
-            {
-              title: 'BigCommerce',
-              path: 'https://docs.vuestorefront.io/bigcommerce'
-            },
-            {
-              title: 'commercetools',
-              path: 'https://docs.vuestorefront.io/commercetools/'
-            },
-            {
-              title: 'Magento',
-              path: 'https://docs.vuestorefront.io/magento'
-            },
-            {
-              title: 'SAP Commerce Cloud',
-              path: 'https://docs.vuestorefront.io/sfcc'
-            },
-            {
-              title: 'Shopify',
-              path: 'https://docs.vuestorefront.io/shopify'
-            },
-
-            {
-              title: 'Sylius',
-              path: 'https://vsf-sylius-docs.herokuapp.com/'
-            },
-            {
-              title: 'Vendure',
-              path: 'https://docs.vuestorefront.io/vendure'
-            },
-            {
-              title: 'Odoo',
-              path: 'https://docs.vuestorefront.io/odoo/'
-            },
-            {
-              title: 'PrestaShop',
-              path: 'https://docs.vuestorefront.io/prestashop/'
-            },
-            {
-              title: 'Spree',
-              path: 'https://docs.vuestorefront.io/spree/'
-            }
-          ]
+          title: 'Storefront UI',
+          path: 'ph:paint-brush-fill',
+          icon: 'ic:round-home'
         },
         {
-          title: 'Ecosystem',
-          collapsible: true,
-          type: 'group',
-          children: [
-            {
-              title: 'Storefront UI',
-              path: 'https://docs.storefrontui.io/'
-            },
-            {
-              title: 'Vue Storefront Cloud',
-              path: 'https://docs.vuestorefront.io/cloud/'
-            },
-            {
-              title: 'Vue Storefront 1',
-              path: 'https://docs.vuestorefront.io/v1/'
-            }
-          ]
+          title: 'Vue Storefront Cloud',
+          path: 'https://docs.vuestorefront.io/cloud/',
+          icon: 'material-symbols:cloud'
+        },
+        {
+          title: 'Vue Storefront 1',
+          path: 'https://docs.vuestorefront.io/v1/',
+          icon: 'ic:sharp-history-toggle-off'
         }
       ]
     }

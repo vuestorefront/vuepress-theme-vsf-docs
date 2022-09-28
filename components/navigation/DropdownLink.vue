@@ -6,7 +6,7 @@
     </button>
 
     <ul
-      class="absolute z-10 hidden w-64 p-2 bg-white border rounded -left-1/2 nav-dropdown group-focus-within:block group-hover:block top-full dark:bg-charcoal dark:border-charcoal-400"
+      class="absolute z-10 hidden w-64 p-2 bg-white border rounded -left-1/2 nav-dropdown group-focus-within:block group-hover:block top-full dark:bg-neutral-800 dark:border-neutral-700"
       v-if="type === 'integrations'"
     >
       <li
@@ -16,7 +16,7 @@
       >
         <a
           :href="integration.link"
-          class="flex items-center w-full h-8 rounded dark:hover:bg-white dark:hover:bg-opacity-5 hover:bg-black hover:bg-opacity-5 hover:text-charcoal dark:hover:text-white"
+          class="flex items-center w-full h-8 rounded dark:hover:bg-white dark:hover:bg-opacity-5 hover:bg-black hover:bg-opacity-5 hover:text-neutral dark:hover:text-white"
         >
           <img
             :src="`https://docs.vuestorefront.io/v2/integrations-logos/thumbnails/${integration.name
@@ -39,13 +39,13 @@
       </li>
     </ul>
     <ul
-      class="absolute z-10 hidden w-48 p-2 bg-white border rounded -left-1/2 nav-dropdown group-focus-within:block group-hover:block top-full dark:bg-charcoal dark:border-charcoal-400"
+      class="absolute z-10 hidden w-48 p-2 bg-white border rounded -left-1/2 nav-dropdown group-focus-within:block group-hover:block top-full dark:bg-neutral-800 dark:border-neutral-700"
       v-else-if="type === 'ecosystem'"
     >
       <li class="flex">
         <a
           href="https://docs.storefrontui.io/"
-          class="flex items-center w-full h-8 rounded dark:hover:bg-white dark:hover:bg-opacity-5 hover:bg-black hover:bg-opacity-5 hover:text-charcoal dark:hover:text-white"
+          class="flex items-center w-full h-8 rounded dark:hover:bg-white dark:hover:bg-opacity-5 hover:bg-black hover:bg-opacity-5 hover:text-neutral dark:hover:text-white"
         >
           <span class="ml-2">Storefront UI</span>
         </a>
@@ -53,7 +53,7 @@
       <li class="flex">
         <a
           href="https://docs.vuestorefront.io/cloud/"
-          class="flex items-center w-full h-8 rounded dark:hover:bg-white dark:hover:bg-opacity-5 hover:bg-black hover:bg-opacity-5 hover:text-charcoal dark:hover:text-white"
+          class="flex items-center w-full h-8 rounded dark:hover:bg-white dark:hover:bg-opacity-5 hover:bg-black hover:bg-opacity-5 hover:text-neutral dark:hover:text-white"
         >
           <span class="ml-2">Vue Storefront Cloud</span>
         </a>
@@ -61,7 +61,7 @@
       <li class="flex">
         <a
           href="https://docs.vuestorefront.io/v1/"
-          class="flex items-center w-full h-8 rounded dark:hover:bg-white dark:hover:bg-opacity-5 hover:bg-black hover:bg-opacity-5 hover:text-charcoal dark:hover:text-white"
+          class="flex items-center w-full h-8 rounded dark:hover:bg-white dark:hover:bg-opacity-5 hover:bg-black hover:bg-opacity-5 hover:text-neutral dark:hover:text-white"
         >
           <span class="ml-2">Vue Storefront 1</span>
         </a>

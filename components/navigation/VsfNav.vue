@@ -1,9 +1,9 @@
 <template>
   <header
-    class="sticky top-0 z-50 w-full border-b h-14 dark:border-b-charcoal-400 bg-inherit"
+    class="sticky top-0 z-50 w-full border-b dark:bg-neutral-900 dark:border-b-neutral-700 bg-inherit"
   >
     <div
-      class="flex items-center w-full h-full px-4 mx-auto 2xl:container flex-nowrap 2xl:px-0"
+      class="flex items-center w-full px-4 py-3 mx-auto 2xl:container flex-nowrap 2xl:px-0"
     >
       <button class="block mr-auto lg:hidden" @click="$emit('toggle')">
         <Menu :open="sidebarOpen" />
@@ -15,53 +15,23 @@
         <Logo class="w-auto h-6" :show-docs="true" />
       </a>
 
-      <nav class="hidden gap-4 ml-auto text-sm nav-links lg:flex">
-        <div class="nav-item">
-          <RouterLink
-            to="/"
-            class="hover:text-charcoal dark:hover:text-white"
-            v-if="$site.base === '/v2/'"
-          >
-            Home
-          </RouterLink>
-          <a
-            href="https://docs.vuestorefront.io/v2/"
-            class="hover:text-charcoal dark:hover:text-white"
-            v-else
-          >
-            Home
-          </a>
-        </div>
+      <nav
+        class="hidden gap-4 ml-auto text-sm font-medium nav-links lg:flex text-neutral-900 dark:text-white"
+      >
         <div class="nav-item">
           <RouterLink
             to="/getting-started/introduction"
-            class="hover:text-charcoal dark:hover:text-white"
+            class="hover:underline"
             v-if="$site.base === '/v2/'"
           >
             Getting Started
           </RouterLink>
           <a
             href="https://docs.vuestorefront.io/v2/getting-started/introduction.html"
-            class="hover:text-charcoal dark:hover:text-white"
+            class="hover:underline"
             v-else
           >
             Getting Started
-          </a>
-        </div>
-        <div class="nav-item">
-          <RouterLink
-            to="/getting-started/project-structure"
-            class="hover:text-charcoal dark:hover:text-white"
-            v-if="$site.base === '/v2/'"
-          >
-            Concepts
-          </RouterLink>
-          <a
-            href="https://docs.vuestorefront.io/v2/getting-started/project-structure.html"
-            class="hover:text-charcoal dark:hover:text-white"
-            v-else
-          >
-            Concepts
           </a>
         </div>
         <div class="nav-item">
@@ -83,19 +53,63 @@
         <button @click="toggleDisplayMode" class="dark-mode-toggle">
           <DarkModeToggle
             :is-dark="isDark"
-            class="w-4 h-auto opacity-50 fill-charcoal dark:fill-white hover:opacity-100"
+            class="w-4 h-auto opacity-50 fill-neutral dark:fill-white hover:opacity-100"
           />
         </button>
         <a href="https://discord.vuestorefront.io/" target="_blank">
           <Discord
-            class="w-auto h-4 opacity-50 fill-charcoal dark:fill-white hover:opacity-100"
+            class="w-auto h-4 opacity-50 fill-neutral dark:fill-white hover:opacity-100"
           />
         </a>
         <a href="https://github.com/vuestorefront/" target="_blank">
           <Github
-            class="w-auto h-4 opacity-50 fill-charcoal dark:fill-white hover:opacity-100"
+            class="w-auto h-4 opacity-50 fill-neutral dark:fill-white hover:opacity-100"
           />
         </a>
+      </div>
+    </div>
+    <div
+      class="relative hidden w-full border-t dark:border-t-neutral-700 md:block bg-inherit"
+      v-if="$themeConfig.secondaryNav"
+    >
+      <div
+        class="relative flex items-center w-full px-4 mx-auto text-sm font-medium text-black bg-inherit 2xl:container flex-nowrap 2xl:px-0 dark:text-white"
+      >
+        <nav class="flex items-center w-full">
+          <div class="pr-4 mr-2 border-r-2">
+            <RouterLink to="/">
+              {{ $themeConfig.title }}
+            </RouterLink>
+          </div>
+          <ul class="flex flex-1 gap-2 py-2">
+            <li
+              v-for="{ text, link, match } in $themeConfig.secondaryNav"
+              :class="{
+                'text-green bg-green bg-opacity-10 ': match
+                  ? new RegExp(match).test($route.path)
+                  : ($route.path.startsWith(link) && link !== '/') ||
+                    ($route.path === '/' && link === '/'),
+                'hover:bg-slate-100 dark:hover:bg-neutral-700': !(match
+                  ? new RegExp(match).test($route.path)
+                  : ($route.path.startsWith(link) && link !== '/') ||
+                    ($route.path === '/' && link === '/'))
+              }"
+              class="relative px-2 py-1 rounded"
+            >
+              <RouterLink :to="link">
+                {{ text }}
+              </RouterLink>
+            </li>
+            <li class="py-1 ml-auto" v-if="$site.base !== '/v2/'">
+              <a
+                href="https://docs.vuestorefront.io/v2/"
+                class="hover:underline"
+              >
+                Core Docs ->
+              </a>
+            </li>
+          </ul>
+        </nav>
       </div>
     </div>
   </header>
@@ -164,9 +178,9 @@ export default {
 
 .search-box input {
   background-color: #eee;
-  background-size: 1rem;
+  background-size: 1em;
   border: none;
-  border-radius: 0.25rem;
+  border-radius: 0.25em;
 
   font-size: 0.9em;
 }
@@ -176,17 +190,18 @@ export default {
 }
 
 html.dark .search-box input {
-  background-color: #555b64;
+  background-color: #404040;
   color: white;
 }
 
 .search-box .suggestions {
   right: 0;
-  background-color: #fff;
+  z-index: 50 !important;
 }
 
 .suggestions * {
   color: #393d43 !important;
+  background-color: inherit !important;
 }
 
 html.dark .suggestions {
@@ -194,8 +209,16 @@ html.dark .suggestions {
   border-color: #555b64;
 }
 
+.suggestion .focused {
+  background-color: inherit !important;
+}
+
 html.dark .suggestions li:hover {
   background-color: #393d43 !important;
+}
+
+.suggestions li:hover {
+  background-color: #eee !important;
 }
 
 html.dark .suggestions * {

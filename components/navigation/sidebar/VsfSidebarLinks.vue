@@ -1,9 +1,14 @@
 <template>
-  <ul v-if="items.length" class="text-sm sidebar-links">
+  <ul v-if="items.length" class="text-sm text-inherit sidebar-links">
     <li
       v-for="(item, i) in items"
       :key="depth + ' ' + i + ' ' + item.title"
-      :class="{ 'mt-2': depth === 1 }"
+      :class="{
+        'mb-2': depth < 1,
+        'pl-3   ': depth >= 1,
+        'border-l pl-4 pt-2 border-gray-200 dark:border-neutral-400 ml-1 mr-1':
+          depth > 1
+      }"
       class="py-1 text-base sm:py-0 sm:text-sm"
     >
       <SidebarGroup
@@ -12,15 +17,17 @@
         :open="openGroups.indexOf(i) !== -1"
         :collapsable="item.collapsable || item.collapsible"
         :depth="depth"
+        :class="{
+          '-mx-1': depth >= 1
+        }"
         @toggle="toggleGroup(i)"
       />
       <a
         v-else-if="item.path && item.path.indexOf('http') === 0"
         :href="item.path"
-        class="block transition-colors hover:text-charcoal dark:hover:text-white"
+        class="inline-block pl-4 overflow-visible transition-colors"
         :class="{
-          'border-l pl-4 pt-2 border-gray-200 dark:border-charcoal-400':
-            depth >= 2
+          'px-1': depth === 0
         }"
       >
         {{ item.title }}
@@ -28,10 +35,10 @@
       <RouterLink
         v-else-if="item.path"
         :to="item.path"
-        class="block transition-colors hover:text-charcoal dark:hover:text-white"
+        class="inline-block py-1 transition-colors hover:text-neutral dark:hover:text-white"
         :class="{
-          'border-l pl-4 pt-2 border-gray-200 dark:border-charcoal-400':
-            depth >= 2
+          'px-1': depth === 0,
+          active: isActive(item.path)
         }"
       >
         {{ item.title }}
@@ -41,10 +48,9 @@
 </template>
 
 <script>
+import { isActive } from '../../../util'
 import SidebarGroup from './VsfSidebarGroup.vue'
 import SidebarLink from './VsfSidebarLink.vue'
-
-const isActive = () => {}
 
 export default {
   name: 'SidebarLinks',
@@ -73,8 +79,10 @@ export default {
       this.depth < 1
         ? this.items.map((item, i) => i)
         : this.items
-            .filter((item) => this.descendantIsActive(this.$route, item))
             .map((item, i) => i)
+            .filter((index) =>
+              this.descendantIsActive(this.$route, this.items[index])
+            )
   },
 
   methods: {
@@ -87,11 +95,11 @@ export default {
     },
 
     isActive(page) {
-      return isActive(this.$route, page.regularPath)
+      return this.$route.path === page
     },
     descendantIsActive(route, item) {
       if (item.type === 'group') {
-        const childIsActive = item.path && route.hash === item.path
+        const childIsActive = route.path === item.path
         const grandChildIsActive = item.children.some((child) => {
           if (child.type === 'group') {
             return this.descendantIsActive(route, child)
@@ -109,7 +117,7 @@ export default {
 </script>
 
 <style>
-.sidebar-links .router-link-exact-active {
-  color: #00c652 !important;
+.sidebar-links .active {
+  color: #03bb4e !important;
 }
 </style>

@@ -3,12 +3,12 @@
     :class="{
       collapsable: true
     }"
-    class="mb-2"
+    class="overflow-x-visible"
   >
     <div v-if="item.title === 'TOP TILE'">
       <RouterLink
         to="/integrations/"
-        class="flex items-center p-2 bg-black rounded dark:bg-white dark:bg-opacity-5 bg-opacity-5 hover:underline"
+        class="flex items-center p-2 -mx-2 bg-black rounded dark:bg-white dark:bg-opacity-5 bg-opacity-5 hover:underline"
         v-if="$site.base === '/v2/'"
       >
         <Integration class="w-auto h-4 mr-2" />
@@ -16,14 +16,14 @@
       </RouterLink>
       <a
         href="https://docs.vuestorefront.io/v2/getting-started/introduction.html"
-        class="hover:text-charcoal dark:hover:text-white"
+        class="hover:text-neutral dark:hover:text-white"
         v-else
       >
         Getting Started
       </a>
       <RouterLink
         to="/general/enterprise"
-        class="flex items-center p-2 mt-2 bg-black rounded dark:bg-white dark:bg-opacity-5 bg-opacity-5 hover:underline"
+        class="flex items-center p-2 mt-2 -mx-2 bg-black rounded dark:bg-white dark:bg-opacity-5 bg-opacity-5 hover:underline"
         v-if="$site.base === '/v2/'"
       >
         <Enterprise class="w-auto h-4 mr-2" />
@@ -31,7 +31,7 @@
       </RouterLink>
       <a
         href="https://docs.vuestorefront.io/v2/general/enterprise.html"
-        class="hover:text-charcoal dark:hover:text-white"
+        class="hover:text-neutral dark:hover:text-white"
         v-else
       >
         Getting Started
@@ -43,7 +43,7 @@
       class="sidebar-heading clickable"
       :class="{
         open,
-        active: isActive($route, item.path)
+        active: isActive($route, item)
       }"
       :to="item.path"
       @click.native="$emit('toggle')"
@@ -51,31 +51,40 @@
       <span v-if="collapsable" class="arrow" :class="open ? 'down' : 'right'" />
       <span
         :class="{
-          'uppercase text-xs font-bold text-charcoal dark:text-white':
+          'uppercase text-xs font-medium text-neutral dark:text-white':
             depth === 0
         }"
         >{{ item.title }}</span
       >
     </RouterLink>
-    <p
+    <component
       v-else-if="!!item.title.length"
-      class="flex items-center p-1 rounded sidebar-heading sidebar-dropdown"
+      :is="collapsable ? 'button' : 'div'"
+      class="flex items-center w-full p-1 rounded sidebar-heading sidebar-dropdown"
       :class="{
         open: true,
-        'hover:bg-black dark:hover:bg-white hover:bg-opacity-5 dark:hover:bg-opacity-10 cursor-pointer':
+        'cursor-pointer group hover:bg-slate-100 dark:hover:bg-neutral-700 ':
           collapsable
       }"
-      @click="$emit('toggle')"
+      @click="collapsable && $emit('toggle')"
     >
       <span
+        class="text-base sm:text-sm"
         :class="{
-          'uppercase text-xs font-bold text-charcoal dark:text-white':
-            depth === 0
+          'text-neutral-900 dark:text-white font-medium': depth === 0
         }"
         >{{ item.title }}</span
       >
-      <span v-if="collapsable" class="arrow" :class="open ? 'down' : 'right'" />
-    </p>
+      <Icon
+        icon="ic:outline-keyboard-arrow-right"
+        class="ml-auto transition-transform duration-150"
+        :class="{
+          'rotate-90': open
+        }"
+        :height="16"
+        v-if="collapsable"
+      />
+    </component>
 
     <Transition
       name="dropdown"
@@ -102,8 +111,6 @@
 import Integration from '../../icons/Integration.vue'
 import Enterprise from '../../icons/Enterprise.vue'
 
-const isActive = () => {}
-
 export default {
   name: 'SidebarGroup',
   components: {
@@ -119,7 +126,9 @@ export default {
   },
 
   methods: {
-    isActive,
+    isActive(path, route) {
+      return path === route.path
+    },
     setHeight(items) {
       // explicitly set height so that it can be transitioned
       items.style.height = items.scrollHeight + 'px'
@@ -136,36 +145,7 @@ export default {
 .sidebar-heading:hover {
   color: inherit;
 }
-.sidebar-heading .arrow {
-  position: relative;
-  top: -0.1em;
-  margin-left: auto;
-  width: 0;
-  height: 0;
-  transition: transform 0.2s ease-out;
-}
 
-.arrow.right {
-  display: inline-block;
-  width: 0;
-  height: 0;
-  border-top: 4px solid transparent;
-  border-bottom: 4px solid transparent;
-
-  border-left: 4px solid #ccc;
-}
-
-.arrow.down {
-  display: inline-block;
-  left: 0.1em;
-  width: 0;
-  height: 0;
-  border-top: 4px solid transparent;
-  border-bottom: 4px solid transparent;
-
-  border-left: 4px solid #ccc;
-  transform: rotate(90deg) translateY(2px);
-}
 .sidebar-heading.clickable.active {
   font-weight: 600;
   color: var(--c-brand);
@@ -177,12 +157,12 @@ export default {
 
 .dropdown-enter,
 .dropdown-leave-to {
-  height: 0 !important;
+  height: 3px !important;
 }
 
 .dropdown-enter-active,
 .dropdown-leave-active {
   overflow: hidden;
-  transition: height 0.2s ease;
+  transition: height 0.1s linear;
 }
 </style>

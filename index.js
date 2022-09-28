@@ -1,38 +1,104 @@
-const path = require('path')
-
 module.exports = {
   plugins: [
+    require('./plugins/enhance-webpack'),
+    require('./plugins/markdown-active-links'),
     '@vuepress/search',
-    '@vuepress/medium-zoom',
+    [
+      '@vuepress/medium-zoom',
+      {
+        selector: '.prose img:not(.custom-block img)'
+      }
+    ],
     '@vuepress/plugin-nprogress',
     [
       'container',
       {
         type: 'tip',
-        defaultTitle: {
-          '/': 'TIP',
-          '/zh/': '提示'
-        }
+        defaultTitle: ''
+      }
+    ],
+    [
+      'container',
+      {
+        type: 'subheader',
+        defaultTitle: ''
+      }
+    ],
+    [
+      'container',
+      {
+        type: 'callout',
+        defaultTitle: ''
+      }
+    ],
+    [
+      'container',
+      {
+        type: 'read-more',
+        defaultTitle: ''
       }
     ],
     [
       'container',
       {
         type: 'warning',
-        defaultTitle: {
-          '/': 'WARNING',
-          '/zh/': '注意'
-        }
+        defaultTitle: ''
       }
     ],
     [
       'container',
       {
         type: 'danger',
-        defaultTitle: {
-          '/': 'DANGER',
-          '/zh/': '警告'
-        }
+        defaultTitle: ''
+      }
+    ],
+    [
+      'container',
+      {
+        type: 'col-wrapper',
+        defaultTitle: ''
+      }
+    ],
+    [
+      'container',
+      {
+        type: 'col-wrapper-gap',
+        defaultTitle: ''
+      }
+    ],
+    [
+      'container',
+      {
+        type: 'col-wrapper-hero',
+        defaultTitle: ''
+      }
+    ],
+    [
+      'container',
+      {
+        type: 'col-full',
+        defaultTitle: ''
+      }
+    ],
+    [
+      'container',
+      {
+        type: 'col-1/2',
+        defaultTitle: ''
+      }
+    ],
+    [
+      'container',
+      {
+        type: 'col-1/3',
+        defaultTitle: ''
+      }
+    ],
+    [
+      'container',
+      {
+        type: 'col-2/3',
+        defaultTitle: ''
       }
     ]
   ]

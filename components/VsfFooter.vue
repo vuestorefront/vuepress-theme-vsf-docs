@@ -1,5 +1,5 @@
 <template>
-  <footer class="border-t">
+  <footer class="border-t dark:border-neutral-600">
     <div
       class="container grid grid-cols-12 px-4 py-12 mx-auto text-sm gap-y-16"
     >
@@ -8,40 +8,46 @@
       >
         <div>
           <Logo class="h-auto mb-4 w-44" />
-          <h2 class="mb-2">Stay connected:</h2>
-          <div class="flex">
+          <h2 class="mb-2 text-sm font-medium">Stay connected:</h2>
+          <div class="flex gap-1">
             <a
               href="https://github.com/DivanteLtd/vue-storefront"
               target="_blank"
-              ><img
-                src="https://uploads-ssl.webflow.com/5e7cf661c23ac9df156d9c3d/5ed776f6432bf510fc0a18e2_github%202.svg"
-                class="w-auto h-5"
-            /></a>
-            <a href="https://twitter.com/VueStorefront" target="_blank"
-              ><img
-                src="https://uploads-ssl.webflow.com/5e7cf661c23ac9df156d9c3d/5ed7770740bbe258e8da79d0_twitter.svg"
-                class="w-auto h-5 ml-3"
-            /></a>
-            <a href="https://www.youtube.com/vuestorefront" target="_blank"
-              ><img
-                src="https://uploads-ssl.webflow.com/5e7cf661c23ac9df156d9c3d/5ed77728bc0f1e2446a140ee_youtube.svg"
-                class="w-auto h-5 ml-3"
-            /></a>
+              class="hover:text-neutral-900 hover:dark:text-white"
+            >
+              <Icon icon="mdi:github" width="24" class="text-inherit" />
+            </a>
+            <a
+              href="https://twitter.com/VueStorefront"
+              target="_blank"
+              class="hover:text-neutral-900 hover:dark:text-white"
+            >
+              <Icon icon="mdi:twitter" width="24" />
+            </a>
+            <a
+              href="https://www.youtube.com/vuestorefront"
+              target="_blank"
+              class="hover:text-neutral-900 hover:dark:text-white"
+            >
+              <Icon icon="mdi:youtube" width="24" />
+            </a>
             <a
               href="https://www.linkedin.com/company/vue-storefront/"
               target="_blank"
-              ><img
-                src="https://uploads-ssl.webflow.com/5e7cf661c23ac9df156d9c3d/5ed777169d856257c7216ca4_linkedin.svg"
-                class="w-auto h-5 ml-3"
-            /></a>
-            <a href="https://www.facebook.com/vuestorefront/" target="_blank"
-              ><img
-                src="https://uploads-ssl.webflow.com/5e7cf661c23ac9df156d9c3d/5ed7773c6e51067075010d81_facebook.svg"
-                class="w-auto h-5 ml-1"
-            /></a>
+              class="hover:text-neutral-900 hover:dark:text-white"
+            >
+              <Icon icon="mdi:linkedin" width="24" />
+            </a>
+            <a
+              href="https://www.facebook.com/vuestorefront/"
+              target="_blank"
+              class="hover:text-neutral-900 hover:dark:text-white"
+            >
+              <Icon icon="mdi:facebook" width="24" />
+            </a>
           </div>
 
-          <h2 class="mt-4 mb-4">Backed by:</h2>
+          <h2 class="mt-4 mb-4 text-sm font-medium">Backed by:</h2>
           <div class="flex">
             <a
               href="https://www.vuestorefront.io/blog/y-combinator-w21"
@@ -62,7 +68,7 @@
         class="flex col-span-12 pt-3 mx-auto w-44 sm:col-span-6 md:col-span-3 md:w-auto"
       >
         <div>
-          <h2 class="mb-4 font-bold">Guides</h2>
+          <h2 class="mb-4 text-sm font-medium">Guides</h2>
           <ul>
             <li class="mb-2">
               <a
@@ -83,7 +89,7 @@
         class="flex col-span-12 mx-auto w-44 sm:col-span-6 md:col-span-3 md:pt-3 md:w-auto"
       >
         <div>
-          <h2 class="mb-4 font-bold">Documentation</h2>
+          <h2 class="mb-4 text-sm font-medium">Documentation</h2>
           <ul>
             <li class="mb-2">
               <a href="https://docs.vuestorefront.io/v2">Docs Home</a>
@@ -104,7 +110,7 @@
         class="flex col-span-12 mx-auto w-44 sm:col-span-6 md:col-span-3 md:pt-3 md:w-auto"
       >
         <div>
-          <h2 class="mb-4 font-bold">Company</h2>
+          <h2 class="mb-4 text-sm font-medium">Company</h2>
           <ul class="">
             <li class="mb-2">
               <a href="https://www.vuestorefront.io/about-us">About us</a>

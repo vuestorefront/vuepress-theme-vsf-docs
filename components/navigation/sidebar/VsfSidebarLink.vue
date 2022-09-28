@@ -69,7 +69,7 @@ function renderLink(h, to, text, active, level) {
     class: {
       active,
       'sidebar-link': true,
-      'dark:text-white text-charcoal': true
+      'dark:text-white text-gray-500': true
     }
   }
 

@@ -1,32 +1,67 @@
 <template>
-  <main class="relative break-words whitespace-pre-wrap md:px-8 doc page">
+  <main class="relative text-base prose page">
     <slot name="top" />
-
+    <BetaBanner v-if="$page.frontmatter.betaBanner" class="mt-4" />
+    <Breadcrumbs
+      v-if="
+        !$page.frontmatter.hideBreadcrumbs &&
+        $page.frontmatter.layout !== 'home'
+      "
+    />
+    <div class="flex flex-wrap mb-2" v-if="$page.frontmatter.enterpriseTag">
+      <p
+        class="flex items-center gap-1 px-2 text-xs font-medium text-yellow-800 bg-yellow-500 rounded bg-opacity-20 dark:bg-yellow-500 dark:bg-opacity-20 dark:text-yellow-50"
+      >
+        <Icon icon="material-symbols:star" height="16" class="mb-[2px]" />
+        <span> Enterprise </span>
+      </p>
+    </div>
+    <h2
+      v-if="$page.frontmatter.pretitle"
+      class="!mt-0 mb-2 text-sm capitalize text-green dark:text-green"
+    >
+      {{ $page.frontmatter.pretitle }}
+    </h2>
     <Content class="pb-8 mb-8 theme-default-content" :key="$route.fullPath" />
-    <div class="text-sm" v-if="$themeConfig.docsRepoPath">
+    <div
+      class="flex items-center justify-end mb-4 text-sm"
+      v-if="$themeConfig.docsRepoPath"
+    >
       <a
         :href="`${$themeConfig.docsRepoPath}${$route.path.replace(
           '.html',
           '.md'
         )}`"
         target="_blank"
-        class="hover:!underline !no-underline !text-charcoal-200 dark:!text-charcoal-50"
-        >Edit this page</a
+        class="!border-b-0 !text-inherit hover:!text-neutral-900 dark:hover:!text-white flex items-center"
       >
+        <Icon
+          class="mb-[3px] mr-1"
+          icon="material-symbols:edit-square-outline-rounded"
+        />
+        <span> Edit this page </span>
+      </a>
     </div>
-    <PageNav />
+    <PageNav v-if="!$page.frontmatter.hideNav" />
     <slot name="bottom" />
   </main>
 </template>
 
 <script>
 import PageNav from './navigation/PageNav.vue'
+import Edit from './icons/Edit.vue'
+import BetaBanner from './BetaBanner.vue'
+import Breadcrumbs from './navigation/Breadcrumbs.vue'
+
 let observer
 
 export default {
   props: ['sidebarItems'],
   components: {
-    PageNav
+    PageNav,
+    Edit,
+    BetaBanner,
+    Breadcrumbs
   },
   mounted() {
     this.observeHeadings()
@@ -68,224 +103,10 @@ export default {
         },
         { threshold: 0.1, rootMargin: '-10% 0% -70% 0%' }
       )
-      document.querySelectorAll('.doc h2, .doc h3').forEach((section) => {
+      document.querySelectorAll('.prose h2, .prose h3').forEach((section) => {
         observer.observe(section)
       })
     }
   }
 }
 </script>
-
-<style>
-main .header-anchor {
-  position: absolute;
-  left: 0;
-  transform: translateX(-100%);
-  padding-right: 4px;
-  font-weight: 400;
-  opacity: 0;
-  text-decoration: none !important;
-}
-
-main .header-anchor:hover {
-  text-decoration: underline !important;
-}
-
-main *:hover > .header-anchor {
-  opacity: 1;
-}
-
-.doc {
-  padding: 0 16px;
-}
-
-.doc pre {
-  white-space: auto;
-  margin-bottom: 2rem;
-}
-
-.doc code:not(pre code) {
-  white-space: nowrap;
-}
-
-main p:not(.custom-block p) {
-  line-height: 32px;
-}
-
-h1:not(.custom-block *),
-h2:not(.custom-block *),
-h3:not(.custom-block *),
-h4:not(.custom-block *),
-h5:not(.custom-block *),
-h6:not(.custom-block *),
-strong:not(.custom-block *) {
-  font-weight: 500;
-  color: #1d1f22;
-  position: relative;
-  white-space: normal;
-}
-
-html.dark h1:not(.custom-block *),
-html.dark h2:not(.custom-block *),
-html.dark h3:not(.custom-block *),
-html.dark h4:not(.custom-block *),
-html.dark h5:not(.custom-block *),
-html.dark h6:not(.custom-block *),
-html.dark strong:not(.custom-block *) {
-  font-weight: 500;
-  white-space: normal;
-  color: white;
-}
-
-pre {
-  background-color: #393d43;
-  padding: 1rem;
-  border-radius: 0.5rem;
-}
-
-.doc ul:not(.custom-block ul) {
-  list-style-type: disc;
-  margin: 0 0 0 2rem;
-  line-height: 32px;
-}
-
-.doc > div > ul li:not(:last-child) {
-  margin-bottom: -32px;
-}
-
-.doc a:not(.custom-block a) {
-  color: #00c652;
-  text-decoration: underline;
-  white-space: normal;
-}
-
-.doc a:not(.custom-block a) > span {
-  display: none;
-}
-
-.doc h1:not(.custom-block h1) {
-  font-size: 2em;
-  font-weight: 700;
-}
-
-.doc h2:not(.custom-block h2) {
-  font-size: 1.75em;
-}
-
-.doc h1:not(.custom-block h1),
-.doc h2:not(.custom-block h2),
-.doc h3:not(.custom-block h3),
-.doc h4:not(.custom-block h4),
-.doc h5:not(.custom-block h5),
-.doc h6:not(.custom-block h6) {
-  scroll-margin-top: 4em;
-  scroll-padding-top: 4em;
-  white-space: normal;
-}
-
-.doc iframe {
-  max-width: 32rem;
-  margin: 0 auto;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 16/9;
-  border-radius: 0.5rem;
-}
-
-.doc table {
-  border-collapse: collapse;
-  border-radius: 5px;
-  border-style: hidden; /* hide standard table (collapsed) border */
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2); /* this draws the table border  */
-  width: 100%;
-  table-layout: fixed;
-  font-size: 14px;
-}
-
-.doc table td code {
-  white-space: pre-wrap;
-}
-
-html.dark .doc table {
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2); /* this draws the table border  */
-}
-
-.doc img {
-  margin-left: auto;
-  margin-right: auto;
-}
-.doc th code {
-  background-color: rgba(0, 0, 0, 0.5) !important;
-  border: 1px solid #333 !important;
-}
-
-.doc td,
-.doc th {
-  text-align: left;
-  padding: 1rem;
-}
-
-.doc tr {
-  width: 100%;
-}
-
-.doc tbody tr:nth-of-type(2n + 1) {
-  background-color: rgba(0, 0, 0, 0.05);
-}
-
-html.dark .doc tbody tr:nth-of-type(2n + 1) {
-  background-color: #16171a;
-}
-
-.doc th {
-  color: white !important;
-  background-color: #393d43;
-}
-
-.doc th * {
-  color: white;
-}
-
-.doc th:first-of-type {
-  border-top-left-radius: 5px;
-}
-
-.doc th:last-of-type {
-  border-top-right-radius: 5px;
-}
-
-.doc ol {
-  list-style-type: decimal;
-  padding-left: 2rem;
-}
-
-.doc code:not(pre code) {
-  background-color: #eee;
-  border-radius: 0.25rem;
-  padding: 0.25rem 0.5rem;
-  color: inherit;
-  border: 1px solid #ccc;
-  white-space: ;
-}
-
-html.dark .doc code:not(pre code) {
-  background-color: #393d43;
-  border-radius: 0.25rem;
-  padding: 0.25rem 0.5rem;
-  color: inherit;
-  border: 1px solid #555b64;
-}
-
-.doc blockquote {
-  padding: 2rem;
-  border-radius: 0.5rem;
-  background-color: #eee;
-}
-
-html.dark .doc blockquote {
-  padding: 2rem;
-  border-radius: 0.5rem;
-  background-color: #393d43;
-  color: white;
-}
-</style>
