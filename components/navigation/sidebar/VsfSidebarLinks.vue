@@ -6,7 +6,7 @@
       :class="{
         'mb-2': depth < 1,
         'pl-3   ': depth >= 1,
-        'border-l pl-4 pt-2 border-gray-200 dark:border-neutral-400 ml-1 mr-1':
+        'border-l pl-4 pt-2 border-gray-200 dark:border-zinc-700 ml-1 mr-1':
           depth > 1
       }"
       class="py-1 text-base sm:py-0 sm:text-sm"
@@ -35,7 +35,7 @@
       <RouterLink
         v-else-if="item.path"
         :to="item.path"
-        class="inline-block py-1 transition-colors hover:text-neutral dark:hover:text-white"
+        class="inline-block py-1 transition-colors hover:text-black dark:hover:text-white"
         :class="{
           'px-1': depth === 0,
           active: isActive(item.path)

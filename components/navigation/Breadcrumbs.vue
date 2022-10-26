@@ -62,6 +62,9 @@ export default {
           : this.$route.path.includes(item.link) ||
             (item.match && new RegExp(item.match).test(this.$route.path))
       )
+      if (!navItem) {
+        return []
+      }
       const list = [
         {
           title: this.$themeConfig.title,

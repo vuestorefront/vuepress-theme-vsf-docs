@@ -1,6 +1,6 @@
 <template>
   <header
-    class="sticky top-0 z-50 w-full border-b dark:bg-neutral-900 dark:border-b-neutral-700 bg-inherit"
+    class="sticky top-0 z-50 w-full border-b dark:bg-zinc-900 dark:border-b-zinc-700 bg-inherit"
   >
     <div
       class="flex items-center w-full px-4 py-3 mx-auto 2xl:container flex-nowrap 2xl:px-0"
@@ -16,7 +16,7 @@
       </a>
 
       <nav
-        class="hidden gap-4 ml-auto text-sm font-medium nav-links lg:flex text-neutral-900 dark:text-white"
+        class="hidden gap-4 ml-auto text-sm font-medium nav-links lg:flex text-zinc-900 dark:text-white"
       >
         <div class="nav-item">
           <RouterLink
@@ -53,30 +53,30 @@
         <button @click="toggleDisplayMode" class="dark-mode-toggle">
           <DarkModeToggle
             :is-dark="isDark"
-            class="w-4 h-auto opacity-50 fill-neutral dark:fill-white hover:opacity-100"
+            class="w-4 h-auto opacity-50 fill-zinc-900 dark:fill-white hover:opacity-100"
           />
         </button>
         <a href="https://discord.vuestorefront.io/" target="_blank">
           <Discord
-            class="w-auto h-4 opacity-50 fill-neutral dark:fill-white hover:opacity-100"
+            class="w-auto h-4 opacity-50 fill-zinc-900 dark:fill-white hover:opacity-100"
           />
         </a>
         <a href="https://github.com/vuestorefront/" target="_blank">
           <Github
-            class="w-auto h-4 opacity-50 fill-neutral dark:fill-white hover:opacity-100"
+            class="w-auto h-4 opacity-50 fill-zinc-900 dark:fill-white hover:opacity-100"
           />
         </a>
       </div>
     </div>
     <div
-      class="relative hidden w-full border-t dark:border-t-neutral-700 md:block bg-inherit"
+      class="relative hidden w-full border-t dark:border-t-zinc-700 md:block bg-inherit"
       v-if="$themeConfig.secondaryNav"
     >
       <div
         class="relative flex items-center w-full px-4 mx-auto text-sm font-medium text-black bg-inherit 2xl:container flex-nowrap 2xl:px-0 dark:text-white"
       >
         <nav class="flex items-center w-full">
-          <div class="pr-4 mr-2 border-r-2">
+          <div class="pr-4 mr-2 border-r-2 dark:border-r-zinc-700">
             <RouterLink to="/">
               {{ $themeConfig.title }}
             </RouterLink>
@@ -89,7 +89,7 @@
                   ? new RegExp(match).test($route.path)
                   : ($route.path.startsWith(link) && link !== '/') ||
                     ($route.path === '/' && link === '/'),
-                'hover:bg-slate-100 dark:hover:bg-neutral-700': !(match
+                'hover:bg-slate-100 dark:hover:bg-zinc-800': !(match
                   ? new RegExp(match).test($route.path)
                   : ($route.path.startsWith(link) && link !== '/') ||
                     ($route.path === '/' && link === '/'))
@@ -189,32 +189,13 @@ export default {
   word-break: break-word;
 }
 
-html.dark .search-box input {
-  background-color: #404040;
-  color: white;
-}
-
 .search-box .suggestions {
   right: 0;
   z-index: 50 !important;
 }
 
-.suggestions * {
-  color: #393d43 !important;
-  background-color: inherit !important;
-}
-
-html.dark .suggestions {
-  background-color: #1d1f22;
-  border-color: #555b64;
-}
-
 .suggestion .focused {
   background-color: inherit !important;
-}
-
-html.dark .suggestions li:hover {
-  background-color: #393d43 !important;
 }
 
 .suggestions li:hover {

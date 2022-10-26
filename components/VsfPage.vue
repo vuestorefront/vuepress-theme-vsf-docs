@@ -12,8 +12,20 @@
       <p
         class="flex items-center gap-1 px-2 text-xs font-medium text-yellow-800 bg-yellow-500 rounded bg-opacity-20 dark:bg-yellow-500 dark:bg-opacity-20 dark:text-yellow-50"
       >
-        <Icon icon="material-symbols:star" height="16" class="mb-[2px]" />
+        <iconify-icon
+          icon="material-symbols:star"
+          height="16"
+          class="mb-[2px]"
+        />
         <span> Enterprise </span>
+      </p>
+    </div>
+    <div class="flex flex-wrap mb-2" v-if="$page.frontmatter.openSourceTag">
+      <p
+        class="flex items-center gap-1 px-2 text-xs font-medium text-green-800 bg-green-500 rounded bg-opacity-20 dark:bg-green-500 dark:bg-opacity-20 dark:text-green-50"
+      >
+        <iconify-icon icon="ri:open-source-fill" height="16" />
+        <span> Open Source </span>
       </p>
     </div>
     <h2
@@ -22,7 +34,13 @@
     >
       {{ $page.frontmatter.pretitle }}
     </h2>
+    <div class="mb-8" v-if="$slots['before-content']">
+      <slot name="before-content" />
+    </div>
     <Content class="pb-8 mb-8 theme-default-content" :key="$route.fullPath" />
+    <div class="mb-8" v-if="$slots['after-content']">
+      <slot name="after-content" />
+    </div>
     <div
       class="flex items-center justify-end mb-4 text-sm"
       v-if="$themeConfig.docsRepoPath"
@@ -33,9 +51,9 @@
           '.md'
         )}`"
         target="_blank"
-        class="!border-b-0 !text-inherit hover:!text-neutral-900 dark:hover:!text-white flex items-center"
+        class="!border-b-0 !text-inherit hover:!text-zinc-900 dark:hover:!text-white flex items-center"
       >
-        <Icon
+        <iconify-icon
           class="mb-[3px] mr-1"
           icon="material-symbols:edit-square-outline-rounded"
         />

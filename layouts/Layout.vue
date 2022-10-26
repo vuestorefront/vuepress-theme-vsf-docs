@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full min-h-screen text-base bg-white dark:bg-neutral-900 text-slate-500 dark:text-slate-400"
+    class="w-full min-h-screen text-base bg-white dark:bg-zinc-900 text-slate-500 dark:text-zinc-400"
   >
     <VsfNav @toggle="sidebarOpen = !sidebarOpen" :sidebar-open="sidebarOpen" />
 
@@ -48,7 +48,15 @@
         <template #top>
           <slot name="page-top" />
         </template>
-        <template #bottom> </template>
+        <template #before-content>
+          <slot name="before-content" />
+        </template>
+        <template #after-content>
+          <slot name="after-content" />
+        </template>
+        <template #bottom>
+          <slot name="page-bottom" />
+        </template>
       </VsfPage>
       <div
         v-if="!$page.frontmatter.hideToc"
@@ -63,7 +71,7 @@
           v-if="tocHeaders && tocHeaders.length > 0"
         >
           <p
-            class="mb-2 text-xs font-bold uppercase text-neutral dark:text-white"
+            class="mb-2 text-xs font-bold uppercase text-black dark:text-white"
           >
             On this page
           </p>
@@ -79,7 +87,7 @@
                       currentSection == header.slug ||
                       (!currentSection &&
                         $route.hash.substring(1) === header.slug),
-                    'hover:text-neutral dark:hover:text-white': !(
+                    'hover:text-black dark:hover:text-white': !(
                       currentSection == header.slug ||
                       (!currentSection &&
                         $route.hash.substring(1) === header.slug)
@@ -95,13 +103,13 @@
                       /The(.*)(Directory|File)/.test(header.title)
                     "
                   >
-                    <Icon
+                    <iconify-icon
                       icon="ion:document-sharp"
                       v-if="header.title.includes('File')"
                       width="18"
                       class="mr-1"
                     />
-                    <Icon
+                    <iconify-icon
                       icon="material-symbols:folder"
                       v-if="header.title.includes('Directory')"
                       width="18"
@@ -180,14 +188,6 @@ export default {
 </script>
 
 <style>
-html.dark {
-  background-color: rgb(29 31 34);
-}
-
-html.dark {
-  color-scheme: dark;
-}
-
 body.overflow-hidden {
   overflow: auto;
 }

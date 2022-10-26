@@ -1,6 +1,6 @@
 <template>
   <aside
-    class="h-[calc(100vh-3.5em)] pt-7 pr-4 overflow-y-auto sidebar w-full border-r dark:border-r-neutral-700 pb-32"
+    class="h-[calc(100vh-3.5em)] pt-7 pr-4 overflow-y-auto sidebar w-full border-r dark:border-r-zinc-700 pb-32"
   >
     <!-- <div class="integration-selector">Integration</div> -->
     <slot name="top" />
@@ -11,14 +11,20 @@
       :key="$route.fullPath"
       class="hidden lg:block"
     />
+    <a
+      href="/"
+      class="hover:text-black dark:hover:text-white mb-4 block lg:hidden px-1"
+    >
+      {{ $site.themeConfig.title }}
+    </a>
     <SidebarLinks :depth="0" :items="allLinks" class="block lg:hidden" />
 
     <a
       v-for="link in navLinks"
       :href="link.path"
-      class="flex items-center col-span-1 p-4 mt-2 border rounded lg:hidden text-green"
+      class="flex items-center col-span-1 p-4 mt-2 border dark:border-zinc-700 rounded lg:hidden"
     >
-      <Icon :icon="link.icon" width="24" />
+      <iconify-icon :icon="link.icon" width="24" />
       <span class="ml-2 font-medium sm:text-sm">{{ link.title }}</span>
     </a>
 
@@ -48,7 +54,19 @@ export default {
         .map((group) => {
           return group
         })
-      const allSidebarLinks = b.flat()
+        .flat()
+        .filter((a, index) => a.children[0]?.title !== 'TOP TILE')
+
+      const allSidebarLinks = b.filter((value, index) => {
+        const _value = JSON.stringify(value)
+        return (
+          index ===
+          b.findIndex((obj) => {
+            return JSON.stringify(obj) === _value
+          })
+        )
+      })
+      return allSidebarLinks
 
       if (this.$themeConfig.secondaryNav) {
         const groupedLinksByNav = this.$themeConfig.secondaryNav.map((item) => {
@@ -58,13 +76,15 @@ export default {
             children: allSidebarLinks.filter(
               (sidebarItem) =>
                 (sidebarItem.path && sidebarItem.path.startsWith(item.link)) ||
-                (sidebarItem.children[0].path &&
-                  sidebarItem.children[0]?.path.startsWith(item.link))
+                (sidebarItem.children &&
+                  sidebarItem.children[0].path &&
+                  sidebarItem.children[0]?.path.startsWith(item.link)) ||
+                (item.match && new RegExp(item.match).test(sidebarItem.path))
             ),
             type: 'group'
           }
         })
-        return groupedLinksByNav
+        return groupedLinksByNav.filter((item) => item.children.length > 0)
       } else {
         return allSidebarLinks
       }

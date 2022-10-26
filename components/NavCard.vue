@@ -7,7 +7,7 @@
     class="flex flex-col w-full h-full text-left no-underline rounded-lg indent-0 group"
     :class="{
       'p-4 border ': border,
-      'dark:border-neutral-700': border && !green,
+      'dark:border-zinc-700': border && !green,
       'border-green dark:border-green': border && green,
       ' hover:-translate-y-1 hover:shadow-md transition-all': isCard,
       'bg-green text-white': green
@@ -16,9 +16,9 @@
     <div>
       <div
         v-if="$slots.default"
-        class="inline-block rounded"
+        class="inline-block rounded aspect-square overflow-hidden p-3"
         :class="{
-          'bg-green p-2': !green
+          'bg-green': !green
         }"
       >
         <slot />
@@ -43,7 +43,7 @@
     </p>
     <div class="pt-8 mt-auto" v-if="readMore">
       <span
-        class="inline-block px-4 py-2 text-sm text-left no-underline rounded indent-0 group-hover:underline bg-slate-200 text-slate-800 dark:bg-neutral-800 dark:text-slate-200"
+        class="inline-block px-4 py-2 text-sm text-left no-underline rounded indent-0 group-hover:underline bg-slate-200 text-black dark:bg-zinc-800 dark:text-white"
       >
         Read More
       </span>

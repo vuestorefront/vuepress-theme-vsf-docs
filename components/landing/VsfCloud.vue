@@ -15,7 +15,7 @@
       </p>
       <div class="mt-8">
         <a
-          href=""
+          href="https://docs.vuestorefront.io/cloud/"
           target="_blank"
           class="inline-block text-sm font-medium px-6 py-2 !text-white rounded bg-green hover:brightness-105 no-underline !border-b-0"
         >

@@ -1,5 +1,5 @@
 <template>
-  <footer class="border-t dark:border-neutral-600">
+  <footer>
     <div
       class="container grid grid-cols-12 px-4 py-12 mx-auto text-sm gap-y-16"
     >
@@ -13,37 +13,37 @@
             <a
               href="https://github.com/DivanteLtd/vue-storefront"
               target="_blank"
-              class="hover:text-neutral-900 hover:dark:text-white"
+              class="hover:text-zinc-900 hover:dark:text-white"
             >
-              <Icon icon="mdi:github" width="24" class="text-inherit" />
+              <iconify-icon icon="mdi:github" width="24" class="text-inherit" />
             </a>
             <a
               href="https://twitter.com/VueStorefront"
               target="_blank"
-              class="hover:text-neutral-900 hover:dark:text-white"
+              class="hover:text-zinc-900 hover:dark:text-white"
             >
-              <Icon icon="mdi:twitter" width="24" />
+              <iconify-icon icon="mdi:twitter" width="24" />
             </a>
             <a
               href="https://www.youtube.com/vuestorefront"
               target="_blank"
-              class="hover:text-neutral-900 hover:dark:text-white"
+              class="hover:text-zinc-900 hover:dark:text-white"
             >
-              <Icon icon="mdi:youtube" width="24" />
+              <iconify-icon icon="mdi:youtube" width="24" />
             </a>
             <a
               href="https://www.linkedin.com/company/vue-storefront/"
               target="_blank"
-              class="hover:text-neutral-900 hover:dark:text-white"
+              class="hover:text-zinc-900 hover:dark:text-white"
             >
-              <Icon icon="mdi:linkedin" width="24" />
+              <iconify-icon icon="mdi:linkedin" width="24" />
             </a>
             <a
               href="https://www.facebook.com/vuestorefront/"
               target="_blank"
-              class="hover:text-neutral-900 hover:dark:text-white"
+              class="hover:text-zinc-900 hover:dark:text-white"
             >
-              <Icon icon="mdi:facebook" width="24" />
+              <iconify-icon icon="mdi:facebook" width="24" />
             </a>
           </div>
 
@@ -72,15 +72,19 @@
           <ul>
             <li class="mb-2">
               <a
+                class="hover:text-zinc-900 dark:hover:text-white"
                 href="https://docs.vuestorefront.io/v2/getting-started/introduction.html"
-                >Getting Started</a
               >
+                Getting Started
+              </a>
             </li>
             <li class="mb-2">
               <a
+                class="hover:text-zinc-900 dark:hover:text-white"
                 href="https://docs.vuestorefront.io/v2/integrate/extending-vue-storefront.html"
-                >Extending Vue Storefront</a
               >
+                Extending Vue Storefront
+              </a>
             </li>
           </ul>
         </div>
@@ -92,16 +96,32 @@
           <h2 class="mb-4 text-sm font-medium">Documentation</h2>
           <ul>
             <li class="mb-2">
-              <a href="https://docs.vuestorefront.io/v2">Docs Home</a>
+              <a
+                class="hover:text-zinc-900 dark:hover:text-white"
+                href="https://docs.vuestorefront.io/v2"
+                >Docs Home</a
+              >
             </li>
             <li class="mb-2">
-              <a href="https://docs.storefrontui.io/">Storefront UI</a>
+              <a
+                class="hover:text-zinc-900 dark:hover:text-white"
+                href="https://docs.storefrontui.io/"
+                >Storefront UI</a
+              >
             </li>
             <li class="mb-2">
-              <a href="https://vuestorefront.io/cloud">Vue Storefront Cloud</a>
+              <a
+                class="hover:text-zinc-900 dark:hover:text-white"
+                href="https://vuestorefront.io/cloud"
+                >Vue Storefront Cloud</a
+              >
             </li>
             <li class="mb-2">
-              <a href="https://docs.vuestorefront.io/v1/">Vue Storefront 1</a>
+              <a
+                class="hover:text-zinc-900 dark:hover:text-white"
+                href="https://docs.vuestorefront.io/v1/"
+                >Vue Storefront 1</a
+              >
             </li>
           </ul>
         </div>
@@ -113,16 +133,30 @@
           <h2 class="mb-4 text-sm font-medium">Company</h2>
           <ul class="">
             <li class="mb-2">
-              <a href="https://www.vuestorefront.io/about-us">About us</a>
+              <a
+                class="hover:text-zinc-900 dark:hover:text-white"
+                href="https://www.vuestorefront.io/about-us"
+                >About us</a
+              >
             </li>
             <li class="mb-2">
-              <a href="https://boards.greenhouse.io/vuestorefront">Careers</a>
+              <a
+                class="hover:text-zinc-900 dark:hover:text-white"
+                href="https://boards.greenhouse.io/vuestorefront"
+                >Careers</a
+              >
             </li>
             <li class="mb-2">
-              <a href="https://blog.vuestorefront.io/">Blog</a>
+              <a
+                class="hover:text-zinc-900 dark:hover:text-white"
+                href="https://blog.vuestorefront.io/"
+                >Blog</a
+              >
             </li>
             <li class="mb-2">
-              <a href="https://vuestorefront.io/privacy-policy"
+              <a
+                class="hover:text-zinc-900 dark:hover:text-white"
+                href="https://vuestorefront.io/privacy-policy"
                 >Privacy Policy</a
               >
             </li>

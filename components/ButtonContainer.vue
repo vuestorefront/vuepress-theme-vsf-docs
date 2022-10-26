@@ -5,7 +5,7 @@
       :is="elType"
       :href="to"
       :target="target"
-      class="inline-block px-4 py-2 no-underline !border-b-0 rounded bg-slate-200 dark:bg-neutral-800 hover:brightness-105 dark:hover:brightness-110"
+      class="inline-block px-4 py-2 no-underline !border-b-0 rounded bg-slate-200 dark:bg-zinc-800 hover:brightness-105 dark:hover:brightness-110"
     >
       <slot name="default" />
     </component>

@@ -15,7 +15,7 @@
       <div class="flex items-center shrink-0">
         <a
           href="https://docs.vuestorefront.io/v2/"
-          class="inline-block px-4 py-2 text-sm font-medium text-left no-underline !border-b-0 rounded indent-0 group-hover:underline bg-slate-200 text-slate-800 dark:bg-neutral-800 dark:text-slate-200"
+          class="inline-block px-4 py-2 text-sm font-medium text-left no-underline !border-b-0 rounded indent-0 group-hover:underline bg-slate-200 text-slate-800 dark:bg-zinc-800 dark:text-slate-200"
         >
           View Core Docs
         </a>

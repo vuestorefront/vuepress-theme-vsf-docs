@@ -11,9 +11,22 @@
         </p>
       </div>
     </header>
-    <StorefrontUi />
-    <VsfCloud />
+    <StorefrontUi v-if="!hideSfui"/>
+    <VsfCloud v-if="!hideCloud"/>
   </section>
 </template>
 
-<script></script>
+<script>
+export default {
+  props: {
+    hideSfui: {
+      type: Boolean,
+      default: false
+    },
+    hideCloud: {
+      type: Boolean,
+      default: false
+    }
+  }
+}
+</script>

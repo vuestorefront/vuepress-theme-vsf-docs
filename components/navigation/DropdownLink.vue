@@ -6,29 +6,36 @@
     </button>
 
     <ul
-      class="absolute z-10 hidden w-64 p-2 bg-white border rounded -left-1/2 nav-dropdown group-focus-within:block group-hover:block top-full dark:bg-neutral-800 dark:border-neutral-700"
+      class="absolute z-10 hidden w-64 p-2 bg-white border rounded -left-1/2 nav-dropdown group-focus-within:block group-hover:block top-full dark:bg-zinc-900 dark:border-zinc-700"
       v-if="type === 'integrations'"
     >
-      <li
-        v-for="(integration, index) in integrations"
-        :key="integration.link || index"
-        class="flex"
-      >
-        <a
-          :href="integration.link"
-          class="flex items-center w-full h-8 rounded dark:hover:bg-white dark:hover:bg-opacity-5 hover:bg-black hover:bg-opacity-5 hover:text-neutral dark:hover:text-white"
+      <template v-for="(integration, index) in integrations">
+        <li
+          v-if="!integration.link"
+          :class="{
+            'border-t-2 pt-4 ': index > 0
+          }"
+          class="text-black dark:text-white pb-1 opacity-50 mt-2 pl-2 text-xs font-semibold"
         >
-          <img
-            :src="`https://docs.vuestorefront.io/v2/integrations-logos/thumbnails/${integration.name
-              .toLowerCase()
-              .replace(/ /g, '-')}.png`"
-            :alt="integration.name"
-            onerror='this.style.display = "none"'
-            class="w-4 h-auto ml-2"
-          />
-          <span class="ml-2"> {{ integration.name }}</span>
-        </a>
-      </li>
+          {{ integration.name }}
+        </li>
+        <li class="flex" v-else>
+          <a
+            :href="integration.link"
+            class="flex items-center w-full h-8 rounded dark:hover:bg-zinc-800 hover:bg-black hover:bg-opacity-5 hover:text-zinc dark:hover:text-white"
+          >
+            <img
+              :src="`https://docs.vuestorefront.io/v2/integrations-logos/thumbnails/${integration.name
+                .toLowerCase()
+                .replace(/ /g, '-')}.png`"
+              :alt="integration.name"
+              onerror='this.style.display = \"none\"'
+              class="w-4 h-auto ml-2"
+            />
+            <span class="ml-2"> {{ integration.name }}</span>
+          </a>
+        </li>
+      </template>
       <li class="mt-4">
         <a
           href="https://docs.vuestorefront.io/v2/integrations/"
@@ -39,13 +46,13 @@
       </li>
     </ul>
     <ul
-      class="absolute z-10 hidden w-48 p-2 bg-white border rounded -left-1/2 nav-dropdown group-focus-within:block group-hover:block top-full dark:bg-neutral-800 dark:border-neutral-700"
+      class="absolute z-10 hidden w-48 p-2 bg-white border rounded -left-1/2 nav-dropdown group-focus-within:block group-hover:block top-full dark:bg-zinc-900 dark:border-zinc-700"
       v-else-if="type === 'ecosystem'"
     >
       <li class="flex">
         <a
           href="https://docs.storefrontui.io/"
-          class="flex items-center w-full h-8 rounded dark:hover:bg-white dark:hover:bg-opacity-5 hover:bg-black hover:bg-opacity-5 hover:text-neutral dark:hover:text-white"
+          class="flex items-center w-full h-8 rounded dark:hover:bg-zinc-800 hover:bg-black hover:bg-opacity-5 hover:text-zinc dark:hover:text-white"
         >
           <span class="ml-2">Storefront UI</span>
         </a>
@@ -53,7 +60,7 @@
       <li class="flex">
         <a
           href="https://docs.vuestorefront.io/cloud/"
-          class="flex items-center w-full h-8 rounded dark:hover:bg-white dark:hover:bg-opacity-5 hover:bg-black hover:bg-opacity-5 hover:text-neutral dark:hover:text-white"
+          class="flex items-center w-full h-8 rounded dark:hover:bg-zinc-800 hover:bg-black hover:bg-opacity-5 hover:text-zinc dark:hover:text-white"
         >
           <span class="ml-2">Vue Storefront Cloud</span>
         </a>
@@ -61,7 +68,7 @@
       <li class="flex">
         <a
           href="https://docs.vuestorefront.io/v1/"
-          class="flex items-center w-full h-8 rounded dark:hover:bg-white dark:hover:bg-opacity-5 hover:bg-black hover:bg-opacity-5 hover:text-neutral dark:hover:text-white"
+          class="flex items-center w-full h-8 rounded dark:hover:bg-zinc-800 hover:bg-black hover:bg-opacity-5 hover:text-zinc dark:hover:text-white"
         >
           <span class="ml-2">Vue Storefront 1</span>
         </a>
@@ -82,6 +89,9 @@ export default {
       open: false,
       integrations: [
         {
+          name: 'Enterprise'
+        },
+        {
           name: 'BigCommerce',
           link: 'https://docs.vuestorefront.io/bigcommerce'
         },
@@ -90,18 +100,23 @@ export default {
           link: 'https://docs.vuestorefront.io/commercetools/'
         },
         {
-          name: 'Magento',
-          link: 'https://docs.vuestorefront.io/magento'
+          name: 'SAP Commerce Cloud',
+          link: 'https://docs.vuestorefront.io/sapcc'
         },
         {
-          name: 'SAP Commerce Cloud',
-          link: 'https://docs.vuestorefront.io/sfcc'
+          name: 'Open Source'
+        },
+        {
+          name: 'Magento',
+          link: 'https://docs.vuestorefront.io/magento'
         },
         {
           name: 'Shopify',
           link: 'https://docs.vuestorefront.io/shopify'
         },
-
+        {
+          name: 'Community'
+        },
         {
           name: 'Sylius',
           link: 'https://vsf-sylius-docs.herokuapp.com/'

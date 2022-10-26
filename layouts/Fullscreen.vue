@@ -6,7 +6,7 @@
     }"
   >
     <VsfNav @toggle="sidebarOpen = !sidebarOpen" :sidebar-open="sidebarOpen" />
-    <div class="container relative mx-auto max-w-7xl gap-y-16">
+    <div class="gap-4 mx-auto 2xl:container flex-nowrap 2xl:px-0 bg-inherit">
       <div
         class="fixed top-0 left-0 z-10 block w-screen h-screen lg:hidden"
         @click="sidebarOpen = false"
@@ -24,7 +24,7 @@
           class="sticky max-w-full overflow-hidden top-14"
         />
       </div>
-      <VsfPage class="mt-7" />
+      <slot />
     </div>
     <VsfFooter />
   </div>
