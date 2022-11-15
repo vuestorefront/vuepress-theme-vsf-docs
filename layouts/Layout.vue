@@ -37,7 +37,11 @@
             'top-24': $themeConfig.secondaryNav,
             'top-14': !$themeConfig.secondaryNav
           }"
-        />
+        >
+          <template #top>
+            <slot name="sidebar-top" />
+          </template>
+        </VsfSidebar>
       </div>
 
       <VsfPage

@@ -6,7 +6,7 @@
     }"
   >
     <VsfNav @toggle="sidebarOpen = !sidebarOpen" :sidebar-open="sidebarOpen" />
-    <div class="container relative mx-auto max-w-7xl gap-y-16">
+    <div class="container relative mx-auto max-w-7xl gap-y-16 bg-inherit">
       <div
         class="fixed top-0 left-0 z-10 block w-screen h-screen lg:hidden"
         @click="sidebarOpen = false"

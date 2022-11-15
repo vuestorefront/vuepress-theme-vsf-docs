@@ -311,7 +311,7 @@ code:not(pre code) {
   @apply break-words whitespace-pre-line leading-none;
 }
 
-pre {
+pre:not(.swagger-ui pre) {
   background-color: #393d43;
   padding: 1em;
   border-radius: 0.5em;

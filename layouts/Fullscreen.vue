@@ -24,7 +24,11 @@
           class="sticky max-w-full overflow-hidden top-14"
         />
       </div>
-      <slot />
+      <slot>
+        <VsfPage
+          class="mt-7 mx-auto 2xl:container flex-nowrap 2xl:px-0 bg-inherit px-4"
+        />
+      </slot>
     </div>
     <VsfFooter />
   </div>
