@@ -83,7 +83,7 @@
           </div>
           <ul class="flex flex-1 gap-2 py-2">
             <li
-              v-for="{ text, link, match } in $themeConfig.secondaryNav"
+              v-for="{ text, link, match } in secondaryLinks"
               :class="{
                 'text-green bg-green bg-opacity-10 ': match
                   ? new RegExp(match).test($route.path)
@@ -165,6 +165,21 @@ export default {
         localStorage.theme = 'light'
         this.isDark = false
       }
+    }
+  },
+  computed: {
+    secondaryLinks() {
+      const links = this.$themeConfig.secondaryNav
+
+      if (Array.isArray(links)) {
+        return links
+      }
+
+      return links[
+        Object.keys(links).find((key) => {
+          return this.$route.path.startsWith(key)
+        })
+      ]
     }
   }
 }

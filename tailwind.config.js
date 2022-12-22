@@ -14,7 +14,8 @@ module.exports = {
     'md:justify-end',
     'aspect-video',
     'bg-zinc-800',
-    'dark:bg-zinc-800'
+    'dark:bg-zinc-800',
+    'dark:hover:bg-zinc-700'
   ],
   theme: {
     container: {

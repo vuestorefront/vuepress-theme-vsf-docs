@@ -44,7 +44,6 @@ export default {
   computed: {
     allLinks() {
       const { pages, themeConfig } = this.$site
-
       const b = Object.keys(this.$themeConfig.sidebar)
         .map((sidebarKey) => {
           return this.$themeConfig.sidebar[sidebarKey].map((item) =>
@@ -55,7 +54,7 @@ export default {
           return group
         })
         .flat()
-        .filter((a, index) => a.children[0]?.title !== 'TOP TILE')
+        .filter((a, index) => a.children && a.children[0]?.title !== 'TOP TILE')
 
       const allSidebarLinks = b.filter((value, index) => {
         const _value = JSON.stringify(value)

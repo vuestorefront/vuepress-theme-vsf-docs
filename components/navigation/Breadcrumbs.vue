@@ -56,12 +56,31 @@ export default {
         this.$localePath
       )
       const flattenedSidebar = this.flattenSidebar(sidebar)
-      let navItem = this.$themeConfig.secondaryNav.find((item) =>
-        item.link === '/'
-          ? this.$route.path === '/'
-          : this.$route.path.includes(item.link) ||
-            (item.match && new RegExp(item.match).test(this.$route.path))
-      )
+      const links = this.$themeConfig.secondaryNav
+      let navItem
+      if (Array.isArray(links)) {
+        navItem = links?.find((item) =>
+          item.link === '/'
+            ? this.$route.path === '/'
+            : this.$route.path.includes(item.link) ||
+              (item.match && new RegExp(item.match).test(this.$route.path))
+        )
+      } else {
+        const linksArray =
+          links[
+            Object.keys(links).find((key) => {
+              if (this.$route.path.startsWith(key)) {
+                return links[key]
+              }
+            })
+          ]
+        navItem = linksArray?.find((item) =>
+          item.link === '/'
+            ? this.$route.path === '/'
+            : this.$route.path.includes(item.link) ||
+              (item.match && new RegExp(item.match).test(this.$route.path))
+        )
+      }
       if (!navItem) {
         return []
       }

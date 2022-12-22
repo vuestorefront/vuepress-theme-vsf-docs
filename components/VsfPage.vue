@@ -85,7 +85,10 @@ export default {
     this.observeHeadings()
     const hash = this.$route.hash
     if (!!hash) {
-      document.getElementById(hash.substring(1)).scrollIntoView()
+      const el = document.getElementById(hash.substring(1))
+      if (el) {
+        el.scrollIntoView()
+      }
     }
   },
   updated() {
@@ -97,7 +100,10 @@ export default {
         this.$nextTick(() => {
           const hash = this.$route.hash
           if (!!hash) {
-            document.getElementById(hash.substring(1)).scrollIntoView()
+            const el = document.getElementById(hash.substring(1))
+            if (el) {
+              el.scrollIntoView()
+            }
           }
         })
       }
