@@ -82,24 +82,57 @@
             </RouterLink>
           </div>
           <ul class="flex flex-1 gap-2 py-2">
-            <li
-              v-for="{ text, link, match } in secondaryLinks"
-              :class="{
-                'text-green bg-green bg-opacity-10 ': match
-                  ? new RegExp(match).test($route.path)
-                  : ($route.path.startsWith(link) && link !== '/') ||
-                    ($route.path === '/' && link === '/'),
-                'hover:bg-slate-100 dark:hover:bg-zinc-800': !(match
-                  ? new RegExp(match).test($route.path)
-                  : ($route.path.startsWith(link) && link !== '/') ||
-                    ($route.path === '/' && link === '/'))
-              }"
-              class="relative px-2 py-1 rounded"
-            >
-              <RouterLink :to="link">
-                {{ text }}
-              </RouterLink>
-            </li>
+            <template v-for="{ text, link, match, children } in secondaryLinks">
+              <li class="relative group" v-if="children">
+                <span
+                  class="px-2 py-1 rounded inline-block"
+                  :class="{
+                    'text-green bg-green bg-opacity-10 ': match
+                      ? new RegExp(match).test($route.path)
+                      : ($route.path.startsWith(link) && link !== '/') ||
+                        ($route.path === '/' && link === '/'),
+                    'hover:bg-slate-100 dark:hover:bg-zinc-800': !(match
+                      ? new RegExp(match).test($route.path)
+                      : ($route.path.startsWith(link) && link !== '/') ||
+                        ($route.path === '/' && link === '/'))
+                  }"
+                >
+                  {{ text }}
+                </span>
+
+                <ul
+                  class="absolute z-10 hidden overflow-hidden w-48 bg-white border rounded -left-1/2 nav-dropdown group-focus-within:block group-hover:block top-full dark:bg-zinc-900 dark:border-zinc-700"
+                >
+                  <li v-for="{ text, link } in children">
+                    <RouterLink
+                      :to="link"
+                      class="py-2 px-3 block hover:bg-gray-50 dark:hover:bg-zinc-800"
+                    >
+                      {{ text }}
+                    </RouterLink>
+                  </li>
+                </ul>
+              </li>
+              <li
+                v-else
+                :class="{
+                  'text-green bg-green bg-opacity-10 ': match
+                    ? new RegExp(match).test($route.path)
+                    : ($route.path.startsWith(link) && link !== '/') ||
+                      ($route.path === '/' && link === '/'),
+                  'hover:bg-slate-100 dark:hover:bg-zinc-800': !(match
+                    ? new RegExp(match).test($route.path)
+                    : ($route.path.startsWith(link) && link !== '/') ||
+                      ($route.path === '/' && link === '/'))
+                }"
+                class="relative px-2 py-1 rounded"
+              >
+                <RouterLink :to="link">
+                  {{ text }}
+                </RouterLink>
+              </li>
+            </template>
+
             <li class="py-1 ml-auto" v-if="$site.base !== '/v2/'">
               <a
                 href="https://docs.vuestorefront.io/v2/"
