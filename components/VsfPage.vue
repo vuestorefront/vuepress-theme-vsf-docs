@@ -4,6 +4,7 @@
     <BetaBanner v-if="$page.frontmatter.betaBanner" class="mt-4" />
     <Breadcrumbs
       v-if="
+        !hideBreadcrumbs &&
         !$page.frontmatter.hideBreadcrumbs &&
         $page.frontmatter.layout !== 'home'
       "
@@ -74,7 +75,7 @@ import Breadcrumbs from './navigation/Breadcrumbs.vue'
 let observer
 
 export default {
-  props: ['sidebarItems'],
+  props: ['sidebarItems', 'hideBreadcrumbs'],
   components: {
     PageNav,
     Edit,

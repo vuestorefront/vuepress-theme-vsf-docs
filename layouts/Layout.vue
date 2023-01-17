@@ -48,6 +48,7 @@
         class="flex-1 min-w-0 mt-6 md:px-6"
         @update-heading="currentSection = $event"
         @click="sidebarOpen = false"
+        :hideBreadcrumbs="hideBreadcrumbs"
       >
         <template #top>
           <slot name="page-top" />
@@ -142,6 +143,12 @@ import VsfFooter from '../components/VsfFooter.vue'
 
 import { resolveSidebarItems } from '../util'
 export default {
+  props: {
+    hideBreadcrumbs: {
+      type: Boolean,
+      default: false
+    }
+  },
   components: { VsfNav, VsfPage, VsfSidebar, VsfFooter },
   name: 'Layout',
   data() {

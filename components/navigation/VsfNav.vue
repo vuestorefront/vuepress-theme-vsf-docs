@@ -103,7 +103,7 @@
                 <ul
                   class="absolute z-10 hidden overflow-hidden w-48 bg-white border rounded -left-1/2 nav-dropdown group-focus-within:block group-hover:block top-full dark:bg-zinc-900 dark:border-zinc-700"
                 >
-                  <li v-for="{ text, link } in children">
+                  <li v-for="{ text, link } in children" @click="hideDropdown">
                     <RouterLink
                       :to="link"
                       class="py-2 px-3 block hover:bg-gray-50 dark:hover:bg-zinc-800"
@@ -187,6 +187,14 @@ export default {
     }
   },
   methods: {
+    hideDropdown(event) {
+      event.stopPropagation()
+      var el = event.target.parentNode.parentNode
+      el.style.display = 'none'
+      setTimeout(function () {
+        el.style.removeProperty('display')
+      }, 30)
+    },
     toggleDisplayMode() {
       // On page load or when changing themes, best to add inline in `head` to avoid FOUC
       if (!document.documentElement.classList.contains('dark')) {
