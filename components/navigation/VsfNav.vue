@@ -104,7 +104,15 @@
                   class="absolute z-10 hidden overflow-hidden w-48 bg-white border rounded -left-1/2 nav-dropdown group-focus-within:block group-hover:block top-full dark:bg-zinc-900 dark:border-zinc-700"
                 >
                   <li v-for="{ text, link } in children" @click="hideDropdown">
+                    <a
+                      :href="link"
+                      v-if="link.includes('https://')"
+                      class="py-2 px-3 block hover:bg-gray-50 dark:hover:bg-zinc-800"
+                    >
+                      {{ text }}
+                    </a>
                     <RouterLink
+                      v-else
                       :to="link"
                       class="py-2 px-3 block hover:bg-gray-50 dark:hover:bg-zinc-800"
                     >
@@ -127,7 +135,10 @@
                 }"
                 class="relative px-2 py-1 rounded"
               >
-                <RouterLink :to="link">
+                <a :href="link" v-if="link.includes('https://')">
+                  {{ text }}
+                </a>
+                <RouterLink :to="link" v-else>
                   {{ text }}
                 </RouterLink>
               </li>
