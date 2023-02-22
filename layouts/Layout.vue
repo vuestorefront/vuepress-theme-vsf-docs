@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full min-h-screen text-base bg-white dark:bg-zinc-900 text-slate-500 dark:text-zinc-400"
+    class="w-full min-h-screen text-base bg-white dark:bg-zinc-900 text-slate-500 dark:text-zinc-400 antialiased"
   >
     <VsfNav @toggle="sidebarOpen = !sidebarOpen" :sidebar-open="sidebarOpen" />
 
