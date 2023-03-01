@@ -2028,6 +2028,11 @@ main .header-anchor:hover svg *{
           text-decoration-line: none !important;
 }
 
+.antialiased{
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 .opacity-80{
   opacity: 0.8;
 }
@@ -2218,7 +2223,7 @@ div[class*='language-']{
 
 .dark .prose table:not(.custom-block table) td{
   --tw-border-opacity: 1;
-  border-color: rgb(212 212 216 / var(--tw-border-opacity));
+  border-color: rgb(63 63 70 / var(--tw-border-opacity));
 }
 
 .prose h1:not(.custom-block h1), 

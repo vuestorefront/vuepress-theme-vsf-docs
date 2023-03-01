@@ -44,13 +44,12 @@
     </div>
     <div
       class="flex items-center justify-end mb-4 text-sm"
-      v-if="$themeConfig.docsRepoPath"
+      v-if="$page.frontmatter.repoPath || $themeConfig.docsRepoPath"
     >
       <a
-        :href="`${$themeConfig.docsRepoPath}${$route.path.replace(
-          '.html',
-          '.md'
-        )}`"
+        :href="`${$themeConfig.docsRepoPath}${
+          $page.frontmatter.repoPath ?? $route.path.replace('.html', '.md')
+        }`"
         target="_blank"
         class="!border-b-0 !text-inherit hover:!text-zinc-900 dark:hover:!text-white flex items-center"
       >

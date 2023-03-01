@@ -1,3 +1,15 @@
+.highlight-lines
+  padding-top: 1.25rem !important;
+  line-height:  23.4px !important;
+
+.highlighted
+  position: relative;
+  z-index: 10;
+  
+  background-color rgba(255, 255, 255, 5%)
+  .dark .highlighted
+    background-color rgba(255, 255, 255, 5%)
+  
 main
   code
     color lighten($textColor, 20%)
@@ -34,8 +46,7 @@ div[class*="language-"]
     left 0
     width 100%
 
-    .highlighted
-      background-color rgba(255, 255, 255, 5%)
+   
   pre, pre[class*="language-"]
     background transparent
     position relative

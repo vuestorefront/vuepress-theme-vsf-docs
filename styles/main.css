@@ -361,7 +361,7 @@ div[class*='language-'] {
   @apply py-2;
 }
 .prose table:not(.custom-block table) td {
-  @apply border-t dark:border-zinc-300;
+  @apply border-t dark:border-zinc-700;
 }
 
 .prose h1:not(.custom-block h1),
