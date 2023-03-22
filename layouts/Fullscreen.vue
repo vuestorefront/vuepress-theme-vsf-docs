@@ -27,7 +27,20 @@
       <slot>
         <VsfPage
           class="mt-7 mx-auto 2xl:container flex-nowrap 2xl:px-0 bg-inherit px-4"
-        />
+        >
+          <template #top>
+            <slot name="page-top" />
+          </template>
+          <template #before-content>
+            <slot name="before-content" />
+          </template>
+          <template #after-content>
+            <slot name="after-content" />
+          </template>
+          <template #bottom>
+            <slot name="page-bottom" />
+          </template>
+        </VsfPage>
       </slot>
     </div>
     <VsfFooter />
@@ -60,7 +73,7 @@ html.dark {
   color-scheme: dark;
 }
 
-.home .header-anchor {
+.home h1 .header-anchor {
   display: none;
 }
 

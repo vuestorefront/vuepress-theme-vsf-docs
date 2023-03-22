@@ -1,33 +1,40 @@
 <template>
   <aside
-    class="h-[calc(100vh-3.5em)] bg-inherit pt-7 pr-4 overflow-y-auto sidebar w-full border-r dark:border-r-zinc-700 pb-32"
+    class="h-[calc(100vh-3.5em)] bg-inherit overflow-y-auto sidebar w-full border-r dark:border-r-zinc-700 pb-32"
+    ref="sidebar"
   >
     <!-- <div class="integration-selector">Integration</div> -->
     <slot name="top" />
+    <div class="pt-7 pr-4">
+      <SidebarLinks
+        :depth="0"
+        :items="items"
+        :key="$route.fullPath"
+        class="hidden lg:block"
+        ref="links"
+      />
+      <a
+        href="/"
+        class="hover:text-black dark:hover:text-white mb-4 block lg:hidden px-1"
+      >
+        {{ $site.themeConfig.title }}
+      </a>
+      <SidebarLinks
+        :depth="0"
+        :items="allLinks"
+        class="block lg:hidden"
+        ref="links"
+      />
 
-    <SidebarLinks
-      :depth="0"
-      :items="items"
-      :key="$route.fullPath"
-      class="hidden lg:block"
-    />
-    <a
-      href="/"
-      class="hover:text-black dark:hover:text-white mb-4 block lg:hidden px-1"
-    >
-      {{ $site.themeConfig.title }}
-    </a>
-    <SidebarLinks :depth="0" :items="allLinks" class="block lg:hidden" />
-
-    <a
-      v-for="link in navLinks"
-      :href="link.path"
-      class="flex items-center col-span-1 p-4 mt-2 border dark:border-zinc-700 rounded lg:hidden"
-    >
-      <iconify-icon :icon="link.icon" width="24" />
-      <span class="ml-2 font-medium sm:text-sm">{{ link.title }}</span>
-    </a>
-
+      <a
+        v-for="link in navLinks"
+        :href="link.path"
+        class="flex items-center col-span-1 p-4 mt-2 border dark:border-zinc-700 rounded lg:hidden"
+      >
+        <iconify-icon :icon="link.icon" width="24" />
+        <span class="ml-2 font-medium sm:text-sm">{{ link.title }}</span>
+      </a>
+    </div>
     <slot name="bottom" />
   </aside>
 </template>
@@ -41,6 +48,13 @@ export default {
   components: { SidebarLinks },
 
   props: ['items'],
+
+  async mounted() {
+    const activeLink = this.$refs.sidebar.querySelector('a.active')
+    if (activeLink) {
+      activeLink.scrollIntoView({ block: 'start', inline: 'nearest' })
+    }
+  },
   computed: {
     allLinks() {
       const { pages, themeConfig } = this.$site

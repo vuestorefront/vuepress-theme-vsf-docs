@@ -48,7 +48,9 @@
     >
       <a
         :href="`${$themeConfig.docsRepoPath}${
-          $page.frontmatter.repoPath ?? $route.path.replace('.html', '.md')
+          $page.frontmatter.repoPath
+            ? $page.frontmatter.repoPath
+            : $route.path.replace('.html', '.md')
         }`"
         target="_blank"
         class="!border-b-0 !text-inherit hover:!text-zinc-900 dark:hover:!text-white flex items-center"

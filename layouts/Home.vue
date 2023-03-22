@@ -24,7 +24,20 @@
           class="sticky max-w-full overflow-hidden top-14"
         />
       </div>
-      <VsfPage class="mt-7" />
+      <VsfPage class="mt-7">
+        <template #top>
+          <slot name="page-top" />
+        </template>
+        <template #before-content>
+          <slot name="before-content" />
+        </template>
+        <template #after-content>
+          <slot name="after-content" />
+        </template>
+        <template #bottom>
+          <slot name="page-bottom" />
+        </template>
+      </VsfPage>
     </div>
     <VsfFooter />
   </div>
@@ -54,10 +67,6 @@ export default {
 <style>
 html.dark {
   color-scheme: dark;
-}
-
-.home .header-anchor {
-  display: none;
 }
 
 .home h1:hover,

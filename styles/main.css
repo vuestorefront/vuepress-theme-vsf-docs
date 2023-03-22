@@ -166,7 +166,8 @@
   .custom-block.col-wrapper-title-left,
   .custom-block.col-wrapper,
   .custom-block.col-wrapper-gap,
-  .custom-block.col-wrapper-hero {
+  .custom-block.col-wrapper-hero,
+  .custom-block.col-wrapper-hero-no-grid {
     @apply grid grid-cols-12 mt-8;
   }
 
@@ -190,11 +191,13 @@
     @apply md:col-span-8 col-span-12;
   }
 
-  .custom-block.col-wrapper-hero {
+  .custom-block.col-wrapper-hero,
+  .custom-block.col-wrapper-hero-no-grid {
     @apply md:mt-24 mt-8 mb-32 gap-8;
   }
 
-  .custom-block.col-wrapper-hero > div:nth-of-type(2) {
+  .custom-block.col-wrapper-hero > div:nth-of-type(2),
+  .custom-block.col-wrapper-hero-no-grid > div:nth-of-type(2) {
     @apply relative mt-8 md:mt-0;
   }
 
@@ -453,4 +456,8 @@ pre {
 
 .suggestions li {
   @apply dark:hover:bg-zinc-800 !important;
+}
+
+.bg-gradient-default {
+  @apply bg-gradient-to-tl from-black to-zinc-900;
 }

@@ -98,6 +98,13 @@ module.exports = {
     [
       'container',
       {
+        type: 'col-wrapper-hero-no-grid',
+        defaultTitle: ''
+      }
+    ],
+    [
+      'container',
+      {
         type: 'col-full',
         defaultTitle: ''
       }

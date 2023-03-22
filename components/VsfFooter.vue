@@ -13,14 +13,14 @@
             <a
               href="https://github.com/DivanteLtd/vue-storefront"
               target="_blank"
-              class="hover:text-zinc-900 hover:dark:text-white"
+              class="text-zinc-900 dark:text-white opacity-70 hover:opacity-100"
             >
               <iconify-icon icon="mdi:github" width="24" class="text-inherit" />
             </a>
             <a
               href="https://twitter.com/VueStorefront"
               target="_blank"
-              class="hover:text-zinc-900 hover:dark:text-white"
+              class="text-zinc-900 dark:text-white opacity-70 hover:opacity-100"
             >
               <iconify-icon icon="mdi:twitter" width="24" />
             </a>
