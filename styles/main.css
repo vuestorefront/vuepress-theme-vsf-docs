@@ -347,6 +347,14 @@ PROSE STYLES
   @apply text-inherit px-2 py-1 rounded bg-slate-200 dark:bg-zinc-800 dark:text-zinc-200;
 }
 
+.prose a > span {
+  @apply hidden;
+}
+
+.prose a code:not(pre code) {
+  @apply border-zinc-600 dark:border-zinc-400 hover:border-green dark:hover:border-green border-b-2 border-dashed rounded-b-none;
+}
+
 div[class*='language-'] {
   @apply bg-zinc-800;
 }
