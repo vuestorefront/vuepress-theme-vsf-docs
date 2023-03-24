@@ -58,6 +58,11 @@ export default {
   computed: {
     allLinks() {
       const { pages, themeConfig } = this.$site
+      if (this.$themeConfig.mobileMenu) {
+        return this.$themeConfig.mobileMenu.map((item) =>
+          resolveItem(item, pages, '/')
+        )
+      }
       const b = Object.keys(this.$themeConfig.sidebar)
         .map((sidebarKey) => {
           return this.$themeConfig.sidebar[sidebarKey].map((item) =>

@@ -198,6 +198,7 @@ export default {
   watch: {
     $route() {
       this.sidebarOpen = false
+      document.body.classList.remove('overflow-hidden')
     },
     sidebarOpen(val) {
       if (val) {
