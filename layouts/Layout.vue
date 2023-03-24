@@ -166,6 +166,9 @@ export default {
       sidebarOpen: false
     }
   },
+  mounted() {
+    document.body.classList.remove('overflow-hidden')
+  },
   computed: {
     sidebarItems() {
       return resolveSidebarItems(
@@ -197,8 +200,8 @@ export default {
   },
   watch: {
     $route() {
-      this.sidebarOpen = false
       document.body.classList.remove('overflow-hidden')
+      this.sidebarOpen = false
     },
     sidebarOpen(val) {
       if (val) {

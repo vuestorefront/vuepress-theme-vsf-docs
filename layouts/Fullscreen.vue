@@ -64,6 +64,18 @@ export default {
     return {
       sidebarOpen: false
     }
+  },
+  mounted() {
+    document.body.classList.remove('overflow-hidden')
+  },
+  watch: {
+    sidebarOpen(val) {
+      if (val) {
+        document.body.classList.add('overflow-hidden')
+      } else {
+        document.body.classList.remove('overflow-hidden')
+      }
+    }
   }
 }
 </script>
