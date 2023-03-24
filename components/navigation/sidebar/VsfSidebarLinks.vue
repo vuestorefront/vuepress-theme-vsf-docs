@@ -25,7 +25,7 @@
       <a
         v-else-if="item.path && item.path.indexOf('http') === 0"
         :href="item.path"
-        class="inline-block pl-4 overflow-visible transition-colors"
+        class="inline-block py-1 transition-colors hover:text-black dark:hover:text-white"
         :class="{
           'px-1': depth === 0
         }"
