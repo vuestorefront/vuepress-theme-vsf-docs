@@ -105,7 +105,7 @@
             <li class="mb-2">
               <a
                 class="hover:text-zinc-900 dark:hover:text-white"
-                href="https://docs.storefrontui.io/"
+                href="https://docs.storefrontui.io/v2"
                 >Storefront UI</a
               >
             </li>
@@ -149,7 +149,7 @@
             <li class="mb-2">
               <a
                 class="hover:text-zinc-900 dark:hover:text-white"
-                href="https://blog.vuestorefront.io/"
+                href="https://vuestorefront.io/blog"
                 >Blog</a
               >
             </li>
