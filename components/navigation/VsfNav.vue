@@ -8,7 +8,10 @@
       <button class="block mr-auto lg:hidden" @click="$emit('toggle')">
         <Menu :open="sidebarOpen" />
       </button>
-      <RouterLink to="/" v-if="$site.base === '/v2/'">
+      <RouterLink
+        to="/"
+        v-if="$site.themeConfig.coreDocs && $site.base === '/v2/'"
+      >
         <Logo class="w-auto h-6" :show-docs="true" />
       </RouterLink>
       <a href="https://docs.vuestorefront.io/v2" v-else>
@@ -22,7 +25,7 @@
           <RouterLink
             to="/getting-started/introduction"
             class="hover:underline"
-            v-if="$site.base === '/v2/'"
+            v-if="$site.themeConfig.coreDocs && $site.base === '/v2/'"
           >
             Getting Started
           </RouterLink>
@@ -144,7 +147,10 @@
               </li>
             </template>
 
-            <li class="py-1 ml-auto" v-if="$site.base !== '/v2/'">
+            <li
+              class="py-1 ml-auto"
+              v-if="$site.themeConfig.coreDocs && $site.base !== '/v2/'"
+            >
               <a
                 href="https://docs.vuestorefront.io/v2/"
                 class="hover:underline"
