@@ -22,22 +22,6 @@
         class="hidden gap-4 ml-auto text-sm font-medium nav-links lg:flex text-zinc-900 dark:text-white"
       >
         <div class="nav-item">
-          <RouterLink
-            to="/getting-started/introduction"
-            class="hover:underline"
-            v-if="$site.themeConfig.coreDocs && $site.base === '/v2/'"
-          >
-            Getting Started
-          </RouterLink>
-          <a
-            href="https://docs.vuestorefront.io/v2/getting-started/introduction.html"
-            class="hover:underline"
-            v-else
-          >
-            Getting Started
-          </a>
-        </div>
-        <div class="nav-item">
           <DropdownLink title="Integrations" type="integrations" />
         </div>
         <div class="nav-item">
@@ -149,7 +133,7 @@
 
             <li
               class="py-1 ml-auto"
-              v-if="$site.themeConfig.coreDocs && $site.base !== '/v2/'"
+              v-if="!$site.themeConfig.coreDocs && $site.base !== '/v2/'"
             >
               <a
                 href="https://docs.vuestorefront.io/v2/"

@@ -50,7 +50,7 @@
           <h2 class="mt-4 mb-4 text-sm font-medium">Backed by:</h2>
           <div class="flex">
             <a
-              href="https://www.vuestorefront.io/blog/y-combinator-w21"
+              href="https://vuestorefront.io/news/joining-y-combinator"
               target="_blank"
               ><img
                 src="https://uploads-ssl.webflow.com/5e7cf661c23ac9df156d9c3d/6064de41e684e38698e14f6f_Y_Combinator_logo.svg"
