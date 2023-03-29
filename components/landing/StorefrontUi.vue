@@ -4,11 +4,11 @@
       <p class="text-sm font-semibold text-green">Open-source design system</p>
       <h3 class="mt-2 text-3xl">Storefront UI</h3>
       <p class="mt-4">
-        Create stunning, mobile-first online stores with this 100% customizable
-        design system with over 50 ready-to-use Components
+        Quickly develop your storefronts with fast, accessible, and fully
+        customizable components specifically built for e-commerce.
       </p>
       <a
-        href="https://docs.storefrontui.io/"
+        href="https://docs.storefrontui.io/v2"
         target="_blank"
         class="inline-block text-sm font-medium px-6 py-2 mt-8 !text-white rounded bg-green hover:brightness-105 no-underline !border-b-0"
       >
@@ -18,7 +18,7 @@
     <div class="col-span-12 md:col-span-7">
       <img
         class="bg-white rounded"
-        src="https://images.contentstack.io/v3/assets/blt189c1df68c6b48d7/blt28541044164110d9/62ac91a9bfecbc42bad17d82/Storefront-Ui-Vue_Ui_Components.png?auto=webp&width=1216&format=pjpg&disable=upscale&quality=100&dpr=2"
+        src="https://docs.vuestorefront.io/v2/sfui-hero.png"
       />
     </div>
   </div>

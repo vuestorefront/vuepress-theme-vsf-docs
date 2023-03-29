@@ -51,7 +51,7 @@
     >
       <li class="flex">
         <a
-          href="https://docs.storefrontui.io/"
+          href="https://docs.storefrontui.io/v2"
           class="flex items-center w-full h-8 rounded dark:hover:bg-zinc-800 hover:bg-black hover:bg-opacity-5 hover:text-zinc dark:hover:text-white"
         >
           <span class="ml-2">Storefront UI</span>
