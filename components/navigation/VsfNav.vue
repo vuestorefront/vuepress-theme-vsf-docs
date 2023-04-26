@@ -22,6 +22,14 @@
         class="hidden gap-4 ml-auto text-sm font-medium nav-links lg:flex text-zinc-900 dark:text-white"
       >
         <div class="nav-item">
+          <a
+            href="https://github.com/orgs/vuestorefront/projects/4"
+            class="hover:underline"
+          >
+            Roadmap
+          </a>
+        </div>
+        <div class="nav-item">
           <DropdownLink title="Integrations" type="integrations" />
         </div>
         <div class="nav-item">
