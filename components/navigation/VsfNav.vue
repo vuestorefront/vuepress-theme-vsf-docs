@@ -22,10 +22,7 @@
         class="hidden gap-4 ml-auto text-sm font-medium nav-links lg:flex text-zinc-900 dark:text-white"
       >
         <div class="nav-item">
-          <a
-            href="https://github.com/orgs/vuestorefront/projects/4"
-            class="hover:underline"
-          >
+          <a href="https://roadmap.vuestorefront.io" class="hover:underline">
             Roadmap
           </a>
         </div>

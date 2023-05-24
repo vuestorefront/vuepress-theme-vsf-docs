@@ -119,7 +119,7 @@ export default {
         },
         {
           name: 'Sylius',
-          link: 'https://vsf-sylius-docs.herokuapp.com/'
+          link: 'https://vsf2-docs.bitbag.io/'
         },
         {
           name: 'Vendure',
