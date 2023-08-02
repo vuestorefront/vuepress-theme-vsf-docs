@@ -122,10 +122,6 @@ export default {
           link: 'https://vsf2-docs.bitbag.io/'
         },
         {
-          name: 'Vendure',
-          link: 'https://docs.vuestorefront.io/vendure'
-        },
-        {
           name: 'Odoo',
           link: 'https://docs.vuestorefront.io/odoo/'
         },

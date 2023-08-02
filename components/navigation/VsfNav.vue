@@ -21,11 +21,11 @@
       <nav
         class="hidden gap-4 ml-auto text-sm font-medium nav-links lg:flex text-zinc-900 dark:text-white"
       >
-        <div class="nav-item">
+        <!-- <div class="nav-item">
           <a href="https://roadmap.vuestorefront.io" class="hover:underline">
             Roadmap
           </a>
-        </div>
+        </div> -->
         <div class="nav-item">
           <DropdownLink title="Integrations" type="integrations" />
         </div>
