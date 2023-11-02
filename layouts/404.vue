@@ -2,6 +2,7 @@
   <div
     class="w-full min-h-screen text-base bg-white dark:bg-zinc-900 text-slate-500 dark:text-zinc-400 antialiased"
   >
+    <V2Callout />
     <VsfNav />
 
     <main class="container grid grid-cols-2 mx-auto mt-16 gap-y-16">
@@ -306,10 +307,12 @@
 </template>
 
 <script>
+import V2Callout from '../components/V2Callout.vue'
 import VsfNav from '../components/navigation/VsfNav.vue'
 export default {
   components: {
-    VsfNav
+    VsfNav,
+    V2Callout
   }
 }
 </script>

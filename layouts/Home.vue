@@ -5,6 +5,7 @@
       enterprise: $themeConfig.enterprise
     }"
   >
+    <V2Callout />
     <VsfNav @toggle="sidebarOpen = !sidebarOpen" :sidebar-open="sidebarOpen" />
     <div class="container relative mx-auto max-w-7xl gap-y-16 bg-inherit">
       <div
@@ -48,13 +49,15 @@ import VsfNav from '../components/navigation/VsfNav.vue'
 import VsfPage from '../components/VsfPage.vue'
 import VsfFooter from '../components/VsfFooter.vue'
 import VsfSidebar from '../components/navigation/sidebar/VsfSidebar.vue'
+import V2Callout from '../components/V2Callout.vue'
 
 export default {
   components: {
     VsfNav,
     VsfPage,
     VsfFooter,
-    VsfSidebar
+    VsfSidebar,
+    V2Callout
   },
   data() {
     return {

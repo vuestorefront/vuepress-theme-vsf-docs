@@ -2,6 +2,7 @@
   <div
     class="w-full min-h-screen text-base bg-white dark:bg-zinc-900 text-slate-600 dark:text-zinc-300 antialiased"
   >
+    <V2Callout />
     <VsfNav @toggle="sidebarOpen = !sidebarOpen" :sidebar-open="sidebarOpen" />
 
     <!-- Google Tag Manager (noscript) -->
@@ -147,6 +148,7 @@ import VsfPage from '../components/VsfPage.vue'
 import VsfFooter from '../components/VsfFooter.vue'
 
 import { resolveSidebarItems } from '../util'
+import V2Callout from '../components/V2Callout.vue'
 export default {
   props: {
     hideBreadcrumbs: {
@@ -158,7 +160,7 @@ export default {
       default: null
     }
   },
-  components: { VsfNav, VsfPage, VsfSidebar, VsfFooter },
+  components: { VsfNav, VsfPage, VsfSidebar, VsfFooter, V2Callout },
   name: 'Layout',
   data() {
     return {
