@@ -5,7 +5,6 @@
       enterprise: $themeConfig.enterprise
     }"
   >
-    <V2Callout />
     <VsfNav @toggle="sidebarOpen = !sidebarOpen" :sidebar-open="sidebarOpen" />
     <div class="container relative mx-auto max-w-7xl gap-y-16 bg-inherit">
       <div

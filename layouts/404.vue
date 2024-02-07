@@ -2,7 +2,6 @@
   <div
     class="w-full min-h-screen text-base bg-white dark:bg-zinc-900 text-slate-500 dark:text-zinc-400 antialiased"
   >
-    <V2Callout />
     <VsfNav />
 
     <main class="container grid grid-cols-2 mx-auto mt-16 gap-y-16">

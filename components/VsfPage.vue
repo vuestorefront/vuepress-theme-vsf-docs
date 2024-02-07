@@ -9,6 +9,8 @@
         $page.frontmatter.layout !== 'home'
       "
     />
+    <V2Callout />
+
     <div class="flex flex-wrap mb-2" v-if="$page.frontmatter.enterpriseTag">
       <p
         class="flex items-center gap-1 px-2 text-xs font-medium text-yellow-800 bg-yellow-500 rounded bg-opacity-20 dark:bg-yellow-500 dark:bg-opacity-20 dark:text-yellow-50"
@@ -72,6 +74,7 @@ import PageNav from './navigation/PageNav.vue'
 import Edit from './icons/Edit.vue'
 import BetaBanner from './BetaBanner.vue'
 import Breadcrumbs from './navigation/Breadcrumbs.vue'
+import V2Callout from './V2Callout.vue'
 
 let observer
 
@@ -81,7 +84,8 @@ export default {
     PageNav,
     Edit,
     BetaBanner,
-    Breadcrumbs
+    Breadcrumbs,
+    V2Callout
   },
   mounted() {
     this.observeHeadings()
