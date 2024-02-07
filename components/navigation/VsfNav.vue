@@ -1,6 +1,6 @@
 <template>
   <header
-    class="sticky top-0 z-50 w-full border-b dark:bg-neutral-900 dark:border-b-neutral-700 bg-inherit"
+    class="sticky top-0 z-50 w-full border-b dark:bg-zinc-900 dark:border-b-zinc-700 bg-inherit"
   >
     <div
       class="flex items-center w-full px-4 py-3 mx-auto 2xl:container flex-nowrap 2xl:px-0"
@@ -8,7 +8,10 @@
       <button class="block mr-auto lg:hidden" @click="$emit('toggle')">
         <Menu :open="sidebarOpen" />
       </button>
-      <RouterLink to="/" v-if="$site.base === '/v2/'">
+      <RouterLink
+        to="/"
+        v-if="$site.themeConfig.coreDocs && $site.base === '/v2/'"
+      >
         <Logo class="w-auto h-6" :show-docs="true" />
       </RouterLink>
       <a href="https://docs.vuestorefront.io/v2" v-else>
@@ -16,24 +19,13 @@
       </a>
 
       <nav
-        class="hidden gap-4 ml-auto text-sm font-medium nav-links lg:flex text-neutral-900 dark:text-white"
+        class="hidden gap-4 ml-auto text-sm font-medium nav-links lg:flex text-zinc-900 dark:text-white"
       >
-        <div class="nav-item">
-          <RouterLink
-            to="/getting-started/introduction"
-            class="hover:underline"
-            v-if="$site.base === '/v2/'"
-          >
-            Getting Started
-          </RouterLink>
-          <a
-            href="https://docs.vuestorefront.io/v2/getting-started/introduction.html"
-            class="hover:underline"
-            v-else
-          >
-            Getting Started
+        <!-- <div class="nav-item">
+          <a href="https://roadmap.vuestorefront.io" class="hover:underline">
+            Roadmap
           </a>
-        </div>
+        </div> -->
         <div class="nav-item">
           <DropdownLink title="Integrations" type="integrations" />
         </div>
@@ -53,54 +45,101 @@
         <button @click="toggleDisplayMode" class="dark-mode-toggle">
           <DarkModeToggle
             :is-dark="isDark"
-            class="w-4 h-auto opacity-50 fill-neutral dark:fill-white hover:opacity-100"
+            class="w-4 h-auto opacity-50 fill-zinc-900 dark:fill-white hover:opacity-100"
           />
         </button>
         <a href="https://discord.vuestorefront.io/" target="_blank">
           <Discord
-            class="w-auto h-4 opacity-50 fill-neutral dark:fill-white hover:opacity-100"
+            class="w-auto h-4 opacity-50 fill-zinc-900 dark:fill-white hover:opacity-100"
           />
         </a>
         <a href="https://github.com/vuestorefront/" target="_blank">
           <Github
-            class="w-auto h-4 opacity-50 fill-neutral dark:fill-white hover:opacity-100"
+            class="w-auto h-4 opacity-50 fill-zinc-900 dark:fill-white hover:opacity-100"
           />
         </a>
       </div>
     </div>
     <div
-      class="relative hidden w-full border-t dark:border-t-neutral-700 md:block bg-inherit"
+      class="relative hidden w-full border-t dark:border-t-zinc-700 md:block bg-inherit"
       v-if="$themeConfig.secondaryNav"
     >
       <div
         class="relative flex items-center w-full px-4 mx-auto text-sm font-medium text-black bg-inherit 2xl:container flex-nowrap 2xl:px-0 dark:text-white"
       >
         <nav class="flex items-center w-full">
-          <div class="pr-4 mr-2 border-r-2">
+          <div class="pr-4 mr-2 border-r-2 dark:border-r-zinc-700">
             <RouterLink to="/">
               {{ $themeConfig.title }}
             </RouterLink>
           </div>
           <ul class="flex flex-1 gap-2 py-2">
+            <template v-for="{ text, link, match, children } in secondaryLinks">
+              <li class="relative group" v-if="children">
+                <span
+                  class="px-2 py-1 rounded inline-block"
+                  :class="{
+                    'text-green bg-green bg-opacity-10 ': match
+                      ? new RegExp(match).test($route.path)
+                      : ($route.path.startsWith(link) && link !== '/') ||
+                        ($route.path === '/' && link === '/'),
+                    'hover:bg-slate-100 dark:hover:bg-zinc-800': !(match
+                      ? new RegExp(match).test($route.path)
+                      : ($route.path.startsWith(link) && link !== '/') ||
+                        ($route.path === '/' && link === '/'))
+                  }"
+                >
+                  {{ text }}
+                </span>
+
+                <ul
+                  class="absolute z-10 hidden overflow-hidden w-48 bg-white border rounded -left-1/2 nav-dropdown group-focus-within:block group-hover:block top-full dark:bg-zinc-900 dark:border-zinc-700"
+                >
+                  <li v-for="{ text, link } in children" @click="hideDropdown">
+                    <a
+                      :href="link"
+                      v-if="link.includes('https://')"
+                      class="py-2 px-3 block hover:bg-gray-50 dark:hover:bg-zinc-800"
+                    >
+                      {{ text }}
+                    </a>
+                    <RouterLink
+                      v-else
+                      :to="link"
+                      class="py-2 px-3 block hover:bg-gray-50 dark:hover:bg-zinc-800"
+                    >
+                      {{ text }}
+                    </RouterLink>
+                  </li>
+                </ul>
+              </li>
+              <li
+                v-else
+                :class="{
+                  'text-green bg-green bg-opacity-10 ': match
+                    ? new RegExp(match).test($route.path)
+                    : ($route.path.startsWith(link) && link !== '/') ||
+                      ($route.path === '/' && link === '/'),
+                  'hover:bg-slate-100 dark:hover:bg-zinc-800': !(match
+                    ? new RegExp(match).test($route.path)
+                    : ($route.path.startsWith(link) && link !== '/') ||
+                      ($route.path === '/' && link === '/'))
+                }"
+                class="relative px-2 py-1 rounded"
+              >
+                <a :href="link" v-if="link.includes('https://')">
+                  {{ text }}
+                </a>
+                <RouterLink :to="link" v-else>
+                  {{ text }}
+                </RouterLink>
+              </li>
+            </template>
+
             <li
-              v-for="{ text, link, match } in $themeConfig.secondaryNav"
-              :class="{
-                'text-green bg-green bg-opacity-10 ': match
-                  ? new RegExp(match).test($route.path)
-                  : ($route.path.startsWith(link) && link !== '/') ||
-                    ($route.path === '/' && link === '/'),
-                'hover:bg-slate-100 dark:hover:bg-neutral-700': !(match
-                  ? new RegExp(match).test($route.path)
-                  : ($route.path.startsWith(link) && link !== '/') ||
-                    ($route.path === '/' && link === '/'))
-              }"
-              class="relative px-2 py-1 rounded"
+              class="py-1 ml-auto"
+              v-if="!$site.themeConfig.coreDocs && $site.base !== '/v2/'"
             >
-              <RouterLink :to="link">
-                {{ text }}
-              </RouterLink>
-            </li>
-            <li class="py-1 ml-auto" v-if="$site.base !== '/v2/'">
               <a
                 href="https://docs.vuestorefront.io/v2/"
                 class="hover:underline"
@@ -154,6 +193,14 @@ export default {
     }
   },
   methods: {
+    hideDropdown(event) {
+      event.stopPropagation()
+      var el = event.target.parentNode.parentNode
+      el.style.display = 'none'
+      setTimeout(function () {
+        el.style.removeProperty('display')
+      }, 30)
+    },
     toggleDisplayMode() {
       // On page load or when changing themes, best to add inline in `head` to avoid FOUC
       if (!document.documentElement.classList.contains('dark')) {
@@ -165,6 +212,21 @@ export default {
         localStorage.theme = 'light'
         this.isDark = false
       }
+    }
+  },
+  computed: {
+    secondaryLinks() {
+      const links = this.$themeConfig.secondaryNav
+
+      if (Array.isArray(links)) {
+        return links
+      }
+
+      return links[
+        Object.keys(links).find((key) => {
+          return this.$route.path.startsWith(key)
+        })
+      ]
     }
   }
 }
@@ -189,32 +251,13 @@ export default {
   word-break: break-word;
 }
 
-html.dark .search-box input {
-  background-color: #404040;
-  color: white;
-}
-
 .search-box .suggestions {
   right: 0;
   z-index: 50 !important;
 }
 
-.suggestions * {
-  color: #393d43 !important;
-  background-color: inherit !important;
-}
-
-html.dark .suggestions {
-  background-color: #1d1f22;
-  border-color: #555b64;
-}
-
 .suggestion .focused {
   background-color: inherit !important;
-}
-
-html.dark .suggestions li:hover {
-  background-color: #393d43 !important;
 }
 
 .suggestions li:hover {

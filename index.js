@@ -1,6 +1,7 @@
 module.exports = {
+  ssrTemplate: './template.html',
   plugins: [
-    require('./plugins/enhance-webpack'),
+    // require('./plugins/enhance-webpack'),
     require('./plugins/markdown-active-links'),
     '@vuepress/search',
     [
@@ -14,6 +15,27 @@ module.exports = {
       'container',
       {
         type: 'tip',
+        defaultTitle: ''
+      }
+    ],
+    [
+      'container',
+      {
+        type: 'col-wrapper-title-left',
+        defaultTitle: ''
+      }
+    ],
+    [
+      'container',
+      {
+        type: 'large-prose',
+        defaultTitle: ''
+      }
+    ],
+    [
+      'container',
+      {
+        type: 'large-header',
         defaultTitle: ''
       }
     ],
@@ -70,6 +92,13 @@ module.exports = {
       'container',
       {
         type: 'col-wrapper-hero',
+        defaultTitle: ''
+      }
+    ],
+    [
+      'container',
+      {
+        type: 'col-wrapper-hero-no-grid',
         defaultTitle: ''
       }
     ],

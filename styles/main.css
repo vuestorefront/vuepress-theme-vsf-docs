@@ -5,18 +5,45 @@
 @tailwind utilities;
 
 @layer components {
+  html.dark {
+    @apply bg-zinc-900;
+  }
   .custom-block .custom-block-title {
-    @apply font-semibold mb-2 text-neutral-800 dark:text-white text-lg;
+    @apply font-semibold mb-2 text-zinc-800 dark:text-white text-lg;
   }
   .custom-block.read-more,
   .custom-block.tip,
   .custom-block.warning,
   .custom-block.danger {
-    @apply bg-slate-200 dark:bg-neutral-800 p-4 rounded mt-6 dark:text-slate-200 text-sm;
+    @apply bg-slate-200 dark:bg-zinc-800 p-4 rounded mt-6 dark:text-slate-200 text-sm;
+  }
+
+  .custom-block.large-header {
+    @apply text-center text-lg mx-auto mt-32 mb-16;
+  }
+
+  .custom-block.large-prose {
+    @apply text-lg text-zinc-400 dark:text-zinc-400 mt-2;
+  }
+
+  .custom-block.large-header h2 {
+    @apply text-3xl font-bold mb-2;
+  }
+
+  .custom-block.large-header p {
+    @apply text-zinc-400 dark:text-zinc-400 mt-2 leading-normal text-xl;
   }
 
   .custom-block .custom-block-title {
     @apply text-base;
+  }
+
+  .custom-block.danger {
+    @apply bg-rose-500 bg-opacity-10 text-rose-800 dark:bg-rose-500 dark:bg-opacity-20 dark:text-rose-50 flex-col;
+  }
+
+  .custom-block.warning {
+    @apply bg-yellow-500 bg-opacity-20 text-yellow-800 dark:bg-yellow-500 dark:bg-opacity-20 dark:text-yellow-50 flex-col;
   }
 
   .custom-block.danger {
@@ -72,7 +99,7 @@
   }
 
   .custom-block.read-more a {
-    @apply dark:text-white font-semibold text-neutral-900;
+    @apply dark:text-white font-semibold text-zinc-900;
   }
 
   .custom-block.read-more code:not(pre code),
@@ -129,17 +156,19 @@
   }
 
   .custom-block.subheader {
-    @apply text-slate-400 dark:text-slate-400 mt-2 leading-normal;
+    @apply text-zinc-400 dark:text-zinc-400 mt-2 leading-normal;
   }
 
   h1 + .custom-block.subheader {
     @apply text-xl;
   }
 
+  .custom-block.col-wrapper-title-left,
   .custom-block.col-wrapper,
   .custom-block.col-wrapper-gap,
-  .custom-block.col-wrapper-hero {
-    @apply grid grid-cols-12;
+  .custom-block.col-wrapper-hero,
+  .custom-block.col-wrapper-hero-no-grid {
+    @apply grid grid-cols-12 mt-8;
   }
 
   .custom-block.col-wrapper-gap {
@@ -162,16 +191,14 @@
     @apply md:col-span-8 col-span-12;
   }
 
-  .custom-block.col-wrapper-hero {
-    @apply md:mt-24 mt-8 mb-8;
+  .custom-block.col-wrapper-hero,
+  .custom-block.col-wrapper-hero-no-grid {
+    @apply md:mt-24 mt-8 mb-32 gap-8;
   }
 
-  .custom-block.col-wrapper-hero > div:first-of-type {
-    @apply md:order-1 order-2;
-  }
-
-  .custom-block.col-wrapper-hero > div:nth-of-type(2) {
-    @apply md:order-2 order-1 relative;
+  .custom-block.col-wrapper-hero > div:nth-of-type(2),
+  .custom-block.col-wrapper-hero-no-grid > div:nth-of-type(2) {
+    @apply relative mt-8 md:mt-0;
   }
 
   .custom-block.col-wrapper-hero > div:nth-of-type(2):before {
@@ -206,7 +233,7 @@
   }
 
   .custom-block.col-wrapper-hero a:not(.header-anchor):nth-of-type(2) {
-    @apply inline-block no-underline mt-8 bg-slate-200 rounded text-slate-900 dark:bg-neutral-700 dark:text-slate-200 font-medium px-4 py-2 text-sm  hover:brightness-105 transition-all;
+    @apply inline-block no-underline mt-8 bg-slate-200 rounded text-slate-900 dark:bg-zinc-800 dark:text-slate-200 font-medium px-4 py-2 text-sm  hover:brightness-105 transition-all;
   }
 
   .custom-block.details {
@@ -250,11 +277,11 @@
   }
 
   main .header-anchor svg * {
-    @apply stroke-neutral-400;
+    @apply stroke-zinc-400;
   }
 
   main .header-anchor:hover svg * {
-    @apply stroke-neutral-900 dark:stroke-white;
+    @apply stroke-zinc-900 dark:stroke-white;
   }
 }
 
@@ -287,7 +314,7 @@ code:not(pre code) {
   @apply break-words whitespace-pre-line leading-none;
 }
 
-pre {
+pre:not(.swagger-ui pre) {
   background-color: #393d43;
   padding: 1em;
   border-radius: 0.5em;
@@ -317,23 +344,35 @@ PROSE STYLES
 }
 
 .prose code:not(pre code) {
-  @apply text-inherit px-2 py-1 rounded bg-slate-200 dark:bg-neutral-800;
+  @apply text-inherit px-2 py-1 rounded bg-slate-200 dark:bg-zinc-800 dark:text-zinc-200;
 }
 
-.prose table {
+.prose a > span {
+  @apply hidden;
+}
+
+.prose a code:not(pre code) {
+  @apply border-zinc-600 dark:border-zinc-400 hover:border-green dark:hover:border-green border-b-2 border-dashed rounded-b-none;
+}
+
+div[class*='language-'] {
+  @apply bg-zinc-800;
+}
+
+.prose table:not(.custom-block table) {
   @apply table-fixed border-collapse w-full leading-5 text-sm;
 }
 
-.prose table th {
+.prose table:not(.custom-block table) th {
   @apply text-left text-black dark:text-white font-semibold text-sm;
 }
 
-.prose table th,
-.prose table td {
+.prose table:not(.custom-block table) th,
+.prose table:not(.custom-block table) td {
   @apply py-2;
 }
-.prose table td {
-  @apply border-t dark:border-neutral-300;
+.prose table:not(.custom-block table) td {
+  @apply border-t dark:border-zinc-700;
 }
 
 .prose h1:not(.custom-block h1),
@@ -351,7 +390,7 @@ PROSE STYLES
 .prose h4:not(.custom-block h4):hover,
 .prose h5:not(.custom-block h5):hover,
 .prose h6:not(.custom-block h6):hover {
-  @apply underline decoration-neutral-600 dark:decoration-slate-500 decoration-dashed underline-offset-4;
+  @apply underline decoration-zinc-600 dark:decoration-slate-500 decoration-dashed underline-offset-4;
 }
 
 .prose h1:not(.custom-block h1):hover {
@@ -373,7 +412,7 @@ PROSE STYLES
 .prose div[class^='language-'] + p:not(.custom-block p) {
   @apply mt-8;
 }
-.prose iframe {
+.prose iframe:not(.custom-block):not(.custom-block iframe) {
   @apply mt-8 max-w-lg aspect-video rounded-lg w-full h-auto mx-auto;
 }
 
@@ -382,7 +421,7 @@ PROSE STYLES
 }
 
 .prose a:not(.custom-block a) {
-  @apply text-neutral-800 dark:text-neutral-300  border-b hover:border-b-2 border-green transition-[border-bottom];
+  @apply text-zinc-800 dark:text-zinc-300  border-b hover:border-b-2 border-green transition-[border-bottom];
 }
 
 /* CUSTOM BLOCKS */
@@ -408,4 +447,25 @@ pre {
   display: none !important;
   width: -15px;
   margin-left: -15px;
+}
+
+.suggestions * {
+  @apply text-inherit !important;
+  background-color: inherit !important;
+}
+
+.suggestions {
+  @apply bg-white dark:bg-zinc-900 dark:border-zinc-700 !important;
+}
+
+.search-box input {
+  @apply dark:bg-zinc-800 dark:text-white !important;
+}
+
+.suggestions li {
+  @apply dark:hover:bg-zinc-800 !important;
+}
+
+.bg-gradient-default {
+  @apply bg-gradient-to-tl from-black to-zinc-900;
 }

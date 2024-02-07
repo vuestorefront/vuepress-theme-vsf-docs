@@ -16,7 +16,7 @@
       </RouterLink>
       <a
         href="https://docs.vuestorefront.io/v2/getting-started/introduction.html"
-        class="hover:text-neutral dark:hover:text-white"
+        class="hover:text-black dark:hover:text-white"
         v-else
       >
         Getting Started
@@ -31,7 +31,7 @@
       </RouterLink>
       <a
         href="https://docs.vuestorefront.io/v2/general/enterprise.html"
-        class="hover:text-neutral dark:hover:text-white"
+        class="hover:text-black dark:hover:text-white"
         v-else
       >
         Getting Started
@@ -51,7 +51,7 @@
       <span v-if="collapsable" class="arrow" :class="open ? 'down' : 'right'" />
       <span
         :class="{
-          'uppercase text-xs font-medium text-neutral dark:text-white':
+          'uppercase text-xs font-medium text-black dark:text-white':
             depth === 0
         }"
         >{{ item.title }}</span
@@ -63,7 +63,7 @@
       class="flex items-center w-full p-1 rounded sidebar-heading sidebar-dropdown"
       :class="{
         open: true,
-        'cursor-pointer group hover:bg-slate-100 dark:hover:bg-neutral-700 ':
+        'cursor-pointer group hover:bg-slate-100 dark:hover:bg-zinc-800 ':
           collapsable
       }"
       @click="collapsable && $emit('toggle')"
@@ -71,11 +71,11 @@
       <span
         class="text-base sm:text-sm"
         :class="{
-          'text-neutral-900 dark:text-white font-medium': depth === 0
+          'text-black dark:text-white font-medium': depth === 0
         }"
         >{{ item.title }}</span
       >
-      <Icon
+      <iconify-icon
         icon="ic:outline-keyboard-arrow-right"
         class="ml-auto transition-transform duration-150"
         :class="{

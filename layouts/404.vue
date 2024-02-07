@@ -1,13 +1,13 @@
 <template>
   <div
-    class="w-full min-h-screen text-base bg-white dark:bg-neutral-900 text-slate-500 dark:text-slate-400"
+    class="w-full min-h-screen text-base bg-white dark:bg-zinc-900 text-slate-500 dark:text-zinc-400 antialiased"
   >
     <VsfNav />
 
     <main class="container grid grid-cols-2 mx-auto mt-16 gap-y-16">
       <div class="col-span-2 md:col-span-1">
         <p class="mb-4 font-semibold">Error 404</p>
-        <h1 class="text-5xl !font-extrabold text-neutral dark:text-white">
+        <h1 class="text-5xl !font-extrabold text-black dark:text-white">
           Page Not Found
         </h1>
         <p class="mt-8 mb-16">
@@ -306,10 +306,12 @@
 </template>
 
 <script>
+import V2Callout from '../components/V2Callout.vue'
 import VsfNav from '../components/navigation/VsfNav.vue'
 export default {
   components: {
-    VsfNav
+    VsfNav,
+    V2Callout
   }
 }
 </script>

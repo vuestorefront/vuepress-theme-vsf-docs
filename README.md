@@ -13,7 +13,7 @@ The intention of this theme is to bring cohesion across the multiple VSF integra
 - adds several built in components that can be used to style your VSF docs site
 - adds an optional secondary navigation to the header
 - adds several custom layouts for your docs site to use
-- built in [Iconify](https://icones.js.org/) support via the `<Icon>` component.
+- built in [Iconify](https://icones.js.org/) support via the `<iconify-icon>` component.
 - breadcrumb support by default
 - adds plugins for overriding the active link style and image fixes
 

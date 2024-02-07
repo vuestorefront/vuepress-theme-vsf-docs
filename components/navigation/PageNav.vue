@@ -1,14 +1,14 @@
 <template>
   <div
-    class="flex p-0 py-8 m-0 border-t custom-block dark:border-t-neutral-700"
+    class="flex p-0 py-8 m-0 border-t custom-block dark:border-t-zinc-700"
     :key="$route.path"
   >
-    <div v-if="prev" class="flex items-center text-sm">
+    <div v-if="prev && prev.path" class="flex items-center text-sm">
       <RouterLink :to="prev.path" class="hover:text-green !no-underline"
         >← {{ prev.title }}</RouterLink
       >
     </div>
-    <div v-if="next" class="flex items-center ml-auto text-sm">
+    <div v-if="next && next.path" class="flex items-center ml-auto text-sm">
       <RouterLink :to="next.path" class="hover:text-green !no-underline"
         >{{ next.title }} →</RouterLink
       >

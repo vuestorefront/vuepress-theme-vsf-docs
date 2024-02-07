@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full min-h-screen text-base bg-white dark:bg-neutral-900 text-slate-500 dark:text-slate-400"
+    class="w-full min-h-screen text-base bg-white dark:bg-zinc-900 text-slate-600 dark:text-zinc-300 antialiased"
   >
     <VsfNav @toggle="sidebarOpen = !sidebarOpen" :sidebar-open="sidebarOpen" />
 
@@ -37,18 +37,31 @@
             'top-24': $themeConfig.secondaryNav,
             'top-14': !$themeConfig.secondaryNav
           }"
-        />
+        >
+          <template #top>
+            <slot name="sidebar-top" />
+          </template>
+        </VsfSidebar>
       </div>
 
       <VsfPage
         class="flex-1 min-w-0 mt-6 md:px-6"
         @update-heading="currentSection = $event"
         @click="sidebarOpen = false"
+        :hideBreadcrumbs="hideBreadcrumbs"
       >
         <template #top>
           <slot name="page-top" />
         </template>
-        <template #bottom> </template>
+        <template #before-content>
+          <slot name="before-content" />
+        </template>
+        <template #after-content>
+          <slot name="after-content" />
+        </template>
+        <template #bottom>
+          <slot name="page-bottom" />
+        </template>
       </VsfPage>
       <div
         v-if="!$page.frontmatter.hideToc"
@@ -63,59 +76,64 @@
           v-if="tocHeaders && tocHeaders.length > 0"
         >
           <p
-            class="mb-2 text-xs font-bold uppercase text-neutral dark:text-white"
+            class="mb-2 text-xs font-bold uppercase text-black dark:text-white"
           >
             On this page
           </p>
-
-          <nav>
-            <ul>
-              <li v-for="header in tocHeaders" :key="header.slug" class="pb-1">
-                <a
-                  :href="`#${header.slug}`"
-                  class="inline-flex items-center text-sm text-gray-500 toc-link dark:text-gray-400"
-                  :class="{
-                    '!text-green-500':
-                      currentSection == header.slug ||
-                      (!currentSection &&
-                        $route.hash.substring(1) === header.slug),
-                    'hover:text-neutral dark:hover:text-white': !(
-                      currentSection == header.slug ||
-                      (!currentSection &&
-                        $route.hash.substring(1) === header.slug)
-                    )
-                  }"
-                  :style="{
-                    'padding-left': (header.level - 2) * 1 + 'em'
-                  }"
+          <slot name="toc">
+            <nav>
+              <ul>
+                <li
+                  v-for="header in tocHeaders"
+                  :key="header.slug"
+                  class="pb-1"
                 >
-                  <template
-                    v-if="
-                      $page.frontmatter.fileDirToc &&
-                      /The(.*)(Directory|File)/.test(header.title)
-                    "
+                  <a
+                    :href="`#${header.slug}`"
+                    class="inline-flex items-center text-sm text-gray-500 toc-link dark:text-gray-400"
+                    :class="{
+                      '!text-green-500':
+                        currentSection == header.slug ||
+                        (!currentSection &&
+                          $route.hash.substring(1) === header.slug),
+                      'hover:text-black dark:hover:text-white': !(
+                        currentSection == header.slug ||
+                        (!currentSection &&
+                          $route.hash.substring(1) === header.slug)
+                      )
+                    }"
+                    :style="{
+                      'padding-left': (header.level - 2) * 1 + 'em'
+                    }"
                   >
-                    <Icon
-                      icon="ion:document-sharp"
-                      v-if="header.title.includes('File')"
-                      width="18"
-                      class="mr-1"
-                    />
-                    <Icon
-                      icon="material-symbols:folder"
-                      v-if="header.title.includes('Directory')"
-                      width="18"
-                      class="mr-1"
-                    />
-                    {{ /The(.*)(Directory|File)/.exec(header.title)[1] }}
-                  </template>
-                  <template v-else>
-                    {{ header.title }}
-                  </template>
-                </a>
-              </li>
-            </ul>
-          </nav>
+                    <template
+                      v-if="
+                        $page.frontmatter.fileDirToc &&
+                        /The(.*)(Directory|File)/.test(header.title)
+                      "
+                    >
+                      <iconify-icon
+                        icon="ion:document-sharp"
+                        v-if="header.title.includes('File')"
+                        width="18"
+                        class="mr-1"
+                      />
+                      <iconify-icon
+                        icon="material-symbols:folder"
+                        v-if="header.title.includes('Directory')"
+                        width="18"
+                        class="mr-1"
+                      />
+                      {{ /The(.*)(Directory|File)/.exec(header.title)[1] }}
+                    </template>
+                    <template v-else>
+                      {{ header.title }}
+                    </template>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </slot>
         </div>
       </div>
     </div>
@@ -129,14 +147,28 @@ import VsfPage from '../components/VsfPage.vue'
 import VsfFooter from '../components/VsfFooter.vue'
 
 import { resolveSidebarItems } from '../util'
+import V2Callout from '../components/V2Callout.vue'
 export default {
-  components: { VsfNav, VsfPage, VsfSidebar, VsfFooter },
+  props: {
+    hideBreadcrumbs: {
+      type: Boolean,
+      default: false
+    },
+    customToc: {
+      type: Array,
+      default: null
+    }
+  },
+  components: { VsfNav, VsfPage, VsfSidebar, VsfFooter, V2Callout },
   name: 'Layout',
   data() {
     return {
       currentSection: '',
       sidebarOpen: false
     }
+  },
+  mounted() {
+    document.body.classList.remove('overflow-hidden')
   },
   computed: {
     sidebarItems() {
@@ -148,6 +180,9 @@ export default {
       )
     },
     tocHeaders() {
+      if (this.customToc) {
+        return this.customToc
+      }
       if (this.$route.path === '/integrations/') {
         let integrations = this.$site.themeConfig.INTEGRATIONS['other']
           .map((i) => i.categories)
@@ -166,6 +201,7 @@ export default {
   },
   watch: {
     $route() {
+      document.body.classList.remove('overflow-hidden')
       this.sidebarOpen = false
     },
     sidebarOpen(val) {
@@ -180,14 +216,6 @@ export default {
 </script>
 
 <style>
-html.dark {
-  background-color: rgb(29 31 34);
-}
-
-html.dark {
-  color-scheme: dark;
-}
-
 body.overflow-hidden {
   overflow: auto;
 }

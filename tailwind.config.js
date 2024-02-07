@@ -8,7 +8,15 @@ module.exports = {
   fontFamily: {
     sans: ['Inter', 'sans-serif']
   },
-  safelist: ['md:justify-start', 'md:justify-center', 'md:justify-end'],
+  safelist: [
+    'md:justify-start',
+    'md:justify-center',
+    'md:justify-end',
+    'aspect-video',
+    'bg-zinc-800',
+    'dark:bg-zinc-800',
+    'dark:hover:bg-zinc-700'
+  ],
   theme: {
     container: {
       padding: {
