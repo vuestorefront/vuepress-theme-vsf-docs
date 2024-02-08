@@ -8,11 +8,10 @@
     />
     <p class="text-black dark:text-white">
       <span class="font-bold">Warning</span> This documentation is for Nuxt 2
-      Vue Storefront projects. Consider
+      Vue Storefront projects. For Nuxt 3, Next.js, or other SDK projects,
       <a href="https://docs.vuestorefront.io" class="underline">
-        upgrading to the Vue Storefront SDK
+        check out our most recent documentation.
       </a>
-      for support for Next.js, Nuxt 3, and other new projects.
     </p>
   </div>
 </template>
