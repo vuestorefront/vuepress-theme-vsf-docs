@@ -1,6 +1,6 @@
-# Vuepress v1 theme for Vue Storefront Docs
+# Vuepress v1 theme for Alokai Docs
 
-This Vuepress theme is a way to style your Vue Storefront docs site. It is based on the default Vuepress theme, but adds some additional styling and components to make it easier to style your docs site.
+This Vuepress theme is a way to style your Alokai docs site. It is based on the default Vuepress theme, but adds some additional styling and components to make it easier to style your docs site.
 
 The intention of this theme is to bring cohesion across the multiple VSF integration docs both in terms of styling and navigation.
 
